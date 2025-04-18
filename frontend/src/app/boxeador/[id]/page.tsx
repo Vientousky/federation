@@ -16,13 +16,13 @@ async function loadBoxer(id: string): Promise<Boxer> {
   return res.json();
 }
 
-type PageProps = {
+type Props = {
   params: {
     id: string;
   };
 };
 
-export default async function BoxerPage({ params }: PageProps) {
+export default async function BoxerPage({ params }: Props) {
   const data = await loadBoxer(params.id);
 
   const infoBoxer = [
