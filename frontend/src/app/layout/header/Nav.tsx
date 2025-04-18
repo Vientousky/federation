@@ -1,19 +1,18 @@
-import React from 'react';
+import styles from './index.module.css'
 
-const Nav: React.FC = () => {
+type navLinks = {
+    name: string;
+    href: string;
+  };
+  
+  export default function Nav({ links }: { links: navLinks[] }) {
     return (
-        <nav>
-            <a href="/">Home</a>
-
-            <a href="/">Ranking</a>
-
-            <a href="/">Record</a>
-
-            <a href="/">Eventos</a>
-
-            <a href="/">Licencias Provinciales</a>
-        </nav>
+      <nav className={styles.nav} >
+        {links.map((link) => (
+          <a key={link.href} href={link.href} className={styles.navLinks} >
+            {link.name}
+          </a>
+        ))}
+      </nav>
     );
-};
-
-export default Nav;
+}

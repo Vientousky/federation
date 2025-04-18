@@ -1,14 +1,18 @@
 import React from 'react';
+import { TbSearch } from "react-icons/tb";
+import styles from './index.module.css'
 
 const Search: React.FC = () => {
 
 
     return (
-        <form  className="search-container">
+        <form className={styles.search_container}>
+            <TbSearch />
             <input
                 type="search"
                 placeholder="Search..."
-                className="search-input"
+                className={styles.search_input}
+                aria-label="Search"
             />
         </form>
     );

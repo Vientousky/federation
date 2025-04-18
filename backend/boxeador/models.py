@@ -16,9 +16,20 @@ class Boxeador(models.Model):
     localidad = models.CharField(max_length=150)
     fecha_nacimiento = models.DateField()
     debutaje = models.DateField()
-    fecha_ingreso = models.DateField()
+    carrera = models.DateField()
     peso = models.FloatField()
-    divicion = models.CharField(max_length=50)
+    divicion = models.CharField(max_length=50, choices=[
+        ('Peso Mosca', 'Peso Mosca'),
+        ('Peso Gallo', 'Peso Gallo'),
+        ('Peso Pluma', 'Peso Pluma'),
+        ('Peso Ligero', 'Peso Ligero'),
+        ('Peso Welter', 'Peso Welter'),
+        ('Peso Medio', 'Peso Medio'),
+        ('Peso Supermedio', 'Peso Supermedio'),
+        ('Peso Semipesado', 'Peso Semipesado'),
+        ('Peso Crucero', 'Peso Crucero'),
+        ('Peso Pesado', 'Peso Pesado'),
+    ])
     status = models.CharField(max_length=50, choices=[
         ('Activo', 'Activo'),
         ('Inactivo', 'Inactivo'),
@@ -34,8 +45,8 @@ class Boxeador(models.Model):
         ('Zurdo', 'Zurdo'),
         ('Switch', 'Switch'),
     ])
-    victorias = models.IntegerField(default=0)
-    derrotas = models.IntegerField(default=0)
-    empates = models.IntegerField(default=0)
-    sin_definir = models.IntegerField(default=0)
+    victorias = models.PositiveIntegerField(default=0)
+    derrotas = models.PositiveIntegerField(default=0)
+    empates = models.PositiveIntegerField(default=0)
+    sin_definir = models.PositiveIntegerField(default=0)
     foto = models.ImageField(upload_to='boxeadores/fotos/', blank=True, null=True)

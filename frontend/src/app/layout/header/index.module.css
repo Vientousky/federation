@@ -1,0 +1,128 @@
+.header {
+    max-width: 1000px;
+    width: 90%;
+    position: fixed;
+    z-index: 1000;
+
+    top: 2%;
+
+    left: 50%;
+    translate: -50%;
+
+    display: flex;
+    flex-direction: column;
+
+    animation: enhance-header linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0 200px;
+
+
+
+    .headerTop, .headerBottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .headerTop {
+        max-height: 200px; /* o lo que mida tu headerTop */
+        overflow: hidden;
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.3s ease-in-out;
+        padding-bottom: 12px;
+
+        .logo img {
+            display: block;
+            overflow: hidden;
+            border-radius: 14px;
+            object-fit: contain;
+        }
+
+        .action {
+            display: flex;
+            gap: 14px;
+            
+            .buttom {
+                display: flex;
+                border: none;
+                border-radius: 9999px;
+                background: rgb(17, 25, 37);
+                padding: 8px;
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    background: rgb(30, 41, 58);
+                    transform: scale(1.05);
+
+                    svg {
+                        fill: orange;
+                    }
+                }
+
+                & svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+        }
+    }
+
+    .headerBottom {
+
+        .nav  {
+            display: inline-flex;
+            gap: 1rem;
+
+            & a {
+                transition: 0.3s ease-in-out;
+
+                &:hover {
+                    color: orange;
+                }
+            }
+        }
+
+        .search_container {
+            position: relative;
+
+            & svg {
+                position: absolute;
+                top: 25%;
+                left: 5%;
+                pointer-events: none;
+            }
+
+            .search_input {
+                width: 225px;
+                padding: 8px 8px 8px 32px;
+                border-radius: 9999px;
+                border: 1px solid #ccc;
+            }
+        }
+
+    }
+
+}
+
+@keyframes enhance-header {
+    to {
+        background-color: rgba(0, 0, 0, 0.603);
+        backdrop-filter: blur(5px);
+        border-radius: 8px;
+        padding: 16px;   
+    }
+}
+
+.headerCollapsed .headerTop {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10%);
+    pointer-events: none;
+    padding: 0;
+}
+
+.headerExpanded .headerTop {
+    opacity: 1;
+    transform: translateY(0);
+}

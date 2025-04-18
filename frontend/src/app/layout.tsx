@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Header from "./layout/header/Header";
 import "./ui/globals.css";
 import "./ui/fonts"
 
@@ -14,8 +15,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body >
+    <html lang="es">
+      <body>
+        <Header/>
         {children}
       </body>
     </html>

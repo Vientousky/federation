@@ -1,18 +1,19 @@
-import React from 'react';
-
+import React from "react";
+import styles from './index.module.css'
+import { BsGear, BsInfoCircle } from "react-icons/bs";
 
 const Action: React.FC = () => {
-    return (
-        <div>
-            <button>
-                info
-            </button>
+  return (
+    <div className={styles.action}>
+      <button className={styles.buttom}>
+        <BsInfoCircle />
+      </button>
 
-            <button>
-                Config
-            </button>
-        </div>
-    );
+      <button className={styles.buttom}>
+        <BsGear />
+      </button>
+    </div>
+  );
 };
 
 export default Action;
