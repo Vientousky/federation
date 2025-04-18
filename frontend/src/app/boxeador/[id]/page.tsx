@@ -5,7 +5,7 @@ import styles from "./index.module.css";
 import { Boxer } from "./types";
 
 async function loadBoxer(id: string): Promise<Boxer> {
-  const res = await fetch(`${process.env.BACKEND_URL}/boxeador/${id}/`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/${id}/`, {
     cache: "no-store", // opcional para evitar cache
   });
 
