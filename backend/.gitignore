@@ -1,0 +1,22 @@
+# Entornos virtuales
+venv/
+.env
+
+# Base de datos local
+db.sqlite3
+
+# Archivos de Django
+__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Archivos del sistema
+.DS_Store
+*.swp
+
+# Archivos de compilación o log
+*.log
+
+# Archivos de entorno de desarrollo
+.idea/
+.vscode/

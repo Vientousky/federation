@@ -4,5 +4,5 @@ from .serializers import BoxeadorSerializer
 
 class BoxeadorViewSet(viewsets.ModelViewSet):
     queryset = Boxeador.objects.all()
-    permission_classes = [permissions.AllowAny]
+    permission_classes = [permissions.IsAuthenticated]
     serializer_class = BoxeadorSerializer
