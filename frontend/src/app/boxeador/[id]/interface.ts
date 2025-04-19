@@ -1,4 +1,4 @@
-export interface Boxer {
+export interface BoxeadorInfo {
     nombre: string;
     apellidos: string;
     fecha_nacimiento: string;
