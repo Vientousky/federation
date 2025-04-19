@@ -1,22 +1,7 @@
-# Entornos virtuales
-venv/
-.env
-
-# Base de datos local
+venv
+__pycache__
 db.sqlite3
 
-# Archivos de Django
-__pycache__/
-*.py[cod]
-*.sqlite3
+staticfiles
 
-# Archivos del sistema
-.DS_Store
-*.swp
-
-# Archivos de compilación o log
-*.log
-
-# Archivos de entorno de desarrollo
-.idea/
-.vscode/
+.env
