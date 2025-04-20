@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -49,4 +50,4 @@ class Boxeador(models.Model):
     derrotas = models.PositiveIntegerField(default=0)
     empates = models.PositiveIntegerField(default=0)
     sin_definir = models.PositiveIntegerField(default=0)
-    # foto = models.ImageField(upload_to='boxeadores/', blank=True, null=True)
+    foto = CloudinaryField('image', blank=True, null=True)
