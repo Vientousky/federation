@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'corsheaders',
     'boxeador',
     'rest_framework',
@@ -138,3 +140,14 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
+
+
+# Cloudinary settings
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.getenv('CLAUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLAUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLAUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'claudinary-storage.storage.MediaCloudinaryStorage'

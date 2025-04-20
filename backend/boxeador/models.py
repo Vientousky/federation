@@ -49,4 +49,4 @@ class Boxeador(models.Model):
     derrotas = models.PositiveIntegerField(default=0)
     empates = models.PositiveIntegerField(default=0)
     sin_definir = models.PositiveIntegerField(default=0)
-    foto = models.ImageField(upload_to='boxeadores/fotos/', blank=True, null=True)
+    foto = models.ImageField(upload_to='boxeadores/', blank=True, null=True)
