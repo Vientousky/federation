@@ -11,11 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import dj_database_url
-from dotenv import load_dotenv
-import os
-
-load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -42,8 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'cloudinary_storage',
-    'cloudinary',
     'corsheaders',
     'boxeador',
     'rest_framework',
@@ -84,9 +77,11 @@ WSGI_APPLICATION = 'federation.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-print(os.getenv('DATABASE_URL'))
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -140,14 +135,3 @@ MEDIA_ROOT = BASE_DIR / 'media'
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
-
-
-# Cloudinary settings
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLAUDINARY_CLOUD_NAME'),
-    'API_KEY': os.getenv('CLAUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLAUDINARY_API_SECRET'),
-}
-
-DEFAULT_FILE_STORAGE = 'claudinary-storage.storage.MediaCloudinaryStorage'
