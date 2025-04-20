@@ -51,3 +51,6 @@ class Boxeador(models.Model):
     empates = models.PositiveIntegerField(default=0)
     sin_definir = models.PositiveIntegerField(default=0)
     foto = CloudinaryField('image', blank=True, null=True)
+
+    def __str__(self):
+        return self.nombre

@@ -1,1 +1,1 @@
-web: gunicorn federation.wsgi:application
+web: python manage.py collectstatic && gunicorn federation.wsgi:application
