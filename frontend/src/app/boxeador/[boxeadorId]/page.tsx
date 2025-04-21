@@ -4,22 +4,15 @@ import Information from './ficha_tecnica/Information'
 import Record from './ficha_tecnica/Record'
 import Photo from './ficha_tecnica/Photo'
 
-
-
 async function loadBoxeador(id: string) {
   const res = await fetch(`${process.env.BACKEND_URL}/boxeador/${id}/`);
   const data = await res.json();
   return data;
 }
 
-type PageProps = {
-  params: {
-    id: string;
-  };
-};
-
-async function Page({ params }: PageProps) {
-  const data = await loadBoxeador(params.id);
+export default async function BoxeadorID({ params }: {params : Promise<{boxeadorId: string}>}) {
+  const { boxeadorId } = await params;
+  const data = await loadBoxeador(boxeadorId);
 
   return (
     <main className={styles.fichaTecnica}>
@@ -37,5 +30,3 @@ async function Page({ params }: PageProps) {
     </main>
   );
 }
-
- export default Page;

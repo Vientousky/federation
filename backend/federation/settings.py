@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import dj_database_url
 from dotenv import load_dotenv
+import cloudinary
 import os
 
 load_dotenv()
@@ -141,7 +142,14 @@ CSRF_TRUSTED_ORIGINS = ["https://federation-production.up.railway.app"]
 
 # Cloudinary settings
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.getenv('CLAUDINARY_CLAUD_NAME'),
-    'API_KEY': os.getenv('CLAUDINARY_API_KEY'),
-    'API_SECRET': os.getenv('CLAUDINARY_API_SECRET'),
+    'CLOUD_NAME': os.getenv('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.getenv('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.getenv('CLOUDINARY_API_SECRET'),
 }
+
+cloudinary.config( 
+  cloud_name = os.getenv('CLOUDINARY_CLOUD_NAME'), 
+  api_key = os.getenv('CLOUDINARY_API_KEY'), 
+  api_secret = os.getenv('CLOUDINARY_API_SECRET') 
+)
+
