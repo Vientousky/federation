@@ -1,3 +1,7 @@
+/* =========== */
+/* <===< Variables y Modos>===< */
+/* =========== */
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -11,6 +15,10 @@
     --foreground: #ededed;
   }
 }
+
+/*=======================*/
+/*<===< Reset BÁSICO>===<*/
+/*=======================*/
 
 
 * {
@@ -54,7 +62,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
 
 @media (prefers-color-scheme: dark) {
   html {
