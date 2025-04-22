@@ -1,4 +1,5 @@
 import { BoxeadorInfo } from '../interface';
+import styles from '../index.module.css'
 
 interface InformationProps {
   data: BoxeadorInfo;  // define los datos que recibe el componente
@@ -11,7 +12,7 @@ const Information: React.FC<InformationProps> = ({data}) => {
     { nombre: "Sexo", value: data.sexo },
     { nombre: "Peso", value: data.peso },
     { nombre: "DNI", value: data.dni },
-    { nombre: "Numero Licencia", value: data.numero_licencia },
+    { nombre: "Num_Lic", value: data.numero_licencia },
     { nombre: "Nacionalidad", value: data.nacionalidad },
     { nombre: "Provincia", value: data.provincia },
     { nombre: "Localidad", value: data.localidad },
@@ -26,10 +27,10 @@ const Information: React.FC<InformationProps> = ({data}) => {
   ];
 
   return (
-    <div>
+    <div className={styles.BoxeadorInfo}>
     {infoBoxer.map((item, index) => (
-      <article key={index}>
-        <h3>{item.nombre}</h3>
+      <article key={index} className={styles.BoxeadorInfo__item}>
+        <h3>{item.nombre}:</h3>
         <p>{item.value}</p>
       </article>
     ))}

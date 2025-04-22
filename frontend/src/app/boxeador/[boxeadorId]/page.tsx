@@ -1,5 +1,5 @@
 import styles from './index.module.css'
-
+import Photo from './ficha_tecnica/Photo'
 import Information from './ficha_tecnica/Information'
 import Record from './ficha_tecnica/Record'
 
@@ -17,7 +17,7 @@ export default async function BoxeadorID({ params }: {params : Promise<{boxeador
     <main className={styles.fichaTecnica}>
       <section className={styles.fichaTecnica__boxeador}>
         <Record />
-
+        <Photo  estado={data.status} alt={`${data.nombre} ${data.apellido}`} />
         <Information data={data} />
       </section>
 

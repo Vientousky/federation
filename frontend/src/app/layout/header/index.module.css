@@ -1,3 +1,5 @@
+/*<===<ESTILOS GENERALES DEL HEADER>===<*/
+
 .header {
     max-width: 1000px;
     width: 90%;
@@ -16,7 +18,7 @@
     animation-timeline: scroll(root);
     animation-range: 0 200px;
 
-
+    /*<===<ESTILOS GENERALES PARA LAS DOS PARTES>===<*/
 
     .headerTop, .headerBottom {
         display: flex;
@@ -24,8 +26,12 @@
         align-items: center;
     }
 
+    /*====================================*/
+    /*<===<APARTE SUPERIOR DEL HEADER>===<*/
+    /*====================================*/ 
+
     .headerTop {
-        max-height: 200px; /* o lo que mida tu headerTop */
+        max-height: 200px;
         overflow: hidden;
         opacity: 1;
         transform: translateY(0);
@@ -68,6 +74,10 @@
         }
     }
 
+    /*====================================*/
+    /*<===<APARTE INFERIOS DEL HEADER>===<*/
+    /*====================================*/ 
+
     .headerBottom {
 
         .nav  {
@@ -104,6 +114,10 @@
     }
 
 }
+
+/*================================*/
+/*<===<ANIMACIONES DEL HEADER>===<*/
+/*================================*/
 
 @keyframes enhance-header {
     to {

@@ -5,6 +5,7 @@ import Nav from './Nav';
 import Action from './Action';
 import Search from './Search';
 import Image from 'next/image';
+import Link from 'next/link';
 import styles from './index.module.css'
 
 const navLinks = [
@@ -47,9 +48,11 @@ const Header: React.FC = () => {
         <header ref={headerRef} className={`${styles.header} ${styles.headerExpanded}`}>
 
             <section className={styles.headerTop}>
+                <Link href="/">
                 <figure className={styles.logo}>
                     <Image src="/img/logo.jpg" alt="" width={65} height={45}  />
                 </figure>
+                </Link>
 
                 <Action/>
 
