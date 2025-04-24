@@ -15,8 +15,10 @@
     /*======================*/
 
     .fichaTecnica__boxeador {
+        min-height: 50vh;
+
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 1rem;
 
         /*==================================================*/
@@ -24,9 +26,9 @@
         /*==================================================*/
 
         .record {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+            grid-column: span 4;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
             gap: 1rem;
 
             .card {
@@ -53,6 +55,12 @@
                     font-size: 0.95rem;
                     font-weight: 400;
                 }
+
+                &:hover {
+                    transform: scale(1.03);
+                    transition: transform 0.2s ease;
+                }
+
             }
 
             .victorias {
@@ -129,6 +137,7 @@
                     padding: 6px 12px;
                     border-radius: 9999px;
                     width: fit-content;
+
                 }
 
                 .Activo {
