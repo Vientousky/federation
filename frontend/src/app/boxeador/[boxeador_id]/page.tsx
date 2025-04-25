@@ -1,6 +1,6 @@
 
 async function loadBoxeador(id: string) {
-    const res = await fetch(`${process.env.BACKEND_URL}/boxeador/${id}/`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/${id}/`);
     const data = await res.json();
     return data;
   }
