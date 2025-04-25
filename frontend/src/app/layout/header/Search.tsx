@@ -19,7 +19,7 @@ const Search: React.FC = () => {
         } else {
             setResults([]);
         }
-    }, 300);
+    }, 100);
 
     return () => clearTimeout(delayDebounceFn);
 }, [query]);
