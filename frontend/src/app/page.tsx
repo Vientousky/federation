@@ -1,11 +1,10 @@
-import Welcome from "./components/home/Welcome";
+import Welcome from "./section/home/Welcome";
 
 export default function Home() {
   return (
-    <main>
+    <main >
         <Welcome/>
-        <Welcome/>
-        <Welcome/>
+
     </main>
   );
 }

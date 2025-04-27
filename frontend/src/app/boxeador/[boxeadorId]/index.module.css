@@ -1,0 +1,95 @@
+.boxeador {
+    max-width: 1000px;
+    width: 90%;
+
+    margin: 0 auto;
+    padding: 8rem 0;
+
+    .profile {
+
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 14px;
+
+        .profile__img {
+            grid-column: span 2 / span 2;
+            grid-row: span 2 / span 2;
+
+
+            & img {
+                width: 100%;
+                height: auto;
+                display: block;
+                overflow: hidden;
+                object-fit: cover;
+                border-radius: 1rem;
+            }
+
+            .caption {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                margin-top: 12px;
+
+                background-color: #1f2937;
+                border: 1px solid #374151;
+                border-radius: 1rem;
+                padding: 6px 12px;
+
+                h2 {
+                    font-size: 1.55rem;
+                }
+
+                p {
+                    color: rgb(94, 204, 94);
+                    text-shadow: 0 0 10px rgb(94, 204, 94);
+                }
+            }
+        }
+
+        .profile__entrenador {
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+
+            .descrition {
+                font-size: 1.2rem;
+                margin-bottom: 8px;
+            }
+
+        }
+
+        .profile__info {
+            grid-column: span 2 / span 2;
+            grid-row: span 2 / span 2;
+            grid-column-start: 3;
+            grid-row-start: 2;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+            background-color: #1f2937;
+            border: 1px solid #374151;
+            border-radius: 1rem;
+            padding: 8px;
+        }
+
+        .profile__stats {
+            grid-column: span 2 / span 2;
+            grid-row-start: 3;
+
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+
+            .card {
+                background-color: #1f2937;
+                border: 1px solid #374151;
+                border-radius: 1rem;
+                padding: 1rem;
+
+                text-align: center;
+            }
+        }
+    }
+}

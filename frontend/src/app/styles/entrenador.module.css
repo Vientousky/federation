@@ -1,0 +1,82 @@
+.entrenador {
+    display: flex;
+    flex-direction: column;
+
+    background-color: #1f2937; 
+
+    border: 1px solid #374151; 
+    border-radius: 1rem;
+
+    .header {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+
+        .foto img {
+            display: block;
+
+            width: 100%;
+            height: auto;
+
+            border-radius: 1rem 0;
+
+            object-fit: contain;
+        }
+
+        .info {
+
+            .nombre {
+                padding: 8px;
+                background-color: #2563eb;
+                
+                text-align: center;
+
+                margin-top: calc(.25rem * 6);
+            }
+
+            .datos {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+
+                padding: 14px;
+
+
+                .card {
+                    display: inline-flex;
+                    flex-direction: column;
+                    gap: 2px;
+                }
+            }
+        }
+    }
+
+    .footer {
+        display: inline-flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right:calc(.25rem * 4) ;
+        background-color: #0f172a; 
+        border-radius: 0 0 16px 16px;
+        padding: 8px;
+        font-weight: bold;
+        font-size: 0.95rem;
+
+        .locationSection {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 1.25rem;
+
+            .flagContainer {
+                display: flex;
+                align-items: center;
+
+                & img {
+                    display: block;
+                    object-fit: contain;
+                }
+            }
+        }
+    }
+}

@@ -1,7 +1,7 @@
 export interface BoxeadorInfo {
     id: string;
     nombre: string;
-    apellidos: string;
+    apellido: string;
     fecha_nacimiento: string;
     sexo: string;
     dni: string;
