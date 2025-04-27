@@ -1,16 +1,16 @@
 import React from "react";
 import styles from './index.module.css'
-import { BsGear, BsInfoCircle } from "react-icons/bs";
+import { BsGearFill , BsInfoCircleFill  } from "react-icons/bs";
 
 const Action: React.FC = () => {
   return (
     <div className={styles.action}>
       <button className={styles.buttom}>
-        <BsInfoCircle />
+        <BsInfoCircleFill  />
       </button>
 
       <button className={styles.buttom}>
-        <BsGear />
+        <BsGearFill/>
       </button>
     </div>
   );

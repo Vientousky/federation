@@ -33,7 +33,9 @@
 
                 margin-top: 12px;
 
-                background-color: #1f2937;
+                background-color: #1f2937ad;
+                backdrop-filter: blur(5px);
+                
                 border: 1px solid #374151;
                 border-radius: 1rem;
                 padding: 6px 12px;
@@ -43,8 +45,26 @@
                 }
 
                 p {
-                    color: rgb(94, 204, 94);
-                    text-shadow: 0 0 10px rgb(94, 204, 94);
+                    font-size: 1.15em;
+                }
+
+                .Activo {
+                    color: var(--color-green) ;
+                    text-shadow: 0 0 10px var(--color-green) ;
+                }
+
+                .Inactivo {
+                    color: var(--color-red) ;
+                    text-shadow: 0 0 10px var(--color-red) ;
+                }
+                .Suspendido {
+                    color: var(--color-yellow);
+                    text-shadow: 0 0 10px var(--color-yellow) ;
+                }
+
+                .Retirado {
+                    color: var(--color-blue) ;
+                    text-shadow: 0 0 10px  var(--color-blue);
                 }
             }
         }
@@ -68,7 +88,8 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
 
-            background-color: #1f2937;
+            background-color: #1f2937ad;
+            backdrop-filter: blur(5px);
             border: 1px solid #374151;
             border-radius: 1rem;
             padding: 8px;
@@ -83,7 +104,9 @@
             gap: 1rem;
 
             .card {
-                background-color: #1f2937;
+                background-color: #1f2937ad;
+                backdrop-filter: blur(5px);
+                
                 border: 1px solid #374151;
                 border-radius: 1rem;
                 padding: 1rem;

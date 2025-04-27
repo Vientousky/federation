@@ -35,6 +35,7 @@ class Boxeador(models.Model):
         ('Activo', 'Activo'),
         ('Inactivo', 'Inactivo'),
         ('Suspendido', 'Suspendido'),
+        ('Retirado', 'Retirado')
     ], default='Activo')
     combates = models.IntegerField(default=0)
     rounds = models.IntegerField(default=0)

@@ -3,16 +3,50 @@
 /* =========== */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colores de fondo */
+  --background-700: #ffffff;
+  --background-600: #f0f0f0;
+  --background-500: #e0e0e0;
+  --background-400: #d0d0d0;
+
+  /* Colores de texto */
+  --text-600: #333333;
+  --text-500: #555555;
+
+  /* Colores de acento */
+  --color-green: rgb(64, 176, 64);
+  --color-red: rgb(180, 10, 25);
+  --color-yellow: rgb(255, 184, 10);
+  --color-blue: rgb(25, 120, 210);
+
+  /* Fuentes */
   --fonts-primario: "Montserrat", sans-serif;
   --fonts-casual: "Audiowide", sans-serif;
+
+  /* Efectos de fondo */
+  --backdrop-filter: blur(6px);
+
+  /* Border Radius global */
+  --border-radius: 8px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+    --background-700: #0a0a0a6b;
+    --background-600: #121212;
+    --background-500: #1e1e1e;
+    --background-400: #2e2e2e;
+
+    --text-600: #ededed;
+    --text-500: #d8d2d2;
+
+    /* Colores de acento para modo oscuro */
+    --color-green: rgb(94, 204, 94);
+    --color-red: rgb(217, 39, 48);
+    --color-yellow: rgb(238, 205, 21);
+    --color-blue: rgb(21, 140, 238);
+  
   }
 }
 
@@ -35,13 +69,9 @@ body {
 }
 
 body {
-  color: var(--foreground);
-  background: repeating-linear-gradient(45deg,
-  rgba(30, 30, 30, 0.85),
-  rgba(30, 30, 30, 0.85) 20px,
-  rgba(43, 43, 43, 0.85) 20px,
-  rgba(43, 43, 43, 0.85) 40px
-);
+  color: var(--text-600);
+  background: linear-gradient(180deg, #111 0%, #222 100%);
+
   min-height: 100vh;
   font-family: var(--fonts-primario);
 }

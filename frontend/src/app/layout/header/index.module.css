@@ -52,23 +52,12 @@
             .buttom {
                 display: flex;
                 border: none;
-                border-radius: 9999px;
-                background: rgb(17, 25, 37);
-                padding: 8px;
+                background: none;
                 transition: 0.3s ease-in-out;
 
-                &:hover {
-                    background: rgb(30, 41, 58);
-                    transform: scale(1.05);
-
-                    svg {
-                        fill: orange;
-                    }
-                }
-
                 & svg {
-                    width: 20px;
-                    height: 20px;
+                    width: 22px;
+                    height: 22px;
                 }
             }
         }
@@ -84,12 +73,19 @@
             display: inline-flex;
             gap: 1rem;
 
-            & a {
+            
+
+            .navLinks {
                 transition: 0.3s ease-in-out;
 
                 &:hover {
-                    color: orange;
+                    color: crimson;
+                    text-shadow: 0 0 10px crimson;
                 }
+            }
+
+            .active {
+                color: rgb(78, 184, 78);
             }
         }
 
@@ -140,3 +136,4 @@
     opacity: 1;
     transform: translateY(0);
 }
+
