@@ -4,8 +4,15 @@ const nextConfig: NextConfig = {
   /* config options here */
   
   images: {
-    domains: ["federation-production.up.railway.app"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        pathname: '/drmsxwdwy/**',
+      },
+    ],
   },
+  
 };
 
 export default nextConfig;

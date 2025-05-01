@@ -2,11 +2,18 @@
     display: flex;
     flex-direction: column;
 
-    background-color: #1f2937ad;
-    backdrop-filter: blur(5px);
+    background-color: var(--bg-600);
+    backdrop-filter: var(--backdrop-filter);
+    box-shadow:0 0 10px #1c1c1d;
 
-    border: 1px solid #374151; 
+    border: 1px solid var(--bg-400); 
     border-radius: 1rem;
+
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.01);
+    }
 
     .header {
         display: grid;
@@ -27,7 +34,7 @@
 
             .nombre {
                 padding: 8px;
-                background-color: #2563eb;
+                background-color: var(--color-blue);
                 
                 text-align: center;
 

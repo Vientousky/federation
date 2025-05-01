@@ -5,6 +5,10 @@
     margin: 0 auto;
     padding: 8rem 0;
 
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
     .profile {
 
         display: grid;
@@ -33,10 +37,12 @@
 
                 margin-top: 12px;
 
-                background-color: #1f2937ad;
+                background-color: var(--bg-600);
                 backdrop-filter: blur(5px);
+                box-shadow:0 0 10px #1c1c1d;
+
                 
-                border: 1px solid #374151;
+                border: 1px solid var(--bg-400);
                 border-radius: 1rem;
                 padding: 6px 12px;
 
@@ -88,9 +94,11 @@
             display: grid;
             grid-template-columns: repeat(2, 1fr);
 
-            background-color: #1f2937ad;
+            background-color: var(--bg-600);
             backdrop-filter: blur(5px);
-            border: 1px solid #374151;
+            box-shadow:0 0 10px #1c1c1d;
+
+            border: 1px solid var(--bg-400);
             border-radius: 1rem;
             padding: 8px;
         }
@@ -104,15 +112,60 @@
             gap: 1rem;
 
             .card {
-                background-color: #1f2937ad;
+                background-color: var(--bg-600);
                 backdrop-filter: blur(5px);
+                box-shadow:0 0 10px #1c1c1d;
                 
-                border: 1px solid #374151;
+                border: 1px solid var(--bg-400);
                 border-radius: 1rem;
                 padding: 1rem;
 
                 text-align: center;
             }
         }
+    }
+
+
+    .combates {
+        width: 100%;
+
+        background-color: var(--bg-600);
+        backdrop-filter: blur(5px);
+        box-shadow:0 0 10px #1c1c1d;
+        
+        border-collapse: separate;
+        border-spacing: 0;
+
+        .combat_boxer {
+            font-size: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        & th, & td {
+            padding: 1rem;
+        }
+
+        & td {
+            color: var(--text-primary);
+        }
+
+        & th {
+            text-align: left;
+            font-weight: bold;
+            color: var(--text-contrast);
+            border-bottom: 1px solid var(--bg-400);
+        }
+        
+
+        & tr {
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 1rem;
+
+            &:hover {
+                background-color: var(--bg-500);
+                
+            }
+        }
+        
     }
 }

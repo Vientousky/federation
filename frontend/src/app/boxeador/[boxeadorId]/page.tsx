@@ -4,7 +4,9 @@ import Image from "next/image";
 import styles from "./index.module.css";
 
 async function loadBoxeador(id: string): Promise<BoxeadorInfo> {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/${id}/`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/${id}/`
+  );
   const data = await res.json();
   return data;
 }
@@ -21,7 +23,7 @@ export default async function BoxeadorDetail({
     { nombre: "Sexo", value: boxeador.sexo },
     { nombre: "Peso", value: boxeador.peso },
     { nombre: "DNI", value: boxeador.dni },
-    { nombre: "Num_Lic", value: boxeador.numero_licencia },
+    { nombre: "Licencia Nº", value: boxeador.numero_licencia },
     { nombre: "Nacionalidad", value: boxeador.nacionalidad },
     { nombre: "Provincia", value: boxeador.provincia },
     { nombre: "Localidad", value: boxeador.localidad },
@@ -35,13 +37,15 @@ export default async function BoxeadorDetail({
     { nombre: "Stance", value: boxeador.stance },
   ];
 
+  console.log(boxeador.foto)
+
   return (
     <main className={styles.boxeador}>
       <section className={styles.profile}>
         <figure className={styles.profile__img}>
           <Image
-            src="/img/default.jpeg"
-            alt="default"
+            src={boxeador.foto || "/img/default.jpeg"}
+            alt={boxeador.nombre}
             width={480}
             height={300}
           />
@@ -87,6 +91,75 @@ export default async function BoxeadorDetail({
             <p>00 KOs</p>
           </article>
         </div>
+      </section>
+
+      <section className={styles.section}>
+        <table className={styles.combates}>
+          <caption className={styles.combat_boxer}>
+            Boxeador profesional - 58 combates
+          </caption>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Peso (kg)</th>
+              <th>Nombre</th>
+              <th>V-L-D</th>
+              <th>Últimas 6</th>
+              <th>Lugar</th>
+              <th>Resultado</th>
+              <th>Rounds</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1986-12-07</td>
+              <td>49.9</td>
+              <td>Oscar Ledesma</td>
+              <td>
+                <span>4</span> - <span>1</span> - <span>1</span>
+                {/* Si es debut */}
+                {/* <span>Debut</span> */}
+              </td>
+              <td>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+              </td>
+              <td>Roque Sáenz Peña</td>
+              <td>
+                <span>W-PTS</span>
+              </td>
+              <td>10/10</td>
+            </tr>
+
+            <tr>
+              <td>1986-12-07</td>
+              <td>49.9</td>
+              <td>Oscar Ledesma</td>
+              <td>
+                <span>4</span> - <span>1</span> - <span>1</span>
+                {/* Si es debut */}
+                {/* <span>Debut</span> */}
+              </td>
+              <td>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+              </td>
+              <td>Roque Sáenz Peña</td>
+              <td>
+                <span>W-PTS</span>
+              </td>
+              <td>10/10</td>
+            </tr>
+          </tbody>
+        </table>
       </section>
     </main>
   );

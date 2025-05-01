@@ -63,6 +63,7 @@ const Header: React.FC = () => {
             <Nav links={navLinks} />
 
             <Search/>
+            
 
             </section>
 

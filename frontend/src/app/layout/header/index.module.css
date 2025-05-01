@@ -80,12 +80,13 @@
 
                 &:hover {
                     color: crimson;
-                    text-shadow: 0 0 10px crimson;
                 }
             }
 
             .active {
-                color: rgb(78, 184, 78);
+                color: var(--color-green);
+                text-shadow: 0 0 10px var(--color-green);
+
             }
         }
 
