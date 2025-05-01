@@ -14,7 +14,7 @@
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, auto);
-        gap: 14px;
+        gap:12px 24px;
 
         .profile__img {
             grid-column: span 2 / span 2;
@@ -93,6 +93,7 @@
             grid-row-start: 2;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
+            gap:0 10px ;
 
             background-color: var(--bg-600);
             backdrop-filter: blur(5px);
@@ -100,7 +101,7 @@
 
             border: 1px solid var(--bg-400);
             border-radius: 1rem;
-            padding: 8px;
+            padding: 1rem;
         }
 
         .profile__stats {
