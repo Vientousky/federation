@@ -37,18 +37,14 @@ export default async function BoxeadorDetail({
     { nombre: "Stance", value: boxeador.stance },
   ];
 
-  function getFotoUrl(foto?: string): string {
-    return foto
-      ? `https://res.cloudinary.com/drmsxwdwy/image/upload/${foto}`
-      : "/img/default.jpeg";
-  }
+  console.log(boxeador.foto)
 
   return (
     <main className={styles.boxeador}>
       <section className={styles.profile}>
         <figure className={styles.profile__img}>
           <Image
-            src={getFotoUrl(boxeador.foto)}
+            src={boxeador.foto || "/img/default.jpeg"}
             alt={boxeador.nombre}
             width={480}
             height={300}
