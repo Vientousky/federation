@@ -1,3 +1,6 @@
+
+
+
 .boxeador {
     max-width: 1000px;
     width: 90%;
@@ -113,6 +116,10 @@
             gap: 1rem;
 
             .card {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+
                 background-color: var(--bg-600);
                 backdrop-filter: blur(5px);
                 box-shadow:0 0 10px #1c1c1d;
@@ -122,6 +129,22 @@
                 padding: 1rem;
 
                 text-align: center;
+
+                & h1 {
+                    font-size: 2rem;
+                }
+            }
+
+            .victorias {
+                color: var(--color-green);
+            }
+
+            .derrotas {
+                color: var(--color-red);
+            }
+
+            .empates {
+                color: var(--color-blue);
             }
         }
     }

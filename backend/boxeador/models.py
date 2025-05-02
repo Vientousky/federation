@@ -37,9 +37,6 @@ class Boxeador(models.Model):
         ('Suspendido', 'Suspendido'),
         ('Retirado', 'Retirado')
     ], default='Activo')
-    combates = models.IntegerField(default=0)
-    rounds = models.IntegerField(default=0)
-    KOs = models.IntegerField(default=0)
     altura = models.FloatField()
     alcance = models.FloatField()
     stance = models.CharField(max_length=50, choices=[
@@ -47,11 +44,33 @@ class Boxeador(models.Model):
         ('Zurdo', 'Zurdo'),
         ('Switch', 'Switch'),
     ])
-    victorias = models.PositiveIntegerField(default=0)
-    derrotas = models.PositiveIntegerField(default=0)
-    empates = models.PositiveIntegerField(default=0)
-    sin_definir = models.PositiveIntegerField(default=0)
+    combates = models.IntegerField(default=0)
+    rounds = models.IntegerField(default=0)
+    KOs = models.IntegerField(default=0)
     foto = CloudinaryField('image', blank=True, null=True)
 
     def __str__(self):
         return self.nombre
+    
+    def total_victorias(self):
+        return self.combates_principal.filter(resultados__in=[
+        'KOS', 'TKO', 'RSC', 'UD', 'PTS', 'IDT', 'TDU', 'TDM'
+    ]).count()
+
+    @property
+    def total_derrotas(self):
+        return self.combates_principal.filter(resultados__in=[
+        'DQ', 'DDQ', 'RET', 'TDS', 'AB'
+    ]).count()
+
+    @property
+    def total_empates(self):
+        return self.combates_principal.filter(resultados__in=[
+        'MD', 'SD', 'TDD'
+    ]).count()
+
+    @property
+    def total_sin_decision(self):
+        return self.combates_principal.filter(resultados__in=[
+        'NC', 'ND', 'BYE', 'WO'
+    ]).count()

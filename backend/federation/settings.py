@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'corsheaders',
     'boxeador',
+    'combates',
     'rest_framework',
 ]
 

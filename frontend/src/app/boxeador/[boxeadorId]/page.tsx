@@ -1,7 +1,7 @@
 import { BoxeadorInfo } from "./interface";
 import Entrenador from "@/app/components/entrenador";
 import Image from "next/image";
-import styles from "./index.module.css";
+import styles from "./boxeadorDetails.module.css";
 
 async function loadBoxeador(id: string): Promise<BoxeadorInfo> {
   const res = await fetch(
