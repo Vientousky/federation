@@ -11,7 +11,6 @@ class BoxeadorSerializer(serializers.ModelSerializer):
     total_derrotas = serializers.IntegerField(read_only=True)
     total_empates = serializers.IntegerField(read_only=True)
     total_sin_decision = serializers.IntegerField(read_only=True)
-    porcentaje_kos = serializers.FloatField(read_only=True)
 
     class Meta:
         model = Boxeador

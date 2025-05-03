@@ -75,9 +75,3 @@ class Boxeador(models.Model):
         return self.combates_principal.filter(resultados__in=[
         'NC', 'ND', 'BYE', 'WO'
     ]).count()
-
-    @property
-    def porcentaje_kos(self):
-        if self.combates > 0:
-            return (self.KOs / self.combates) * 100
-        return 0
