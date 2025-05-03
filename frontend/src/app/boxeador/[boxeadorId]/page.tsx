@@ -30,11 +30,12 @@ export default async function BoxeadorDetail({
     { nombre: "Debutaje", value: boxeador.debutaje },
     { nombre: "Carrera", value: boxeador.carrera },
     { nombre: "División", value: boxeador.divicion },
-    { nombre: "Combates", value: boxeador.combates },
+    { nombre: "Combates", value: boxeador.combate },
     { nombre: "Rounds", value: boxeador.rounds },
     { nombre: "KOs", value: boxeador.KOs },
     { nombre: "Alcance", value: boxeador.alcance },
     { nombre: "Stance", value: boxeador.stance },
+    { nombre: "Sin desición", value: boxeador.total_sin_decision}
   ];
 
   console.log(boxeador.foto);
@@ -80,20 +81,24 @@ export default async function BoxeadorDetail({
         <div className={styles.profile__stats}>
           <article className={`${styles.card} ${styles.victorias}`}>
             <h3>Victorias</h3>
-            <h1>00</h1>
+            <h1>{boxeador.total_victorias}</h1>
             <p>00 KOs</p>
           </article>
 
           <article className={`${styles.card} ${styles.derrotas}`}>
             <h3>Derrota</h3>
-            <h1>00</h1>
+            <h1>{boxeador.total_derrotas}</h1>
             <p>00 KOs</p>
           </article>
 
           <article className={`${styles.card} ${styles.empates}`}>
             <h3>Empates</h3>
-            <h1>00</h1>
-            <p>00 KOs</p>
+            <h1>{boxeador.total_empates}</h1>
+          </article>
+
+          <article className={`${styles.card} ${styles.ns}`}>
+            <h3>Sin_dec</h3>
+            <h1>{boxeador.total_sin_decision}</h1>
           </article>
         </div>
       </section>
@@ -116,53 +121,26 @@ export default async function BoxeadorDetail({
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1986-12-07</td>
-              <td>49.9</td>
-              <td>Oscar Ledesma</td>
-              <td>
-                <span>4</span> - <span>1</span> - <span>1</span>
-                {/* Si es debut */}
-                {/* <span>Debut</span> */}
-              </td>
-              <td>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-              </td>
-              <td>Roque Sáenz Peña</td>
-              <td>
-                <span>W-PTS</span>
-              </td>
-              <td>10/10</td>
-            </tr>
-
-            <tr>
-              <td>1986-12-07</td>
-              <td>49.9</td>
-              <td>Oscar Ledesma</td>
-              <td>
-                <span>4</span> - <span>1</span> - <span>1</span>
-                {/* Si es debut */}
-                {/* <span>Debut</span> */}
-              </td>
-              <td>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-                <span>-</span>
-              </td>
-              <td>Roque Sáenz Peña</td>
-              <td>
-                <span>W-PTS</span>
-              </td>
-              <td>10/10</td>
-            </tr>
+            {boxeador.combates.map((combate, index) => (
+              <tr key={index}>
+                <td>{new Date(combate.fecha).toLocaleDateString()}</td>
+                <td>{combate.peso}</td>
+                <td>{`${combate.boxeador.nombre} ${combate.boxeador.apellido}`}</td>
+                <td>
+                  <span>
+                    {combate.historial}
+                  </span>
+                </td>
+                <td>
+                  <span>
+                    {combate.ultimas_6}
+                  </span>
+                </td>
+                <td>{combate.lugar}</td>
+                <td>{combate.resultados}</td>
+                <td>{combate.rounds}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </section>

@@ -52,6 +52,7 @@ class Boxeador(models.Model):
     def __str__(self):
         return self.nombre
     
+    @property
     def total_victorias(self):
         return self.combates_principal.filter(resultados__in=[
         'KOS', 'TKO', 'RSC', 'UD', 'PTS', 'IDT', 'TDU', 'TDM'
@@ -61,7 +62,7 @@ class Boxeador(models.Model):
     def total_derrotas(self):
         return self.combates_principal.filter(resultados__in=[
         'DQ', 'DDQ', 'RET', 'TDS', 'AB'
-    ]).count()
+        ]).count()
 
     @property
     def total_empates(self):
@@ -74,3 +75,9 @@ class Boxeador(models.Model):
         return self.combates_principal.filter(resultados__in=[
         'NC', 'ND', 'BYE', 'WO'
     ]).count()
+
+    @property
+    def porcentaje_kos(self):
+        if self.combates > 0:
+            return (self.KOs / self.combates) * 100
+        return 0

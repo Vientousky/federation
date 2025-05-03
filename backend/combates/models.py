@@ -1,18 +1,14 @@
 from django.db import models
 from boxeador.models import Boxeador
 
-# Create your models here.
-
 class Combates(models.Model):
     boxeador = models.ForeignKey(Boxeador, related_name='combates_principal', on_delete=models.CASCADE)
     rival = models.ForeignKey(Boxeador, related_name='combate_rival', on_delete=models.CASCADE)
-
     fecha = models.DateTimeField()
     peso = models.FloatField()
-    lugar = models.CharField (max_length=200)
-    resultados = models.CharField(
-    max_length=6,
-    choices=[
+    lugar = models.CharField(max_length=200)
+    
+    RESULTADO_CHOICES = [
         ("Victorias", [
             ("KOS", "Victoria por nocaut"),
             ("TKO", "Victoria por nocaut técnico"),
@@ -43,8 +39,11 @@ class Combates(models.Model):
         ]),
         ("Otros", [
             ("VS", "Versus / pelea programada"),
-        ]),])
-    rounds = models.CharField
+        ]),
+    ]
+    
+    resultados = models.CharField(max_length=6, choices=RESULTADO_CHOICES)
+    rounds = models.IntegerField(default=0)
 
     def clasificar_resultado(self):
         codigo = self.resultados
@@ -59,36 +58,6 @@ class Combates(models.Model):
         elif codigo == 'VS':
             return 'Programada'
         return 'Desconocido'
-    
+
     def __str__(self):
-        return f"{self.boxeador} vs {self.rival} - {self.resultado}"
-    
-    def historial(self):
-        combates = self.combates_principal.order_by('fecha')
-        w, l, d, ns = 0, 0, 0, 0
-        for c in combates:
-            resultado = c.clasificar_resultado()
-            if resultado == 'Victoria':
-                w += 1
-            elif resultado == 'Derrota':
-                l += 1
-            elif resultado == 'Empate':
-                d += 1
-            elif resultado == 'Sin decisión':
-                ns += 1
-        return f"{w} {l} {d} ({ns} NS)"
-    
-    def ultimas_6(self):
-        combates = self.combates_principal.order_py("-fech")[:6]
-        simbolos = []
-        for c in combates:
-            r = c.clasificar_resultado()
-            if r == 'Victoria':
-                simbolos.append('V')
-            elif r == 'Derrota':
-                simbolos.append('L')
-            elif r == 'Empate':
-                simbolos.append('D')
-            else:
-                simbolos.append('NS')            
-        return ''.join(simbolos)        
+        return f"{self.boxeador} vs {self.rival} - {self.resultados}"

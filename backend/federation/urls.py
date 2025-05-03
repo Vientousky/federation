@@ -18,12 +18,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework.routers import DefaultRouter
+
+from boxeador.api import BoxeadorViewSet
+from combates.api import CombatesViewSet
+
+router = DefaultRouter()
+router.register(r'boxeador', BoxeadorViewSet)
+router.register(r'combates', CombatesViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('boxeador.urls')),
-    path('', include('combates.urls')),
+    path('', include(router.urls)), 
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
