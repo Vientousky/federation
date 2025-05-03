@@ -113,8 +113,6 @@ export default async function BoxeadorDetail({
               <th>Fecha</th>
               <th>Peso (kg)</th>
               <th>Nombre</th>
-              <th>V-L-D</th>
-              <th>Últimas 6</th>
               <th>Lugar</th>
               <th>Resultado</th>
               <th>Rounds</th>
