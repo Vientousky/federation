@@ -126,16 +126,6 @@ export default async function BoxeadorDetail({
                 <td>{new Date(combate.fecha).toLocaleDateString()}</td>
                 <td>{combate.peso}</td>
                 <td>{`${combate.boxeador.nombre} ${combate.boxeador.apellido}`}</td>
-                <td>
-                  <span>
-                    {combate.historial}
-                  </span>
-                </td>
-                <td>
-                  <span>
-                    {combate.ultimas_6}
-                  </span>
-                </td>
                 <td>{combate.lugar}</td>
                 <td>{combate.resultados}</td>
                 <td>{combate.rounds}</td>
