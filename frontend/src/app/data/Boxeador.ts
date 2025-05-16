@@ -15,7 +15,7 @@ export interface BoxeadorInfo {
   divicion: string;
   status: string;
   combate: string;
-  combates: Combate[];  
+  combates: Combate[];
   rounds: string;
   KOs: string;
   altura: string;
@@ -25,31 +25,30 @@ export interface BoxeadorInfo {
   derrotas: string;
   empates: string;
   sin_definir: string;
-  total_victorias:number;
-  total_derrotas:number;
-  total_empates:number;
-  total_sin_decision:number;
+  total_victorias: number;
+  total_derrotas: number;
+  total_empates: number;
+  total_sin_decision: number;
   foto: string;
 }
 
 export interface Combate {
+  id: string;
+  boxeador: {
     id: string;
-    boxeador: {
-      id: string;
-      nombre: string;
-      apellido: string;
-    };
-    rival: {
-      id: string;
-      nombre: string;
-      apellido: string;
-    };
-    fecha: string;
-    peso: number;
-    lugar: string;
-    resultados: string;
-    rounds: number;
-    historial:string;
-    ultimas_6:string;
-
-  }
+    nombre: string;
+    apellido: string;
+  };
+  rival: {
+    id: string;
+    nombre: string;
+    apellido: string;
+  };
+  fecha: string;
+  peso: number;
+  lugar: string;
+  resultados: string;
+  rounds: number;
+  historial: string;
+  ultimas_6: string;
+}

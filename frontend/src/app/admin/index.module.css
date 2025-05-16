@@ -1,0 +1,21 @@
+.contenedor {
+    display: grid;
+    grid-template-columns: auto 1fr;
+
+    width: 100%;
+    min-height: 100dvh;
+
+    .page {
+        padding: 2rem;
+    }
+}
+
+.login {
+    display: grid;
+    grid-template-columns: 1fr;
+
+
+    .loginPage {
+        padding: 0px;
+    }
+}

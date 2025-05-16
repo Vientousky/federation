@@ -1,4 +1,4 @@
-import { BoxeadorInfo } from "./interface";
+import { BoxeadorInfo } from "../../data/Boxeador";
 import Entrenador from "@/app/components/entrenador";
 import Image from "next/image";
 import styles from "./boxeadorDetails.module.css";
@@ -35,7 +35,7 @@ export default async function BoxeadorDetail({
     { nombre: "KOs", value: boxeador.KOs },
     { nombre: "Alcance", value: boxeador.alcance },
     { nombre: "Stance", value: boxeador.stance },
-    { nombre: "Sin desición", value: boxeador.total_sin_decision}
+    { nombre: "Sin desición", value: boxeador.total_sin_decision },
   ];
 
   console.log(boxeador.foto);
@@ -55,11 +55,11 @@ export default async function BoxeadorDetail({
             height={300}
           />
 
-          <figcaption className={styles.caption}>
+          <figcaption className={styles.figcaption}>
             <h2>
               {boxeador.nombre} {boxeador.apellido}
             </h2>
-            <p className={styles[boxeador.status]}>{boxeador.status}</p>
+            <p className={boxeador.status}>{boxeador.status}</p>
           </figcaption>
         </figure>
 

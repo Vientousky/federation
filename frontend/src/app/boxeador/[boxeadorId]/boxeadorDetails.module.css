@@ -1,5 +1,11 @@
+/* ========================================================= */
+/* ====>  NOTA ESTA TERMINADO PERO LE FALTA CORRECIONES<==== */
+/* ========================================================= */
 
 
+/* ================================ */
+/* ====>  Apartado de reponsi <==== */
+/* ================================ */
 
 .boxeador {
     max-width: 1200px;
@@ -12,12 +18,16 @@
     flex-direction: column;
     gap: 3rem;
 
+    /* perfil principal del boxeador */
+
     .profile {
 
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(3, auto);
         gap:12px 24px;
+
+        /* imagen del mismo boxeador */
 
         .profile__img {
             grid-column: span 2 / span 2;
@@ -33,7 +43,9 @@
                 border-radius: 1rem;
             }
 
-            .caption {
+            /* nombre y estado de boxeador  */
+
+            .figcaption {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -56,25 +68,6 @@
                 p {
                     font-size: 1.15em;
                 }
-
-                .Activo {
-                    color: var(--color-green) ;
-                    text-shadow: 0 0 10px var(--color-green) ;
-                }
-
-                .Inactivo {
-                    color: var(--color-red) ;
-                    text-shadow: 0 0 10px var(--color-red) ;
-                }
-                .Suspendido {
-                    color: var(--color-yellow);
-                    text-shadow: 0 0 10px var(--color-yellow) ;
-                }
-
-                .Retirado {
-                    color: var(--color-blue) ;
-                    text-shadow: 0 0 10px  var(--color-blue);
-                }
             }
         }
 
@@ -96,7 +89,7 @@
             grid-row-start: 2;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap:0 12px ;
+            gap:12px ;
 
             background-color: var(--bg-600);
             backdrop-filter: blur(5px);
@@ -106,6 +99,8 @@
             border-radius: 1rem;
             padding: 1rem;
         }
+
+        /* visualizacion de v-d-e-ns */
 
         .profile__stats {
             grid-column: span 2 / span 2;
@@ -153,6 +148,7 @@
         }
     }
 
+    /* apartado de combates  */
 
     .combates {
         width: 100%;
@@ -190,10 +186,39 @@
             border-radius: 1rem;
 
             &:hover {
-                background-color: var(--bg-500);
-                
+                background-color: var(--bg-500);               
             }
         }
         
+    }
+}
+
+
+/* ================================ */
+/* ====>  Apartado de reponsi <==== */
+/* ================================ */
+
+@media (max-width: 700px) {
+
+    .boxeador {
+
+        .profile {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .profile__entrenador {
+                order: 4;
+            }
+
+            .profile__stats  {
+                order: 6;
+            }
+
+            .profile__info {
+                display: flex;
+                flex-direction: column;
+            }
+        }
     }
 }

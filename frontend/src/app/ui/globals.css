@@ -17,7 +17,7 @@
   --fonts-primario: "Montserrat", sans-serif;
   --fonts-casual: "Audiowide", sans-serif;
 
-  
+
   --backdrop-filter: blur(6px);
 
   --border-radius: 8px;
@@ -27,10 +27,13 @@
   :root {
     --bg-gradient: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
 
-    --bg-600: rgba(30, 33, 36, 0.7); /*card externo*/
-    --bg-500: #2a2d30; /*card mas interno*/
-    --bg-400: #3a3d40; /* este seria el borde*/
-    
+    --bg-600: rgba(30, 33, 36, 0.7);
+    /*card externo*/
+    --bg-500: #2a2d30;
+    /*card mas interno*/
+    --bg-400: #3a3d40;
+    /* este seria el borde*/
+
     --text-600: #ededed;
     --text-500: #d8d2d2;
 
@@ -115,7 +118,31 @@ a {
 
 @supports not selector(::-webkit-scrollbar) {
   body {
-      scrollbar-color: var(--sb-thumb-color)
-                     var(--sb-track-color);
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
   }
+}
+
+
+/*===========================*/
+/*<===< CLASES GLOBALES >===<*/
+/*===========================*/
+
+.Activo {
+  color: var(--color-green);
+  text-shadow: 0 0 10px var(--color-green);
+}
+
+.Inactivo {
+  color: var(--color-red);
+  text-shadow: 0 0 10px var(--color-red);
+}
+
+.Suspendido {
+  color: var(--color-yellow);
+  text-shadow: 0 0 10px var(--color-yellow);
+}
+
+.Retirado {
+  color: var(--color-blue);
+  text-shadow: 0 0 10px var(--color-blue);
 }

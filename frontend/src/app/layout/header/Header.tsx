@@ -50,7 +50,7 @@ const Header: React.FC = () => {
             <section className={styles.headerTop}>
                 <Link href="/">
                 <figure className={styles.logo}>
-                    <Image src="/img/logo.jpg" alt="" width={65} height={45}  />
+                    <Image src="/img/logo.webp" alt="" width={65} height={45}  />
                 </figure>
                 </Link>
 
