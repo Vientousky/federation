@@ -9,7 +9,7 @@
         flex:0 0 50%;
         max-width: 50%;
 
-        img {
+        & img {
             display: block;
             overflow: hidden;
             object-fit: cover;
@@ -54,7 +54,7 @@
                 flex-direction: column;
                 gap: 8px;
 
-                input {
+                & input {
                     border-radius: 16px;
                     border: 1px solid var(--bg-400);
                     
@@ -64,7 +64,7 @@
                 }
             }
 
-            button {
+            & button {
                 padding: 8px 12px ;
                 border-radius: 16px;
                 border: none;
