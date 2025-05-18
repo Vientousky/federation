@@ -2,6 +2,7 @@ import { BsSearch} from "react-icons/bs";
 import { BoxeadorInfo } from "@/app/data/Boxeador";
 import styles from "./boxeador.module.css";
 import ListBoxer from "./ListBoxer";
+import Link from "next/link";
 
 async function loadBoxeadorAdmin() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/`);
@@ -58,7 +59,7 @@ const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
         </article>
 
         <article className={styles.createbox}>
-          <a href="/boxeador/crear"> crear boxeador </a>
+          <Link href="/boxeador/crear"> crear boxeador </Link>
         </article>
       </section>
 
