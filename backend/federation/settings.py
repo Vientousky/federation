@@ -137,6 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "https://federation-rho.vercel.app",
 ]
 
 CSRF_TRUSTED_ORIGINS = ["https://federation-production.up.railway.app"]
