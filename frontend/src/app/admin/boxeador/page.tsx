@@ -58,7 +58,7 @@ const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
         </article>
 
         <article className={styles.createbox}>
-          <a href="admin/boxeador/crear"> crear boxeador </a>
+          <a href="/boxeador/crear"> crear boxeador </a>
         </article>
       </section>
 
