@@ -102,7 +102,7 @@
     .createbox {
         width: 20%;
 
-        & button {
+        & a {
             width: 100%;
             white-space: nowrap;
             background-color: var(--color-blue);

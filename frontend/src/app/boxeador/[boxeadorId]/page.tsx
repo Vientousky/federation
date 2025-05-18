@@ -1,4 +1,5 @@
 import { BoxeadorInfo } from "../../data/Boxeador";
+import CombatList from "./CombatList";
 import Entrenador from "@/app/components/entrenador";
 import Image from "next/image";
 import styles from "./boxeadorDetails.module.css";
@@ -36,6 +37,35 @@ export default async function BoxeadorDetail({
     { nombre: "Alcance", value: boxeador.alcance },
     { nombre: "Stance", value: boxeador.stance },
     { nombre: "Sin desición", value: boxeador.total_sin_decision },
+  ];
+
+  const estadisticas = [
+    {
+      titulo: "Victorias",
+      total: boxeador.total_victorias,
+      kos: "00 KOs",
+      clase: styles.victorias,
+    },
+    {
+      titulo: "Derrota",
+      total: boxeador.total_derrotas,
+      kos: "00 KOs",
+      clase: styles.derrotas,
+    },
+
+    {
+      titulo: "Empate",
+      total: boxeador.total_empates,
+      kos: null,
+      clase: styles.empates,
+    },
+
+    {
+      titulo: "Sin_dec",
+      total: boxeador.total_sin_decision,
+      kos: null,
+      clase: styles.ns,
+    },
   ];
 
   console.log(boxeador.foto);
@@ -79,27 +109,16 @@ export default async function BoxeadorDetail({
         </div>
 
         <div className={styles.profile__stats}>
-          <article className={`${styles.card} ${styles.victorias}`}>
-            <h3>Victorias</h3>
-            <h1>{boxeador.total_victorias}</h1>
-            <p>00 KOs</p>
-          </article>
-
-          <article className={`${styles.card} ${styles.derrotas}`}>
-            <h3>Derrota</h3>
-            <h1>{boxeador.total_derrotas}</h1>
-            <p>00 KOs</p>
-          </article>
-
-          <article className={`${styles.card} ${styles.empates}`}>
-            <h3>Empates</h3>
-            <h1>{boxeador.total_empates}</h1>
-          </article>
-
-          <article className={`${styles.card} ${styles.ns}`}>
-            <h3>Sin_dec</h3>
-            <h1>{boxeador.total_sin_decision}</h1>
-          </article>
+          {estadisticas.map((stat, index) => (
+            <article
+              key={index}
+              className={`${styles.card} ${stat.clase}`}
+            >
+              <h3>{stat.titulo}</h3>
+              <h1>{stat.total}</h1>
+              {stat.kos && <p>{stat.kos}</p>}
+            </article>
+          ))}
         </div>
       </section>
 
@@ -120,14 +139,7 @@ export default async function BoxeadorDetail({
           </thead>
           <tbody>
             {boxeador.combates.map((combate, index) => (
-              <tr key={index}>
-                <td>{new Date(combate.fecha).toLocaleDateString()}</td>
-                <td>{combate.peso}</td>
-                <td>{`${combate.boxeador.nombre} ${combate.boxeador.apellido}`}</td>
-                <td>{combate.lugar}</td>
-                <td>{combate.resultados}</td>
-                <td>{combate.rounds}</td>
-              </tr>
+              <CombatList key={index} combate={combate} />
             ))}
           </tbody>
         </table>

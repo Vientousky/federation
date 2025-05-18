@@ -1,5 +1,5 @@
 .asidebar {
-    width: 250px;
+    width: 225px;
     min-height: 100dvh;
 
     background: var(--bg-600);
@@ -9,4 +9,12 @@
     border-radius:0 20px 20px 0 ;
 
     padding: 16px;
+
+    .asidebarImg img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius:0 12px 0 0 ;
+        margin-bottom: 1.25rem;
+    }
 }
