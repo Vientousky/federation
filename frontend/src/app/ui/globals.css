@@ -11,7 +11,7 @@
   --color-green: rgb(64, 176, 64);
   --color-red: rgb(180, 10, 25);
   --color-yellow: rgb(255, 184, 10);
-  --color-blue: #708dff;
+  --color-blue: #3d68c1;
 
 
   --fonts-primario: "Montserrat", sans-serif;
@@ -36,13 +36,6 @@
 
     --text-600: #ededed;
     --text-500: #d8d2d2;
-
-
-    --color-green: rgb(94, 204, 94);
-    --color-red: rgb(217, 39, 48);
-    --color-yellow: rgb(238, 205, 21);
-    --color-blue: rgb(70 136 220);
-
   }
 
 }

@@ -1,0 +1,65 @@
+.notification {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: space-between;
+    background:var(--bg-600) ;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-in-out;
+
+    .notificationIcon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+
+    & button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        color: var(--text-100);
+        font-size: 1.5rem;
+    }
+
+    &.success svg {
+        color: #4caf50;
+        filter: drop-shadow(0 0 5px #4caf50);
+    }
+
+    &.error svg {
+        color: #f44336;
+        filter: drop-shadow(0 0 5px #f44336);
+    }
+
+    &.warning svg {
+        color: #ff9800;
+        filter: drop-shadow(0 0 5px #ff9800);
+    }
+
+    &.info svg {
+        color: #2196f3;
+        filter: drop-shadow(0 0 5px #2196f3);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translate(-50%, 100%);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+}

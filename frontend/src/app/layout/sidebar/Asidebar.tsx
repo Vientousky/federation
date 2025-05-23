@@ -1,59 +1,69 @@
+import { useState } from "react";
 import Link from "next/link";
-import { PiRanking, PiBuildings ,PiUserListLight, PiCalendar} from "react-icons/pi";
+import AsidebarNav from "./AsidebarNav";
+import AsidebarLogin from "./AsidebarLogin";
+import { BsArrowBarRight  } from "react-icons/bs";
+import {
+  PiRanking,
+  PiBuildings,
+  PiUserListLight,
+  PiCalendar,
+} from "react-icons/pi";
 import { BsPersonRolodex } from "react-icons/bs";
-import {BsPersonVcard  } from "react-icons/bs";
 import styles from "./asidebar.module.css";
 import Image from "next/image";
 
 export default function Asidebar() {
+
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const handleCollapse = () => {
+    setIsCollapsed(!isCollapsed)
+  }
+  const asidebarNav = [
+    {
+      name: "Inicio",
+      icon: <PiBuildings />,
+      href: "/admin",
+    },
+    {
+      name: "Boxeador",
+      icon: <PiUserListLight />,
+      href: "/admin/boxeador",
+    },
+    {
+      name: "Entrenador",
+      icon: <BsPersonRolodex />,
+      href: "/admin/entrenador",
+    },
+    {
+      name: "Eventos",
+      icon: <PiCalendar />,
+      href: "/admin/events",
+    },
+    {
+      name: "Ranking",
+      icon: <PiRanking />,
+      href: "/admin/ranking",
+    },
+  ];
+
   return (
-    <aside className={styles.asidebar}>
+    <aside className={`${styles.asidebar} ${isCollapsed ? styles.asidebarCollapse : ""}`}>
       <figure className={styles.asidebarImg}>
         <Link href="/admin">
           <Image src="/img/logo.webp" alt="" width={200} height={100} />
         </Link>
+        <figcaption className={styles.asidebarCollapse}>
+          <button onClick={handleCollapse}>
+            <BsArrowBarRight />
+          </button>
+        </figcaption>
       </figure>
 
       <nav className={styles.asidebarNav}>
-        <ul>
-          <li>
-            <span>
-              <PiBuildings/>
-            </span>
-            <a href="">Inicio</a>
-          </li>
+        <AsidebarNav links={asidebarNav} />
 
-          <li>
-            <span>
-                <PiUserListLight/>
-            </span>
-            <a href="">Boxeador</a>
-          </li>
-          <li>
-            <span>
-                <BsPersonRolodex/>
-            </span>
-            <a href="">Entrenador</a>
-          </li>
-          <li>
-            <span>
-                <PiCalendar  />
-            </span>
-            <a href="">eventos</a>
-          </li>
-          <li>
-            <span>
-                <PiRanking/>
-            </span>
-            <a href="">ranking</a>
-          </li>
-          <li>
-            <span>
-                <BsPersonVcard />
-            </span>
-            <a href="">Licencias Provincial</a>
-          </li>
-        </ul>
+        <AsidebarLogin />
       </nav>
     </aside>
   );

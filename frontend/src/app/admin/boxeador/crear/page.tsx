@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Notification from "@/app/components/Notification";
 import BoxerImgDrop from "./boxerImgDrop";
 import styles from "./createBoxer.module.css";
 
@@ -29,16 +30,42 @@ export default function CreateBoxer() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/`, {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await res.json();
-    console.log("Respuesta del backend:", data);
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/`,
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!res.ok) {
+        setNotification({
+          message: "Algo salió mal al crear el boxeador ",
+          type: "warning",
+        });
+        return;
+      }
+
+      setNotification({
+        message: "Boxeador creado exitosamente ",
+        type: "success",
+      });
+      // Opcional: resetear el formulario si querés
+      // setFormData({ ... });
+    } catch (error) {
+      console.error(error);
+      setNotification({ message: "Error de conexión", type: "error" });
+    }
   };
+
+  const [notification, setNotification] = useState<{
+    message: string;
+    type: "success" | "error" | "warning" | "info";
+  } | null>(null);
 
   return (
     <>
@@ -47,7 +74,11 @@ export default function CreateBoxer() {
       </h1>
       <form onSubmit={handleSubmit}>
         <section className={styles.boxer}>
-          <BoxerImgDrop onImageUpload={(url) => setFormData((prev) => ({ ...prev, foto: url }))} />
+          <BoxerImgDrop
+            onImageUpload={(url) =>
+              setFormData((prev) => ({ ...prev, foto: url }))
+            }
+          />
 
           <div className={styles.boxerTrainer}>
             <h1>+</h1>
@@ -97,8 +128,10 @@ export default function CreateBoxer() {
                 }
                 required
               >
-                <option value="" >-------</option>
-                <option value="Activo" selected>Activo</option>
+                <option value="">-------</option>
+                <option value="Activo" selected>
+                  Activo
+                </option>
                 <option value="Inactivo">Inactivo</option>
                 <option value="Suspendido">Suspendido</option>
                 <option value="Retirado">Retirado</option>
@@ -106,7 +139,7 @@ export default function CreateBoxer() {
             </div>
           </div>
 
-          <div className={styles.boxerDate}> 
+          <div className={styles.boxerDate}>
             <article className={styles.Date_item}>
               <label>DNI</label>
               <input
@@ -129,7 +162,7 @@ export default function CreateBoxer() {
                   setFormData((prev) => ({ ...prev, sexo: e.target.value }))
                 }
               >
-                <option value="" >-------</option>
+                <option value="">-------</option>
                 <option value="Masculino">Masculino</option>
                 <option value="Femenino">Femenino</option>
               </select>
@@ -264,7 +297,7 @@ export default function CreateBoxer() {
                   setFormData((prev) => ({ ...prev, divicion: e.target.value }))
                 }
               >
-                <option value="" >-----</option>
+                <option value="">-----</option>
                 <option value="Peso Mosca">Mosca</option>
                 <option value="Peso Gallo">Gallo</option>
                 <option value="Peso Pluma">Pluma</option>
@@ -327,6 +360,14 @@ export default function CreateBoxer() {
           </div>
         </section>
       </form>
+
+      {notification && (
+        <Notification
+          message={notification.message}
+          type={notification.type}
+          onClose={() => setNotification(null)}
+        />
+      )}
     </>
   );
 }

@@ -10,7 +10,7 @@ async function loadBoxeadorAdmin() {
   return data;
 }
 
-export default async function BoxeadorAdmin() {
+export default async function BoxeadorPageAdmin() {
 const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
 
   return (

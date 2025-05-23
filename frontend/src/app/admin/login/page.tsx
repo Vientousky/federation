@@ -16,8 +16,7 @@ export default function LoginAdmin() {
 
       <article className={styles.login_right}>
         <div className={styles.rightPrecentacion}>
-          <h1>Bienvenido al panel de acceso</h1>
-          <p>Iniciá sesión para ingresar al administrador del sistema.</p>
+          <h1>Ante de empezar Inicie Seción</h1>
         </div>
 
         <form action="" className={styles.rightForm}>
