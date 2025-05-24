@@ -1,16 +1,20 @@
 from django.db import models
+from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
 class Entrenador(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
+    CARGO_CHOICES = [
+        ('Director Técnico', 'Director Técnico'),
+        ('Preparador Físico', 'Preparador Físico'),
+        ('Nutricionista', 'Nutricionista'),
+    ]
+    cargo = models.CharField(max_length=50, choices=CARGO_CHOICES)
     dni = models.CharField(max_length=10, unique=True)
-    numero_licencia = models.CharField(max_length=10, unique=True)
-    provincia = models.CharField(max_length=50 , choices=[
-        ('Chaco', 'Chaco'),
-    ])
-
+    n_licencia = models.CharField(max_length=10, unique=True)
+    vencimiento = models.DateField()
     LOCALIDAD_CHOICES = [
     ("Almirante Brown", [
         ("Concepción del Bermejo", "Concepción del Bermejo"),
@@ -140,3 +144,4 @@ class Entrenador(models.Model):
     ]),
 ]
     localidad = models.CharField(max_length=150, choices=LOCALIDAD_CHOICES)
+    trainer_foto = CloudinaryField('image', blank=True, null=True)

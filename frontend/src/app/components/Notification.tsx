@@ -21,7 +21,7 @@ export default function Notification({
   onClose,
 }: NotificationProps) {
   useEffect(() => {
-    const timer = setTimeout(() => onClose(), 3000); // esto cierra la notificacion depues de 3 segundos
+    const timer = setTimeout(() => onClose(), 3000); 
     return () => clearTimeout(timer);
   }, [onClose]);
 

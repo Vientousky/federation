@@ -21,10 +21,12 @@ from django.conf.urls.static import static
 from rest_framework.routers import DefaultRouter
 
 from boxeador.api import BoxeadorViewSet
+from entrenador.api import EntrenadorViewSet
 from combates.api import CombatesViewSet
 
 router = DefaultRouter()
 router.register(r'boxeador', BoxeadorViewSet)
+router.register(r'entrenador', EntrenadorViewSet)
 router.register(r'combates', CombatesViewSet)
 
 urlpatterns = [

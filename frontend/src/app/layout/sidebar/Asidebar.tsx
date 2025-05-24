@@ -2,7 +2,7 @@ import { useState } from "react";
 import Link from "next/link";
 import AsidebarNav from "./AsidebarNav";
 import AsidebarLogin from "./AsidebarLogin";
-import { BsArrowBarRight  } from "react-icons/bs";
+import { BsArrowBarLeft   } from "react-icons/bs";
 import {
   PiRanking,
   PiBuildings,
@@ -55,7 +55,7 @@ export default function Asidebar() {
         </Link>
         <figcaption className={styles.asidebarCollapse}>
           <button onClick={handleCollapse}>
-            <BsArrowBarRight />
+            <BsArrowBarLeft  />
           </button>
         </figcaption>
       </figure>

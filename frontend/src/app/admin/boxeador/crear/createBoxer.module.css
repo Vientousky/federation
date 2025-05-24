@@ -19,18 +19,29 @@
     .boxerDate {
         background: var(--bg-600);
         backdrop-filter: var(--backdrop-filter);
-
+        
         border-radius: 22px;
-        border: 1px solid var(--bg-400);
-
+        
         transition: border-color 0.3s ease;
-
-
+        
+        
         &:hover {
             border-color: #888;
         }
     }
+    
+    
+    .boxerStance,
+    .boxerDate {
+        border: 1px solid var(--bg-400);
+    }
 
+    .boxerImg,
+    .boxerTrainer {
+        border: 2px  dashed var(--bg-400) ;
+
+    }
+    
     .boxerStance,
     .boxerDate {
         padding: 1rem;

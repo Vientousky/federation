@@ -7,20 +7,20 @@ export default function AsidebarLogin() {
     <ul className={`${styles.navList} ${styles.navListSecondary}`}>
       <li className={styles.navItem}>
         <button className={styles.navItemButton}>
-          <span>
+          <span className={styles.linkIcon}>
             <BsGear />
           </span>
-          <span>Configuración</span>
+          <span className={styles.linkText}>Configuración</span>
         </button>
       </li>
 
       <li className={styles.navItem}>
         <button className={styles.navItemButton}>
-          <span>
+          <span className={styles.linkIcon}>
             <BsPersonCircle />
           </span>
 
-          <div>
+          <div className={styles.linkText}>
             <h3>Jose Mancuello</h3>
             <p>Administrador</p>
           </div>

@@ -2,9 +2,9 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import styles from "./createBoxer.module.css";
+import styles from "./createTrainer.module.css";
 
-export default function BoxerImgDrop({
+export default function TrainerImgDrop({
   onImageUpload,
 }: {
   onImageUpload: (url: string) => void;
@@ -14,19 +14,21 @@ export default function BoxerImgDrop({
   const [isDragging, setIsDragging] = useState(false);
 
   const uploadToCloudinary = async (file: File) => {
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", "boxer_date");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "boxer_date");
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_SUBA_URL}`, {
-    method: "POST",
-    body: formData,
-  });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_SUBA_URL}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
 
-  const data = await res.json();
-  return data.secure_url;
-};
-
+    const data = await res.json();
+    return data.secure_url;
+  };
 
   const processFile = async (file: File) => {
     if (file && file.type.startsWith("image/")) {
@@ -64,7 +66,7 @@ export default function BoxerImgDrop({
 
   return (
     <figure
-      className={`${styles.boxerImg} ${isDragging ? styles.dragging : ""}`}
+      className={`${styles.dateImg}  ${isDragging ? styles.dragging : ""}`}
       onClick={() => fileInputRef.current?.click()}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
@@ -75,10 +77,11 @@ export default function BoxerImgDrop({
         <Image
           src={imagePreview}
           alt="Previsualización del boxeador"
-          width={200}
-          height={300}
+          width={350}
+          height={350}
         />
       )}
+
       <input
         type="file"
         accept="image/*"

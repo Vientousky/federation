@@ -1,40 +1,44 @@
 .asidebar {
-    width: 225px;
-    min-height: 100dvh;
-    position: sticky;
     top: 0;
-
+    position: sticky;
+    width: 225px;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
-
-
     background: var(--bg-600);
     backdrop-filter: var(--backdrop-filter);
-
     border: 1px solid var(--bg-400);
     border-radius: 0 20px 20px 0;
 
     padding: 16px;
+    transition: width 0.3s ease-in-out;
 
     .asidebarImg {
         display: flex;
         justify-content: flex-end;
         position: relative;
 
-        img {
+        & img {
             width: 100%;
             height: auto;
             display: block;
+            object-fit: cover;
             border-radius: 0 12px 0 0;
             margin-bottom: 1.25rem;
         }
 
         .asidebarCollapse {
+            width: auto;
             position: absolute;
             top: 10px;
-            right: -76px;
+            right: -36px;
 
-            button {
+            padding: 0;
+
+            transition: 0.3s ease-in-out;
+
+
+            & button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -50,6 +54,8 @@
                 & svg {
                     width: 22px;
                     height: 22px;
+
+                    transition: 0.3s ease-in-out;
                 }
 
                 &:hover {
@@ -71,7 +77,7 @@
 
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
 
             list-style: none;
 
@@ -84,7 +90,15 @@
                 .ItemLink {
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+
+                    .linkIcon {
+                        margin-right: 10px;
+                    }
+
+                    .linkText {
+                        transition: opacity 0.3s ease;
+                        opacity: 1;
+                    }
 
                     svg {
                         width: 20px;
@@ -125,13 +139,45 @@
 
 .asidebarCollapse {
     width: 80px;
+    padding: 14px;
 
-    .asidebarImg  {
+    .asidebarImg {
+
+        & img {
+            border-radius: 8px;
+        }
 
         .asidebarCollapse {
             top: 0;
-            right: -6.85rem;
+            right: -3.8rem;
 
+            & button svg {
+                transform: rotate(180deg);
+            }
+        }
+    }
+
+    .asidebarNav {
+
+        .navList {
+
+            .navItem {
+
+                .ItemLink, .navItemButton {
+                    cursor: pointer;
+
+                    .linkIcon {
+                        margin-right: 0px;
+                        margin: 0 auto;
+                    }
+
+                    .linkText {
+                        opacity: 0;
+                        pointer-events: none;
+                        display: none;
+                    }
+                }
+            }
         }
     }
 }

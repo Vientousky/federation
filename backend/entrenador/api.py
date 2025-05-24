@@ -1,12 +1,12 @@
 from rest_framework import viewsets, permissions, status
 from rest_framework.response import Response
-from .models import Boxeador
-from .serializers import BoxeadorSerializer
+from .models import Entrenador
+from .serializers import EntrenadorSerializer
 
-class BoxeadorViewSet(viewsets.ModelViewSet):
-    queryset = Boxeador.objects.all()
+class EntrenadorViewSet(viewsets.ModelViewSet):
+    queryset = Entrenador.objects.all()
     permission_classes = [permissions.AllowAny]
-    serializer_class = BoxeadorSerializer
+    serializer_class = EntrenadorSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

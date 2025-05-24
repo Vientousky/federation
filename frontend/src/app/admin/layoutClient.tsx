@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Asidebar from "../layout/sidebar/Asidebar";
-import styles from "./index.module.css";
 import React from "react";
 
 export default function LayoutClient({
@@ -14,9 +13,9 @@ export default function LayoutClient({
   const isLogin = pathname === "/admin/login";
 
   return (
-    <div className={`${styles.contenedor} ${isLogin ? styles.login : ''}`}>
+    <div className={`contenedor ${isLogin ? 'login' : ''}`}>
       {!isLogin && <Asidebar />}
-      <main className={`${styles.page} ${isLogin ? styles.loginPage : ''}`} >{children}</main>
+      <main className={`page ${isLogin ? 'login-page' : ''}`}>{children}</main>
     </div>
   );
 }
