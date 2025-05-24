@@ -100,7 +100,7 @@
                         opacity: 1;
                     }
 
-                    svg {
+                    & svg {
                         width: 20px;
                         height: 20px;
                     }
@@ -114,7 +114,7 @@
                     border: none;
                     gap: 10px;
 
-                    svg {
+                    & svg {
                         width: 20px;
                         height: 20px;
                     }
