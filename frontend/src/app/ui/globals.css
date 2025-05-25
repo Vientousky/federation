@@ -5,13 +5,18 @@
 :root {
   --bg-gradient: linear-gradient(180deg, #fff 0%, #e0e0e0 100%);
 
+  --bg-600: rgba(245, 245, 245, 0.7);
+  --bg-500: #f0f2f5;
+  --bg-400: #dcdfe3;
+
+
   --text-600: #333333;
   --text-500: #555555;
 
   --color-green: rgb(64, 176, 64);
-  --color-red: rgb(180, 10, 25);
+  --color-red: rgb(242 50 67);
   --color-yellow: rgb(255, 184, 10);
-  --color-blue: #3d68c1;
+  --color-blue: rgb(77 158 255);
 
 
   --fonts-primario: "Montserrat", sans-serif;
@@ -28,14 +33,16 @@
     --bg-gradient: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
 
     --bg-600: rgba(30, 33, 36, 0.7);
-    /*card externo*/
     --bg-500: #2a2d30;
-    /*card mas interno*/
     --bg-400: #3a3d40;
-    /* este seria el borde*/
 
     --text-600: #ededed;
     --text-500: #d8d2d2;
+
+    --color-green: rgb(64, 176, 64);
+    --color-red: rgb(180, 10, 25);
+    --color-yellow: rgb(255, 184, 10);
+    --color-blue: #3d68c1;
   }
 
 }

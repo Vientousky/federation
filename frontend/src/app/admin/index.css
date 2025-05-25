@@ -2,7 +2,7 @@
     min-height: 100dvh;
     display: grid;
     grid-template-columns: auto 1fr;
-
+    
     .page {
         padding: 2rem;
     }
@@ -15,5 +15,11 @@
 
     .loginPage {
         padding: 0px;
+    }
+}
+
+@media (max-width: 768px)  {
+    .contenedor {
+        grid-template-columns: 1fr;
     }
 }
