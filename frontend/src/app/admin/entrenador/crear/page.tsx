@@ -163,6 +163,7 @@ export default function CrearEntrenadorPage() {
                     }
                     required
                   >
+                    <option value="!-----!"> !-----!</option>
                     <option value="Director Técnico">Director Técnico</option>
                     <option value="Preparador Físico">Preparador Físico</option>
                     <option value="Nutricionista">Nutricionista</option>
@@ -235,6 +236,7 @@ export default function CrearEntrenadorPage() {
                     }
                     required
                   >
+                    <option value="!-----!"> !-----!</option>
                     <optgroup label="Almirante Brown">
                       <option value="Concepción del Bermejo">
                         Concepción del Bermejo
