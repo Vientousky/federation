@@ -12,8 +12,8 @@
     display: grid;
     grid-template-columns: 1fr;
 
-
-    .loginPage {
+    .page {
+        display: flex;
         padding: 0px;
     }
 }

@@ -2,13 +2,15 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import styles from "./createTrainer.module.css";
+import styles from "@/app/styles/imgDrop.module.css"
 
-export default function TrainerImgDrop({
-  onImageUpload,
-}: {
+interface Props {
   onImageUpload: (url: string) => void;
-}) {
+  width: number;
+  height: number;
+}
+
+export default function ImgDrop({ onImageUpload, width, height }: Props) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -16,7 +18,7 @@ export default function TrainerImgDrop({
   const uploadToCloudinary = async (file: File) => {
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("upload_preset", "boxer_date");
+    formData.append("upload_preset", "federacion_date");
 
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_CLOUDINARY_BASE_SUBA_URL}`,
@@ -66,7 +68,7 @@ export default function TrainerImgDrop({
 
   return (
     <figure
-      className={`${styles.dateImg}  ${isDragging ? styles.dragging : ""}`}
+      className={isDragging ? styles.dragging : ""}
       onClick={() => fileInputRef.current?.click()}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
@@ -77,8 +79,8 @@ export default function TrainerImgDrop({
         <Image
           src={imagePreview}
           alt="Previsualización del boxeador"
-          width={350}
-          height={350}
+          width={width}
+          height={height}
         />
       )}
 

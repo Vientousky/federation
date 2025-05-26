@@ -1,0 +1,10 @@
+.plusIcon {
+    font-size: 4rem;
+    color: var(--color-green);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.hiddenInput {
+        display: none;
+}

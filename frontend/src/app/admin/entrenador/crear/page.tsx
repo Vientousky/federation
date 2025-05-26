@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import TrainerImgDrop from "./TrainerImgDrop";
+import ImgDrop from "../../components/ImgDrop";
 import Notification from "@/app/components/Notification";
 import Image from "next/image";
 import styles from "./createTrainer.module.css";
@@ -108,11 +108,15 @@ export default function CrearEntrenadorPage() {
           </figure>
 
           <section className={styles.trainerDate}>
-            <TrainerImgDrop
+            <article className={styles.dateImg}>
+              <ImgDrop
+              width={350}
+              height={350}
               onImageUpload={(url)=>
                 setTrainerData((prev)=> ({...prev, trainer_foto: url}))
               }
             />
+            </article>
 
             <div className={styles.dateContent}>
               <section className={styles.dateContentName}>

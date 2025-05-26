@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'entrenador',
     'combates',
     'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,11 @@ cloudinary.config(
   api_secret = os.getenv('CLOUDINARY_API_SECRET') 
 )
 
+# Django REST Framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ]
+}

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import ImgDrop from "../../components/ImgDrop";
 import Notification from "@/app/components/Notification";
-import BoxerImgDrop from "./boxerImgDrop";
 import styles from "./createBoxer.module.css";
 
 export default function CreateBoxer() {
@@ -74,11 +74,15 @@ export default function CreateBoxer() {
       </h1>
       <form onSubmit={handleSubmit}>
         <section className={styles.boxer}>
-          <BoxerImgDrop
+          <article className={styles.boxerImg}>
+            <ImgDrop
+            width={200}
+            height={300}
             onImageUpload={(url) =>
               setFormData((prev) => ({ ...prev, foto: url }))
             }
           />
+          </article>
 
           <div className={styles.boxerTrainer}>
             <h1>+</h1>

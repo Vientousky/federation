@@ -23,6 +23,10 @@ from rest_framework.routers import DefaultRouter
 from boxeador.api import BoxeadorViewSet
 from entrenador.api import EntrenadorViewSet
 from combates.api import CombatesViewSet
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 router = DefaultRouter()
 router.register(r'boxeador', BoxeadorViewSet)
@@ -32,6 +36,8 @@ router.register(r'combates', CombatesViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)), 
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
 

@@ -94,18 +94,9 @@
             object-fit: cover;
             z-index: 1;
         }
-
-        .plusIcon {
-            font-size: 4rem;
-            color: var(--color-green);
-            pointer-events: none;
-            z-index: 2;
-        }
     }
 
-    .hiddenInput {
-        display: none;
-    }
+
 
     .boxerTrainer {
         grid-column: span 2 / span 2;

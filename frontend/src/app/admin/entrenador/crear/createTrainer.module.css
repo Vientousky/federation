@@ -51,8 +51,6 @@
         display: flex;
         gap: 1rem;
 
-
-
         .dateImg {
             width: 350px;
             height: auto;
@@ -76,17 +74,6 @@
             &:hover {
                 border-color: #888;
             }
-
-            .plusIcon {
-                font-size: 4rem;
-                color: var(--color-green);
-                pointer-events: none;
-                z-index: 2;
-            }
-        }
-
-        .hiddenInput {
-            display: none;
         }
 
         .dateContent {
