@@ -10,7 +10,9 @@ export default function LoginAdmin() {
   const [user, setUser] = useState("");
   const [pass, setPass] = useState("");
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/token/`, {
       method: "POST",
       headers: {
@@ -48,7 +50,7 @@ export default function LoginAdmin() {
           <h1>Ante de empezar Inicie Seción</h1>
         </div>
 
-        <form action="" className={styles.rightForm}>
+        <form action="" className={styles.rightForm}  onSubmit={handleLogin}>
           <div className={styles.item}>
             <label htmlFor="usuario">Usuario</label>
             <input type="text" id="usuario" required onChange={(e) => setUser(e.target.value)}/>
