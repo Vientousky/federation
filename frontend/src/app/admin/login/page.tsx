@@ -11,7 +11,7 @@ export default function LoginAdmin() {
   const [pass, setPass] = useState("");
 
   const handleLogin = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/token`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/token/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
