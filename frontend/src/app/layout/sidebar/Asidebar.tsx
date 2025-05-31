@@ -70,7 +70,7 @@ export default function Asidebar() {
         </figure>
 
         <nav className={styles.asidebarNav}>
-          <AsidebarNav links={asidebarNav} />
+          <AsidebarNav links={asidebarNav} onLinkClick={closeMobileMenu} />
           <AsidebarLogin />
         </nav>
       </aside>

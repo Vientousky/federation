@@ -138,8 +138,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # CORS settings 
 
 CORS_ALLOWED_ORIGINS = [
-    "https://federation-rho.vercel.app",
     "http://localhost:3000",
+    "https://federation-rho.vercel.app",
 ]
 
 CORS_ALLOW_CREDENTIALS = True

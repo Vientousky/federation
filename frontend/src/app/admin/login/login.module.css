@@ -1,3 +1,9 @@
+/* ======= [LOGIN] ======= */
+
+/*  ============================  */
+/* ======> DISEÑO DEL LOGIN <===== */
+/*  ============================  */
+
 .adminLogin {
     max-width: 800px;
     width: 90%;
@@ -14,6 +20,8 @@
 
     padding: 1rem;
 
+    /* ======= [LADO IZQUIERDO DE LOGIN IMAGEN] ======= */
+
     .login_left {
         flex: 0 0 40%;
         max-width: 40%;
@@ -21,6 +29,7 @@
         img {
             display: block;
             overflow: hidden;
+            object-fit: cover;
             width: 100%;
             height: auto;
 
@@ -28,6 +37,8 @@
         }
 
     }
+
+    /* ======= [LADO DERECHO DEL LOGIN INPUTS] ======= */
 
     .login_right {
         flex: 0  60%;
@@ -79,6 +90,30 @@
                     transform: scale(1.05);
                 }
             }
+        }
+    }
+}
+
+/* ======= [REPONSIVILIDAD EN MOVIL] ======= */
+
+/*  ===============================================  */
+/* ======> DISEÑO DE LA LOGIN EN TAMAÑO 768PX <===== */
+/*  ===============================================  */
+
+@media (max-width:768px)  {
+
+    .adminLogin {
+        display: flex;
+        flex-direction: column;
+
+        .login_left, .login_right {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+        .login_left img {
+            height: 300px;
+            object-fit: contain;
         }
     }
 }

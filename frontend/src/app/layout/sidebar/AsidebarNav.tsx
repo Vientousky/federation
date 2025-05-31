@@ -8,7 +8,7 @@ type AsidebarNavProps = {
   href: string;
 };
 
-export default function AsidebarNav({ links }: { links: AsidebarNavProps[] }) {
+export default function AsidebarNav({ links,onLinkClick,}: { links: AsidebarNavProps[]; onLinkClick?: () => void  }) {
   const pathname = usePathname();
   const isActive = (href: string) => {
     return pathname === href ? styles.active : "";
@@ -21,7 +21,7 @@ export default function AsidebarNav({ links }: { links: AsidebarNavProps[] }) {
           key={link.name}
           className={`${styles.navItem} ${isActive(link.href)}`}
         >
-          <Link href={link.href} className={styles.ItemLink}>
+          <Link href={link.href} className={styles.ItemLink} onClick={onLinkClick}  >
             <span className={styles.linkIcon}>{link.icon}</span>
 
             <span className={styles.linkText}>{link.name}</span>

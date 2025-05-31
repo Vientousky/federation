@@ -129,7 +129,7 @@
         & td {
             display: grid;
             gap: 8ch;
-            grid-template-columns: 15ch auto;
+            grid-template-columns: 8ch auto;
             padding: 0.5rem 1rem;
 
             &:first-child {
