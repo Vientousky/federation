@@ -135,7 +135,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# CORS settings
+# CORS settings 
 
 CORS_ALLOWED_ORIGINS = [
     "https://federation-rho.vercel.app",
