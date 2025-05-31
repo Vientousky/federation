@@ -1,9 +1,8 @@
-import { BsSearch} from "react-icons/bs";
 import { BoxeadorInfo } from "@/app/data/Boxeador";
+import SearchAndCreate from "../components/SearchAndCreate";
+import stylesTables from "@/app/styles/table.module.css";
 import styles from "./boxeador.module.css";
 import ListBoxer from "./ListBoxer";
-import Link from "next/link";
-
 async function loadBoxeadorAdmin() {
   const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/`);
   const data = await res.json();
@@ -15,10 +14,6 @@ const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
 
   return (
     <main>
-      <h1 className={styles.link}>
-        Admin / <strong>Boxeador</strong>
-      </h1>
-
       <section className={styles.datos}>
         <h2 className={styles.registrados}>
           Boxeadores registrados totales 1350
@@ -48,25 +43,13 @@ const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
       </section>
 
       <section className={styles.manageBoxers}>
-        <article className={styles.search}>
-          <form action="">
-            <BsSearch />
-            <input
-              type="search"
-              placeholder="Buscar boxeador por nombre o licencia"
-            />
-          </form>
-        </article>
-
-        <article className={styles.createbox}>
-          <Link href="./boxeador/crear"> crear boxeador </Link>
-        </article>
+        <SearchAndCreate href="./boxeador/crear" name="Crear Boxeador" placeholder="Busca un boxeador"/>
       </section>
 
       <section className={styles.boxeador}>
         <article>
-          <table className={styles.tabla_boxer}>
-            <thead className={styles.tabla_encabezado}>
+          <table className={stylesTables.table}>
+            <thead className={stylesTables.T_encabezado}>
               <tr>
                 <th>ID</th>
                 <th>Boxeador</th>
@@ -79,7 +62,7 @@ const boxeadores: BoxeadorInfo[] = await loadBoxeadorAdmin();
               </tr>
             </thead>
 
-            <tbody className={styles.fila_encabezado}>
+            <tbody className={stylesTables.T_cuerpo}>
               {boxeadores.map((boxeador) => (
                <ListBoxer boxeador={boxeador} key={boxeador.id} />
               ))}

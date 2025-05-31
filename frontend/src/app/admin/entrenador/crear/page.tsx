@@ -18,7 +18,7 @@ export default function CrearEntrenadorPage() {
     n_licencia: "",
     vencimiento: "",
     localidad: "",
-    trainer_foto:"",
+    trainer_foto: "",
   });
 
   const [notification, setNotification] = useState<{
@@ -28,6 +28,9 @@ export default function CrearEntrenadorPage() {
 
   // Función para enviar datos al backend
   async function enviarDatos(data: typeof trainerData) {
+    console.log("Enviando datos:", data);
+    console.log("Foto es tipo:", typeof data.trainer_foto, data.trainer_foto);
+
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/`,
@@ -85,10 +88,11 @@ export default function CrearEntrenadorPage() {
         n_licencia: "",
         vencimiento: "",
         localidad: "",
-        trainer_foto:"",
+        trainer_foto: "",
       });
     }
   };
+
   return (
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -110,12 +114,12 @@ export default function CrearEntrenadorPage() {
           <section className={styles.trainerDate}>
             <article className={styles.dateImg}>
               <ImgDrop
-              width={350}
-              height={350}
-              onImageUpload={(url)=>
-                setTrainerData((prev)=> ({...prev, trainer_foto: url}))
-              }
-            />
+                width={350}
+                height={350}
+                onImageUpload={(url) =>
+                  setTrainerData((prev) => ({ ...prev, trainer_foto: url }))
+                }
+              />
             </article>
 
             <div className={styles.dateContent}>

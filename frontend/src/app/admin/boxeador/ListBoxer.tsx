@@ -3,15 +3,15 @@
 import { useRouter } from "next/navigation";
 import { BsBrush, BsTrash } from "react-icons/bs";
 import { BoxeadorInfo } from "@/app/data/Boxeador";
+import stylesTables from "@/app/styles/table.module.css";
 import Image from "next/image";
-import styles from "./boxeador.module.css";
 
 type Props = {
   boxeador: BoxeadorInfo;
 };
 
 export default function ListBoxer({ boxeador }: Props) {
-  const router = useRouter()
+  const router = useRouter();
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Quiere eliminar a este boxeador")) {
@@ -33,9 +33,10 @@ export default function ListBoxer({ boxeador }: Props) {
 
   return (
     <tr>
-      <td> {boxeador.id} </td>
-      <td className={styles.boxeador}>
-        <span>
+      <td data-cell="id"> {boxeador.id} </td>
+      <td data-cell="boxeador" >
+        <div className={stylesTables.person}>
+          <span>
           <Image
             src={
               boxeador.foto
@@ -51,27 +52,32 @@ export default function ListBoxer({ boxeador }: Props) {
         <span>
           {boxeador.nombre} {boxeador.apellido}
         </span>
+        </div>
       </td>
-      <td>{boxeador.sexo}</td>
-      <td>{boxeador.numero_licencia}</td>
-      <td>{boxeador.localidad}</td>
-      <td>{boxeador.combate}</td>
-      <td className={boxeador.status}>{boxeador.status}</td>
+      <td data-cell="sexo">{boxeador.sexo}</td>
+      <td data-cell="N°Licencia">{boxeador.numero_licencia}</td>
+      <td data-cell="Localidad">{boxeador.localidad}</td>
+      <td data-cell="Combates">{boxeador.combate}</td>
+      <td data-cell="Estatus" className={boxeador.status}>
+        {boxeador.status}
+      </td>
 
-      <td className={styles.celda_acciones}>
-        <button
-          className={styles.botom_edictar}
-          onClick={() => handleEdit(boxeador.id)}
-        >
-          <BsBrush />
-        </button>
+      <td data-cell="Editar">
+        <div className={stylesTables.action}>
+          <button
+            className={stylesTables.editar}
+            onClick={() => handleEdit(boxeador.id)}
+          >
+            <BsBrush />
+          </button>
 
-        <button
-          className={styles.botom_eliminar}
-          onClick={() => handleDelete(boxeador.id)}
-        >
-          <BsTrash />
-        </button>
+          <button
+            className={stylesTables.eliminar}
+            onClick={() => handleDelete(boxeador.id)}
+          >
+            <BsTrash />
+          </button>
+        </div>
       </td>
     </tr>
   );

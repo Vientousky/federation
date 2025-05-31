@@ -1,0 +1,89 @@
+.trainerPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    /* ======= [SECCIÓN 1] ======= */
+
+    /* ================================================ */
+    /* ======> Diseño de cargos de entrenadores <====== */
+    /* ================================================ */
+
+    .chargesPanel {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: 10px;
+
+        & h1 {
+            font-size: 1.25rem;
+            margin-bottom: 14px;
+        }
+
+        & p {
+            font-size: 2rem;
+        }
+
+        .chargeItemTotal,
+        .chargesList {
+            background: var(--bg-600);
+            backdrop-filter: var(--backdrop-filter);
+
+            border-radius: 8px;
+            border: 1px solid var(--bg-400);
+
+            padding: 1rem;
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                border-color: var(--bg-300);
+                box-shadow: 5px 5px 20px var(--bg-500);
+            }
+        }
+
+        .chargesList {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            .chargeItem {
+                position: relative;
+                padding-right: 1rem;
+            }
+        }
+    }
+
+    /* ======= [SECCIÓN 2] ======= */
+
+    /* ============================================================ */
+    /* ======> Diseño de posicionamiento de busqueda y link <====== */
+    /* ============================================================ */
+
+    .managePanel {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        gap: 1.25rem;
+    }
+}
+
+/* ======= [RESPONSIVE 768px] ======= */
+
+/*  =========================================== */
+/* ======> DISEÑO PARA EL APARTADO MOVIL <====== */
+/*  =========================================== */
+
+@media (max-width:768px) {
+
+    .trainerPanel {
+
+        /* === [RESPONSIVE - SECCIÓN 1] Ajuste para dispositivos móviles === */
+
+        .chargesPanel {
+            display: grid;
+            grid-template-columns: auto;
+        }
+    }
+
+}

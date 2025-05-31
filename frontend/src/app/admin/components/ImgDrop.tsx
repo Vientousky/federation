@@ -65,7 +65,6 @@ export default function ImgDrop({ onImageUpload, width, height }: Props) {
       processFile(file);
     }
   };
-
   return (
     <figure
       className={isDragging ? styles.dragging : ""}

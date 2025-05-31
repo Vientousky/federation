@@ -1,0 +1,141 @@
+/* ======= [APARTADO DE TABLA] ======= */
+
+/*  ===================================================== */
+/* ======> Diseño de PARA TODAS LAS TABLAS DE ADMIN <===== */
+/*  ===================================================== */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-600);
+    backdrop-filter: var(--backdrop-filter);
+
+    border-top: 1px solid var(--bg-400);
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    & th,
+    & td {
+        padding: 1rem;
+    }
+
+    & th {
+        text-align: left;
+        background-color: var(--bg-500);
+    }
+
+    & tr {
+        transition: background-color 0.2s ease-in-out;
+
+        &:nth-of-type(2n) {
+            background-color: var(--bg-500);
+        }
+
+        &:hover {
+            background-color: var(--bg-400);
+
+        }
+    }
+
+    .action,
+    .person {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .person img {
+        display: block;
+        border-radius: 9999px;
+        object-fit: cover;
+    }
+
+    & tr .action {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(5px);
+        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    & tr:hover .action {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .action {
+        justify-content: space-between;
+
+        & button {
+            cursor: pointer;
+            border: none;
+            background: none;
+
+            transition: transform 0.3s ease-in-out;
+
+            & svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+
+        .eliminar {
+            color: var(--color-red);
+        }
+
+        .editar {
+            color: var(--color-blue);
+        }
+    }
+}
+
+/* ======= [REPONSIVILIDAD EN MOVIL] ======= */
+
+/*  ===============================================  */
+/* ======> DISEÑO DE LA TABLA EN TAMAÑO 768PX <===== */
+/*  ===============================================  */
+
+@media (max-width:768px) {
+    .table {
+
+        & th {
+            display: none;
+        }
+
+        & tr .action {
+            opacity: 1;
+            transform: translateY(0px);
+            pointer-events: auto;
+
+            &:not(:last-child) td {
+                border-bottom: 1px solid var(--bg-400);
+            }
+        }
+
+        & td {
+            display: grid;
+            gap: 8ch;
+            grid-template-columns: 15ch auto;
+            padding: 0.5rem 1rem;
+
+            &:first-child {
+                padding-top: 2rem;
+            }
+
+            &:last-child {
+                padding-bottom: 2rem;
+            }
+
+            &::before {
+                content: attr(data-cell) ":";
+                font-weight: 700;
+                text-transform: capitalize;
+            }
+        }
+    }
+}

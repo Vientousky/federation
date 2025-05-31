@@ -1,5 +1,4 @@
 from django.db import models
-from cloudinary.models import CloudinaryField
 
 # Create your models here.
 
@@ -144,4 +143,5 @@ class Entrenador(models.Model):
     ]),
 ]
     localidad = models.CharField(max_length=150, choices=LOCALIDAD_CHOICES)
-    trainer_foto = CloudinaryField('image', blank=True, null=True)
+    trainer_foto = models.URLField(blank=True, null=True)
+

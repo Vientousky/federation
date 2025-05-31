@@ -47,7 +47,8 @@ class Boxeador(models.Model):
     combates = models.IntegerField(default=0)
     rounds = models.IntegerField(default=0)
     KOs = models.IntegerField(default=0)
-    foto = CloudinaryField('image', blank=True, null=True)
+    foto = models.URLField(blank=True, null=True)
+
 
     def __str__(self):
         return self.nombre

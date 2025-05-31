@@ -1,4 +1,4 @@
-from rest_framework import viewsets, permissions, status
+from rest_framework import viewsets, permissions, status, filters
 from rest_framework.response import Response
 from .models import Boxeador
 from .serializers import BoxeadorSerializer
@@ -7,6 +7,8 @@ class BoxeadorViewSet(viewsets.ModelViewSet):
     queryset = Boxeador.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = BoxeadorSerializer
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['nombre', 'apellido', 'numero_licencia']
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

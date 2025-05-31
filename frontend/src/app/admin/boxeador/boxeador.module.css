@@ -73,46 +73,7 @@
 
     margin-bottom: 1.25rem;
 
-    .search {
-        flex: 1;
-
-
-        form {
-            position: relative;
-
-            & svg {
-                position: absolute;
-                top: 25%;
-                left: 10px;
-                pointer-events: none;
-
-                color: var(--text-600);
-            }
-
-            & input {
-                width: 100%;
-                background-color: var(--bg-600);
-                border: 1px solid var(--bg-400);
-                border-radius: 8px;
-                font-size: 1.15rem;
-                padding: 8px 8px 8px 2rem;
-            }
-        }
-    }
-
-    .createbox {
-        width: 20%;
-
-        & a {
-            width: 100%;
-            white-space: nowrap;
-            background-color: var(--color-blue);
-            border-radius: 8px;
-            border: none;
-            font-size: 1.15rem;
-            padding: 8px 12px;
-        }
-    }
+    
 }
 
 /* ========================================================== */
@@ -123,76 +84,4 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-
-
-    .tabla_boxer {
-        width: 100%;
-        border-collapse: collapse;
-        background-color: var(--bg-600);
-        backdrop-filter: var(--backdrop-filter);
-
-        border-top: 1px solid var(--bg-400);
-        border-radius: 8px;
-
-        overflow: hidden;
-
-        & th,
-        & td {
-            padding: 1rem;
-        }
-
-        & th {
-            text-align: left;
-            background-color: var(--bg-500);
-        }
-
-        & tr {
-            transition: background-color 0.2s ease-in-out;
-
-            &:nth-of-type(2n) {
-                background-color: var(--bg-500);
-            }
-
-            &:hover {
-                background-color: var(--bg-400);
-
-            }
-        }
-
-        .boxeador,
-        .celda_acciones {
-            display: inline-flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .boxeador img {
-            display: block;
-            border-radius: 9999px;
-            object-fit: cover;
-        }
-
-        .celda_acciones {
-
-            & button {
-                border: none;
-                background: none;
-                cursor: pointer;
-
-                & svg {
-                    width: 22px;
-                    height: 22px;
-                }
-            }
-
-            .botom_eliminar {
-                color: var(--color-red);
-            }
-
-            .botom_edictar {
-                color: var(--color-blue);
-            }
-        }
-    }
 }
