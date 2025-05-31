@@ -138,10 +138,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # CORS settings
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
     "https://federation-rho.vercel.app",
+    "http://localhost:3000",
 ]
 
+CORS_ALLOW_CREDENTIALS = True
 CSRF_TRUSTED_ORIGINS = ["https://federation-production.up.railway.app"]
 
 # Cloudinary settings

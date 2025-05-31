@@ -4,9 +4,11 @@
 }
 
 
-/* ================================================== */
-/* ====>  PRIMERA SECIÓN BOXEADORES REGISTRADOS <==== */
-/* ================================================== */
+/* ======= [SECCIÓN 1] ======= */
+
+/*  ================================================================================ */
+/* ======> Diseño de datos boxeadores (Activo, inactivo, suspendido,retirado) <====== */
+/*  ================================================================================ */
 
 .datos {
 
@@ -15,13 +17,15 @@
     }
 
     .stact {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        display: flex;
+        flex-wrap: wrap;
         gap: 1rem;
 
         margin-bottom: 2rem;
 
         .item {
+            flex: 1;
+            min-width: 200px;
             background-color: var(--bg-600);
             backdrop-filter: var(--backdrop-filter);
 

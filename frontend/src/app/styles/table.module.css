@@ -20,6 +20,15 @@
         padding: 1rem;
     }
 
+    & td {
+
+        & input {
+            padding: 8px 12px;
+            background-color: var(--bg-300);
+
+        }
+    }
+
     & th {
         text-align: left;
         background-color: var(--bg-500);
