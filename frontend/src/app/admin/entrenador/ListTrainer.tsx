@@ -41,23 +41,6 @@ export default function ListTrainer({ trainer }: TrainerProps) {
   };
 
   const handleSave = async () => {
-    let imageUrl = trainer.trainer_foto; // valor actual
-    if (editedTrainer.trainer_foto instanceof File) {
-      const formData = new FormData();
-      formData.append("file", editedTrainer.trainer_foto);
-      formData.append("upload_preset", "federacion_date");
-
-      const res = await fetch(
-        "https://api.cloudinary.com/v1_1/tu_cloud_name/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-      const data = await res.json();
-      imageUrl = data.secure_url;
-    }
-
     // Enviar al servidor la URL final
     await fetch(
       `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/${trainer.id}/`,
@@ -66,7 +49,6 @@ export default function ListTrainer({ trainer }: TrainerProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...editedTrainer,
-          trainer_foto: imageUrl, // la URL final de la imagen
         }),
       }
     );
@@ -82,38 +64,16 @@ export default function ListTrainer({ trainer }: TrainerProps) {
       <td data-cell="Trainer">
         <div className={stylesTables.person}>
           <span>
-            {isEditing ? (
-              <input
-                type="file"
-                accept="image/*"
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file) {
-                    setEditedTrainer({
-                      ...editedTrainer,
-                      trainer_foto: file, // lo guardamos como File
-                    });
-                  }
-                }}
-              />
-            ) : (
-              <Image
-                src={
-                  typeof trainer.trainer_foto === "string"
-                    ? trainer.trainer_foto || "/img/default.jpeg"
-                    : trainer.trainer_foto instanceof File
-                    ? URL.createObjectURL(trainer.trainer_foto)
-                    : "/img/default.jpeg"
-                }
-                alt={trainer.nombre}
-                width={36}
-                height={36}
-                priority
-              />
-            )}
+            <Image
+              src={trainer.trainer_foto || "/img/default.jpeg"}
+              alt={trainer.nombre}
+              width={36}
+              height={36}
+              priority
+            />
           </span>
 
-          <span>
+          <span className={stylesTables.dateName}>
             {isEditing ? (
               <>
                 <input
@@ -124,7 +84,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
                       ...editedTrainer,
                       nombre: e.target.value,
                     })
-                  }
+                  } 
                 />
                 <input
                   type="text"
@@ -135,6 +95,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
                       apellido: e.target.value,
                     })
                   }
+ 
                 />
               </>
             ) : (

@@ -41,7 +41,7 @@
     /* ======= [LADO DERECHO DEL LOGIN INPUTS] ======= */
 
     .login_right {
-        flex: 0  60%;
+        flex: 0 60%;
         max-width: 60%;
 
         display: flex;
@@ -73,24 +73,81 @@
                 & input {
                     background: var(--bg-500);
                     border: 1px solid var(--bg-400);
-                    border-radius: 16px;
+                    border-radius: 6px;
 
                     padding: 6px 12px;
                 }
             }
 
+            /* ======= [DISEÑOS DE BOTONES DE LOGIN] ======= */
+
             & button {
+                cursor: pointer;
                 background: var(--color-red);
-                border-radius: 16px;
+                border-radius:6px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 border: none;
                 padding: 8px 12px;
                 transition: 0.3s ease-in-out;
 
                 &:hover {
-                    transform: scale(1.05);
+                    box-shadow: 3px 3px 8px var(--bg-500);
+                    transform: translateY(-2px);
+                }
+
+                &:active {
+                    transform: translateY(2px);
+                    box-shadow: 1px 1px 3px var(--bg-500);
                 }
             }
+
+            .iniciando {
+                background: var(--bg-500);
+                border: 1px solid var(--bg-300);
+                color: var(--bg-300);
+                gap: 8px;
+                padding: 8px;
+
+                & span {
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 99999px;
+                    background: var(--bg-300);
+                    animation: circle 0.6s ease-in-out infinite;
+                }
+
+                & span:nth-child(1) {
+                    animation-delay: 0s;
+                }
+
+                & span:nth-child(2) {
+                    animation-delay: 0.2s;
+                }
+
+                & span:nth-child(3) {
+                    animation-delay: 0.4s;
+                }
+            }
+
+            .redirigiendo {
+                background-color: var(--color-green);
+                border: 1px solid rgb(44, 190, 88);
+                position: relative;
+            }
+
         }
+    }
+}
+
+@keyframes circle {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
     }
 }
 
@@ -100,13 +157,14 @@
 /* ======> DISEÑO DE LA LOGIN EN TAMAÑO 768PX <===== */
 /*  ===============================================  */
 
-@media (max-width:768px)  {
+@media (max-width:768px) {
 
     .adminLogin {
         display: flex;
         flex-direction: column;
 
-        .login_left, .login_right {
+        .login_left,
+        .login_right {
             flex: 0 0 100%;
             max-width: 100%;
         }

@@ -7,6 +7,5 @@ export interface TrainerInfo {
   vencimiento:string;
   cargo: string;
   localidad: string;
-  trainer_foto: string | File;
-
+  trainer_foto: string;
 }

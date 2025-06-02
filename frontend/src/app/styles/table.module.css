@@ -22,10 +22,19 @@
 
     & td {
 
-        & input {
-            padding: 8px 12px;
-            background-color: var(--bg-300);
+        .dateName {
+            display: grid;
+            grid-template-columns: auto ;
+            gap: 10px;
+        }
 
+        & input,
+        select {
+            width: 100%;
+            padding: 6px 12px;
+            background: var(--bg-600);
+            border: 1px solid var(--bg-300);
+            border-radius: 8px;
         }
     }
 
@@ -74,7 +83,7 @@
     }
 
     .action {
-        justify-content: space-between;
+        transition:0.3s ease-in-out;
 
         & button {
             cursor: pointer;
@@ -93,12 +102,16 @@
             }
         }
 
-        .eliminar {
+        .eliminar,.cancelar {
             color: var(--color-red);
         }
 
         .editar {
-            color: var(--color-blue);
+            color: var(--color-yellow);
+        }
+
+        .guardar {
+            color: var(--color-green);
         }
     }
 }

@@ -5,7 +5,12 @@ import { TrainerInfo } from "@/app/data/Entrenador";
 import styles from "./trainer.module.css";
 
 async function loadTrainerAdmin() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/`);
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/`,
+    {
+      cache: "no-store",
+    }
+  );
   const data = await res.json();
   return data;
 }
@@ -65,7 +70,7 @@ export default async function EntrenadorPageAdmin() {
 
           <tbody className={stylesTables.T_cuerpo}>
             {trainer.map((trainer) => (
-              <ListTrainer key={trainer.id} trainer={trainer}/>
+              <ListTrainer key={trainer.id} trainer={trainer} />
             ))}
           </tbody>
         </table>
