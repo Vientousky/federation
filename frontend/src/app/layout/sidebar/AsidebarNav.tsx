@@ -8,7 +8,7 @@ type AsidebarNavProps = {
   href: string;
 };
 
-export default function AsidebarNav({ links,onLinkClick,}: { links: AsidebarNavProps[]; onLinkClick?: () => void  }) {
+export default function AsidebarNav({ links,onLinkClick}: { links: AsidebarNavProps[]; onLinkClick?: () => void  }) {
   const pathname = usePathname();
   const isActive = (href: string) => {
     return pathname === href ? styles.active : "";

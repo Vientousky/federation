@@ -21,6 +21,8 @@
 
         & p {
             font-size: 2rem;
+            font-family: var(--fonts-casual);
+            letter-spacing: 2px;
         }
 
         .chargeItemTotal,
@@ -28,7 +30,7 @@
             background: var(--bg-600);
             backdrop-filter: var(--backdrop-filter);
 
-            border-radius: 8px;
+            border-radius: var(--radius-xl);
             border: 1px solid var(--bg-400);
 
             padding: 1rem;

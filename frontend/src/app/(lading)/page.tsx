@@ -4,6 +4,13 @@ export default function Home() {
   return (
     <main >
         <Welcome/>
+        <Welcome/>
+        <Welcome/>
+        <Welcome/>
+        <Welcome/>
+        <Welcome/>
+        <Welcome/>
+        <Welcome/>
     </main>
   );
 }

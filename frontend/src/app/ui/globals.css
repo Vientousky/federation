@@ -1,3 +1,7 @@
+@view-transition {
+  navigation: auto;
+}
+
 /* ======= [CSS GLOBAL DE LA WEB] ======= */
 
 /*  ========================================== */
@@ -5,29 +9,37 @@
 /*  ========================================== */
 
 :root {
-  --bg-gradient: linear-gradient(180deg, #fff 0%, #e0e0e0 100%);
 
+  /* ======= [COLOR DE FONDO DE LA WEB] ======= */
+  --bg-gradient: linear-gradient(180deg, #fff 0%, #e0e0e0 100%);
   --bg-600: rgba(245, 245, 245, 0.7);
   --bg-500: #f0f2f5;
   --bg-400: #dcdfe3;
+  --bg-300: #dad4d4;
 
-
+  /* ======= [COLOR DE LOS TEXTO] ======= */
   --text-600: #333333;
   --text-500: #555555;
+  --text-400: #7a7a7a;
 
+  /* ======= [COLORES GLOBALES] ======= */
   --color-green: rgb(64, 176, 64);
   --color-red: rgb(242 50 67);
   --color-yellow: rgb(255, 184, 10);
   --color-blue: rgb(77 158 255);
 
-
+  /* ======= [TIPOGRAFIA] ======= */
   --fonts-primario: "Montserrat", sans-serif;
   --fonts-casual: "Audiowide", sans-serif;
 
+  /* ======= [DIFUMINADO DE FONDO] ======= */
+  --filter-sm: blur(8px);
+  --filter-lg: blur(12px);
 
-  --backdrop-filter: blur(6px);
-
-  --border-radius: 8px;
+  /* ======= [BORDES DE LAS CARD] ======= */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -41,8 +53,9 @@
 
     --text-600: #ededed;
     --text-500: #d8d2d2;
+    --text-400: #c5bdbd;
 
-    --color-green: rgb(64, 176, 64);
+    --color-green: rgb(0, 160, 80);
     --color-red: rgb(180, 10, 25);
     --color-yellow: rgb(255, 184, 10);
     --color-blue: #3d68c1;

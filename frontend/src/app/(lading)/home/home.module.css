@@ -1,11 +1,14 @@
 /*<===<ESTILO GENERAL DE WELCOME>===<*/
 
 .welcome {
+
+    --bg-gradient:rgba(29, 30, 34, 0.6);
+
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(rgba(29, 30, 34, 0.6), #1d1e2299), url(/img/portada.webp) no-repeat center ;
+    background: linear-gradient(var(--bg-gradient),var(--bg-gradient)), url(/img/portada.webp) no-repeat center ;
     background-size: cover;
-    mask-image: linear-gradient(#000 80%, transparent);
+    mask-image: linear-gradient(#000000 80%, transparent);
     display: flex;
 
     /*======================*/
@@ -37,7 +40,7 @@
         }
 
         & p {
-            font-size: 1.25rem;
+            font-size: clamp(1rem, 3vw, 1.25em);
         }
     }
 }

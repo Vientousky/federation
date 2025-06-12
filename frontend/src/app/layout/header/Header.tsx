@@ -1,6 +1,6 @@
 'use client'
 
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import Nav from './Nav';
 import Action from './Action';
 import Search from './Search';
@@ -20,6 +20,7 @@ const Header: React.FC = () => {
 
     const headerRef = useRef<HTMLElement>(null);
     const lastScrollYRef = useRef(0);
+    const [mobilMenuOpen, setMobilMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -42,7 +43,10 @@ const Header: React.FC = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    
+
+    const closeMobileMenu = () => {
+        setMobilMenuOpen(false);
+    }
 
     return (
         <header ref={headerRef} className={`${styles.header} ${styles.headerExpanded}`}>
@@ -60,10 +64,13 @@ const Header: React.FC = () => {
 
             <section className={styles.headerBottom}>
 
-            <Nav links={navLinks} />
+            <Nav links={navLinks} className={mobilMenuOpen ? styles.navOpen : ""}  onLinkClick={closeMobileMenu} />
 
             <Search/>
-            
+
+            <button className={styles.movilBotton} onClick={()=> setMobilMenuOpen(!mobilMenuOpen)}>
+                {mobilMenuOpen ? "✕" : "☰"}
+            </button>
 
             </section>
 

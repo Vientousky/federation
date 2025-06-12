@@ -1,6 +1,6 @@
 import { BoxeadorInfo } from "../../data/Boxeador";
 import CombatList from "./CombatList";
-import Entrenador from "@/app/components/entrenador";
+import Entrenador from "@/app/components/Entrenador";
 import Image from "next/image";
 import styles from "./boxeadorDetails.module.css";
 
@@ -68,18 +68,12 @@ export default async function BoxeadorDetail({
     },
   ];
 
-  console.log(boxeador.foto);
-
   return (
     <main className={styles.boxeador}>
       <section className={styles.profile}>
         <figure className={styles.profile__img}>
           <Image
-            src={
-              boxeador.foto
-                ? `https://res.cloudinary.com/drmsxwdwy/${boxeador.foto}`
-                : "/img/default.jpeg"
-            }
+            src={boxeador.foto || "/img/default.jpeg"}
             alt={boxeador.nombre}
             width={480}
             height={300}

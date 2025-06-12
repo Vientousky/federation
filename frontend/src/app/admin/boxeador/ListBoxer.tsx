@@ -28,26 +28,26 @@ export default function ListBoxer({ boxeador }: Props) {
   };
 
   const handleEdit = (id: string) => {
-    console.log(id);
+    router.push(`./boxeador/editar/${id}`);
   };
 
   return (
     <tr>
       <td data-cell="id"> {boxeador.id} </td>
-      <td data-cell="boxeador" >
+      <td data-cell="boxeador">
         <div className={stylesTables.person}>
           <span>
-          <Image
-            src={boxeador.foto || "/img/default.jpeg"}
-            alt={boxeador.nombre}
-            width={36}
-            height={36}
-          />
-        </span>
+            <Image
+              src={boxeador.foto || "/img/default.jpeg"}
+              alt={boxeador.nombre}
+              width={36}
+              height={36}
+            />
+          </span>
 
-        <span>
-          {boxeador.nombre} {boxeador.apellido}
-        </span>
+          <span>
+            {boxeador.nombre} {boxeador.apellido}
+          </span>
         </div>
       </td>
       <td data-cell="sexo">{boxeador.sexo}</td>

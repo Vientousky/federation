@@ -2,32 +2,37 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import ImgDrop from "../../components/ImgDrop";
+import { BoxeadorInfo } from "@/app/data/Boxeador";
+import ImgDrop from "@/app/admin/components/ImgDrop";
 import Notification from "@/app/components/Notification";
-import styles from "../crearAndEdit.module.css";
+import styles from "../../crearAndEdit.module.css";
 
-export default function CreateBoxer() {
+type BoxerProps = {
+  boxer: BoxeadorInfo;
+};
+
+export default function FormBoxer({ boxer }: BoxerProps) {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
-    nombre: "",
-    apellido: "",
-    status: "",
-    dni: "",
-    sexo: "",
-    fecha_nacimiento: "",
-    numero_licencia: "",
-    nacionalidad: "",
-    provincia: "",
-    localidad: "",
-    debutaje: "",
-    carrera: "",
-    peso: "",
-    divicion: "",
-    altura: "",
-    alcance: "",
-    stance: "",
-    foto: "",
+    nombre: boxer.nombre,
+    apellido: boxer.apellido,
+    status: boxer.status,
+    dni: boxer.dni,
+    sexo: boxer.sexo,
+    fecha_nacimiento: boxer.fecha_nacimiento,
+    numero_licencia: boxer.numero_licencia,
+    nacionalidad: boxer.nacionalidad,
+    provincia: boxer.provincia,
+    localidad: boxer.localidad,
+    debutaje: boxer.debutaje,
+    carrera: boxer.carrera,
+    peso: boxer.peso,
+    divicion: boxer.divicion,
+    altura: boxer.altura,
+    alcance: boxer.alcance,
+    stance: boxer.stance,
+    foto: boxer.foto,
   });
 
   const [notification, setNotification] = useState<{
@@ -78,44 +83,15 @@ export default function CreateBoxer() {
     }
   };
 
-  const handleSaveAndAddAnother = async () => {
-    const exito = await sendBoxerData(formData);
-
-    if (exito) {
-      setFormData({
-        nombre: "",
-        apellido: "",
-        status: "",
-        dni: "",
-        sexo: "",
-        fecha_nacimiento: "",
-        numero_licencia: "",
-        nacionalidad: "",
-        provincia: "",
-        localidad: "",
-        debutaje: "",
-        carrera: "",
-        peso: "",
-        divicion: "",
-        altura: "",
-        alcance: "",
-        stance: "",
-        foto: "",
-      });
-    }
-  };
-
   return (
-    <main>
-      <div className={styles.bienvenidad}>
-        <h1>Apartado de creación de Boxeador</h1>
-      </div>
+    <>
       <form onSubmit={handleSubmit}>
         <section className={styles.boxer}>
           <article className={styles.boxerImg}>
             <ImgDrop
               width={200}
               height={300}
+              initialImageUrl={boxer.foto}
               onImageUpload={(url) =>
                 setFormData((prev) => ({ ...prev, foto: url }))
               }
@@ -289,7 +265,7 @@ export default function CreateBoxer() {
                   }))
                 }
               >
-                <option selected value="!-----!">
+                <option disabled selected>
                   !-----!
                 </option>
                 <optgroup label="Almirante Brown">
@@ -543,15 +519,17 @@ export default function CreateBoxer() {
             </article>
           </div>
 
-          <div className={styles.creacion}>
-            <button type="submit">Guardar</button>
-
-            <button type="button" onClick={handleSaveAndAddAnother}>
-              Guardar y agregar a otro
+          <div className={styles.cambios}>
+            <button className={styles.guardar} type="submit">
+              Guardar
             </button>
 
-            <button className={styles.btn} disabled>
-              Agregar Combate con boxeador
+            <button
+              type="button"
+              className={styles.cancelar}
+              onClick={() => router.push("/admin/boxeador")}
+            >
+              Cancelar
             </button>
           </div>
         </section>
@@ -564,6 +542,6 @@ export default function CreateBoxer() {
           onClose={() => setNotification(null)}
         />
       )}
-    </main>
+    </>
   );
 }

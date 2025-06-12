@@ -1,0 +1,67 @@
+.centralAdministration {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, auto);
+    gap: 1rem;
+
+    .bienvenidad {
+        grid-column: span 5;
+        font-size: 1.25rem;
+    }
+
+    .panelMetrics {
+        grid-column: span 3;
+        grid-row-start: 2;
+
+        display: flex;
+        gap: 1rem;
+
+        .metricsCard {
+            width: 100%;
+            background-color: var(--bg-600);
+
+            padding: 1rem;
+        }
+    }
+
+    .panelEvent {
+        grid-column: span 2;
+        grid-row-start: 2;
+
+        background: burlywood;
+    }
+
+    .panelCombat {
+        grid-column: span 2 / span 2;
+        grid-row: span 2 / span 2;
+        grid-column-start: 1;
+        grid-row-start: 3;
+
+        background: burlywood;
+    }
+
+    .panelDesarrollo {
+        grid-column: span 2 / span 2;
+        grid-row: span 2 / span 2;
+        grid-column-start: 3;
+        grid-row-start: 3;
+
+        background: burlywood;
+    }
+
+    .panelNotifiquetion {
+        grid-row: span 2 / span 2;
+        grid-column-start: 5;
+        grid-row-start: 3;
+
+        background: burlywood;
+    }
+
+}
+
+
+/* ======= [CENTRALIZANDO STYLES] ======= */
+
+/* ================================================ */
+/* ======> DISEÑO GENERAL DE LAS CARDS <====== */
+/* ================================================ */

@@ -1,7 +1,8 @@
-& .title {
+.bienvenidad h1 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
+
 
 
 .boxer {
@@ -9,7 +10,7 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, auto);
-    gap: 1rem 2rem;
+    gap: 1.25rem 2rem;
     margin: auto;
     margin-bottom: 1rem;
 
@@ -20,13 +21,13 @@
         background: var(--bg-600);
         backdrop-filter: var(--backdrop-filter);
         
-        border-radius: 22px;
+        border-radius: var(--radius-xl);
         
         transition: border-color 0.3s ease;
         
         
         &:hover {
-            border-color: #888;
+            border-color: var(--bg-300);
         }
     }
     
@@ -63,7 +64,7 @@
 
                 background: var(--bg-500);
 
-                border-radius: 12px;
+                border-radius: var(--radius-xl);
                 border: 1px solid var(--bg-400);
 
                 padding: 6px 12px;
@@ -145,25 +146,48 @@
         gap: 12px 1rem;
     }
 
-    .siguiente {
-        width: 100%;
-        grid-column: 4;
-        grid-row-start: 4;
+    .cambios, .creacion {
+        grid-column: span 4;
+        display: flex;
+        gap:8rem;
 
 
-        .btn {
+        & button {
             cursor: pointer;
             width: 100%;
             text-align: center;
 
-            background: var(--color-blue);
+            background: var(--bg-600);
+            backdrop-filter: var(--filter-sm);
 
-            border-radius: 16px;
-            border: none;
+            border: 1px solid var(--bg-400);
+            border-radius: var(--radius-xl);
+            color: var(--text-600);
 
-            font-size: 1.25rem;
-
+            font-size:15px;
             padding: 6px 12px;
+            transition: 0.3s ease-in-out;
+
+
+
+            &:hover {
+                border-color: var(--bg-300);
+                transform: translateY(5px);
+            }
+        }
+
+        .guardar {
+            background:var(--color-green);
+            &:hover {
+                box-shadow: 0 0 12px var(--color-green);
+            }
+        }
+
+        .cancelar {
+            background: var(--color-red);
+            &:hover {
+                box-shadow: 0 0 12px var(--color-red);
+            }
         }
     }
 }

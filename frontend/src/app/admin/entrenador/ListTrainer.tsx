@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { TrainerInfo } from "@/app/data/Entrenador";
+import ImgDrop from "../components/ImgDrop";
 import stylesTables from "@/app/styles/table.module.css";
 import { BsBrush, BsTrash, BsCheck, BsX } from "react-icons/bs";
 import Image from "next/image";
@@ -15,7 +16,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const [editedTrainer, setEditedTrainer] = useState<TrainerInfo>({
-    id: trainer.id, // o usa "" si lo quieres vacío
+    id: trainer.id, 
     trainer_foto: trainer.trainer_foto,
     nombre: trainer.nombre,
     apellido: trainer.apellido,
@@ -64,13 +65,23 @@ export default function ListTrainer({ trainer }: TrainerProps) {
       <td data-cell="Trainer">
         <div className={stylesTables.person}>
           <span>
-            <Image
-              src={trainer.trainer_foto || "/img/default.jpeg"}
-              alt={trainer.nombre}
-              width={36}
-              height={36}
-              priority
-            />
+            {isEditing ? (
+              <ImgDrop
+                height={36}
+                width={36}
+                initialImageUrl={trainer.trainer_foto}
+                onImageUpload={(url) =>
+                  setEditedTrainer((prev) => ({ ...prev, trainer_foto: url }))
+                }
+              />
+            ) : (
+              <Image
+                src={trainer.trainer_foto || "/img/default.jpeg"}
+                alt={trainer.nombre}
+                width={36}
+                height={36}
+              />
+            )}
           </span>
 
           <span className={stylesTables.dateName}>
@@ -84,7 +95,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
                       ...editedTrainer,
                       nombre: e.target.value,
                     })
-                  } 
+                  }
                 />
                 <input
                   type="text"
@@ -95,7 +106,6 @@ export default function ListTrainer({ trainer }: TrainerProps) {
                       apellido: e.target.value,
                     })
                   }
- 
                 />
               </>
             ) : (
@@ -120,7 +130,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
               }
               required
             >
-              <option value="!-----!"> !-----!</option>
+              <option disabled selected>!-----!</option>
               <option value="Director Técnico">Director Técnico</option>
               <option value="Preparador Físico">Preparador Físico</option>
               <option value="Nutricionista">Nutricionista</option>
@@ -190,7 +200,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
               }
               required
             >
-              <option value="!-----!"> !-----!</option>
+              <option disabled selected> !-----!</option>
               <optgroup label="Almirante Brown">
                 <option value="Concepción del Bermejo">
                   Concepción del Bermejo

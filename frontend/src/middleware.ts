@@ -5,8 +5,7 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const token = request.cookies.get("token");
   const pathname = request.nextUrl.pathname;
-
-  // Evitar proteger la ruta de login
+ 
   const isAdminRoute = pathname.startsWith("/admin");
   const isLoginPage = pathname === "/admin/login";
 

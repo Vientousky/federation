@@ -20,11 +20,14 @@
         padding: 1rem;
     }
 
-    & td {
+    .NoEncontrado{ 
+        text-align: center;
+    }
 
+    & td {
         .dateName {
             display: grid;
-            grid-template-columns: auto ;
+            grid-template-columns: auto;
             gap: 10px;
         }
 
@@ -56,6 +59,7 @@
         }
     }
 
+
     .action,
     .person {
         display: flex;
@@ -83,7 +87,7 @@
     }
 
     .action {
-        transition:0.3s ease-in-out;
+        transition: 0.3s ease-in-out;
 
         & button {
             cursor: pointer;
@@ -102,7 +106,8 @@
             }
         }
 
-        .eliminar,.cancelar {
+        .eliminar,
+        .cancelar {
             color: var(--color-red);
         }
 

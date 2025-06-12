@@ -2,16 +2,24 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import styles from "@/app/styles/imgDrop.module.css"
+import styles from "@/app/styles/imgDrop.module.css";
 
 interface Props {
   onImageUpload: (url: string) => void;
+  initialImageUrl?: string;
   width: number;
   height: number;
 }
 
-export default function ImgDrop({ onImageUpload, width, height }: Props) {
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+export default function ImgDrop({
+  onImageUpload,
+  width,
+  height,
+  initialImageUrl,
+}: Props) {
+  const [imagePreview, setImagePreview] = useState<string | null>(
+    initialImageUrl || null
+  );
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDragging, setIsDragging] = useState(false);
 

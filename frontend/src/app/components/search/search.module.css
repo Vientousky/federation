@@ -1,0 +1,27 @@
+.search {
+    width: 100%;
+    display: flex;
+    flex: 1;
+
+    position: relative;
+
+    .search_form_svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 11px;
+        pointer-events: none;
+        color: var(--text-600);
+    }
+
+    .search_form_input {
+        width: 100%;
+        color: var(--text-600);
+        background-color: var(--bg-600);
+        border: 1px solid var(--bg-400);
+        border-radius: var(--radius-xl);
+        font-size: 1.15rem;
+        padding: 8px 8px 8px 2.5rem;
+        position: relative;
+    }
+}

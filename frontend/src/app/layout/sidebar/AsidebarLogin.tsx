@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import styles from "./asidebar.module.css";
-import { BsPersonCircle, BsGear } from "react-icons/bs";
+import { BsPower , BsGear } from "react-icons/bs";
 
 export default function AsidebarLogin() {
   const router = useRouter();
@@ -29,13 +29,12 @@ export default function AsidebarLogin() {
       <li className={styles.navItem} onClick={handleLogout}>
         <button className={styles.navItemButton}>
           <span className={styles.linkIcon}>
-            <BsPersonCircle />
+            <BsPower />
           </span>
 
-          <div className={styles.linkText}>
-            <h3>En desarrollo</h3>
-            <p>Administrador</p>
-          </div>
+          <span className={styles.linkText}>
+            Cerrar Sesión
+          </span>
         </button>
       </li>
     </ul>

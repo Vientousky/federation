@@ -1,0 +1,26 @@
+.skeleton {
+    background: linear-gradient(90deg, var(--bg-500) 25%, var(--bg-400) 50%, var(--bg-500) 75%);
+    background-size: 200% 100%;
+    border-radius: var(--radius-xl);
+    animation: loading 2.5s infinite;
+}
+
+.avatar {
+    width: 36px;
+    height: 36px;
+}
+
+.text {
+    width: 90%;
+    height: 30px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}

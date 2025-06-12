@@ -1,28 +1,61 @@
-import SearchAndCreate from "../components/SearchAndCreate";
-import stylesTables from "@/app/styles/table.module.css";
-import ListTrainer from "./ListTrainer";
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { TrainerInfo } from "@/app/data/Entrenador";
+import { LoadData, FetchSearch } from "@/app/data/Data";
+import ListTrainer from "./ListTrainer";
+import Search from "@/app/components/search/Search";
+import CrearLink from "../components/CreateLink/CrearLink";
+import stylesTables from "@/app/styles/table.module.css";
 import styles from "./trainer.module.css";
+import TableSkeleton from "@/app/ui/skeleton/TableSkeleton";
 
-async function loadTrainerAdmin() {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/`,
-    {
-      cache: "no-store",
-    }
-  );
-  const data = await res.json();
-  return data;
-}
+export default function EntrenadorPageAdmin() {
+  const [isLoading, setIsLoading] = useState(true);
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("query") || "");
+  const [trainers, setTrainers] = useState<TrainerInfo[]>([]);
+  const [allTrainer, setAllTrainer] = useState<TrainerInfo[]>([]);
 
-export default async function EntrenadorPageAdmin() {
-  const trainer: TrainerInfo[] = await loadTrainerAdmin();
-  const total = trainer.length;
+  const trainerTotal = allTrainer.length;
 
-  const cargos = trainer.reduce<Record<string, number>>((acc, actual) => {
+  const cargos = allTrainer.reduce<Record<string, number>>((acc, actual) => {
     acc[actual.cargo] = (acc[actual.cargo] || 0) + 1;
     return acc;
   }, {});
+
+  useEffect(() => {
+    const fechtAllTrainer = async () => {
+      try {
+        const data = await LoadData("/entrenador/");
+        setAllTrainer(data);
+      } catch (err) {
+        console.error("Error loading all trainers", err);
+      }
+    };
+    fechtAllTrainer();
+  }, []);
+
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      const fetchData = async () => {
+        try {
+          setIsLoading(true);
+          const data = await FetchSearch("/entrenador/", query, 1);
+          setTrainers(data);
+        } catch (err) {
+          console.error("Error fetching trainers", err);
+        } finally {
+          setIsLoading(false);
+        }
+      };
+
+      fetchData();
+    }, 400);
+
+    return () => clearTimeout(delayDebounce);
+  }, [query, setQuery]);
 
   return (
     <main className={styles.trainerPanel}>
@@ -30,7 +63,7 @@ export default async function EntrenadorPageAdmin() {
       <section className={styles.chargesPanel}>
         <article className={styles.chargeItemTotal}>
           <h1>Entrenadores Totales</h1>
-          <p>{total}</p>
+          <p>{trainerTotal}</p>
         </article>
 
         <div className={styles.chargesList}>
@@ -45,10 +78,15 @@ export default async function EntrenadorPageAdmin() {
 
       {/* Panel de busqueda y creacion de entrenadores */}
       <section className={styles.managePanel}>
-        <SearchAndCreate
-          href="./entrenador/crear"
-          name="Crear entrenador"
-          placeholder="Buscar por nombre y apellido o N° de licencia"
+        <Search
+          onChange={setQuery}
+          placeholder="Busca a entrenador por: nombre, apellido o N°Licencia"
+        />
+
+        <CrearLink
+          href="/entrenador/crear"
+          name="Crear Entrenador"
+          label="Creación de Entrenador"
         />
       </section>
 
@@ -69,9 +107,31 @@ export default async function EntrenadorPageAdmin() {
           </thead>
 
           <tbody className={stylesTables.T_cuerpo}>
-            {trainer.map((trainer) => (
-              <ListTrainer key={trainer.id} trainer={trainer} />
-            ))}
+            {isLoading ? (
+              Array.from({ length: 8 }).map((_, i) => <TableSkeleton key={i} />)
+            ) : trainers.length > 0 ? (
+              trainers.map((trainer) => (
+                <ListTrainer key={trainer.id} trainer={trainer} />
+              ))
+            ) : (
+              <>
+                <tr>
+                  <td colSpan={8}></td>
+                </tr>
+
+                <tr className={stylesTables.NoEncontrado}>
+                  <td colSpan={8}>Entrenador que buscaba no se a encontrado</td>
+                </tr>
+
+                <tr className={stylesTables.NoEncontrado}>
+                  <td colSpan={8}>Por favor introdusca otro</td>
+                </tr>
+
+                <tr>
+                  <td colSpan={8}></td>
+                </tr>
+              </>
+            )}
           </tbody>
         </table>
       </section>

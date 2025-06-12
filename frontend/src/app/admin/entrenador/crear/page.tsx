@@ -28,8 +28,6 @@ export default function CrearEntrenadorPage() {
 
   // Función para enviar datos al backend
   async function enviarDatos(data: typeof trainerData) {
-    console.log("Enviando datos:", data);
-    console.log("Foto es tipo:", typeof data.trainer_foto, data.trainer_foto);
 
     try {
       const res = await fetch(
@@ -171,7 +169,7 @@ export default function CrearEntrenadorPage() {
                     }
                     required
                   >
-                    <option value="!-----!"> !-----!</option>
+                    <option disabled selected> !-----!</option>
                     <option value="Director Técnico">Director Técnico</option>
                     <option value="Preparador Físico">Preparador Físico</option>
                     <option value="Nutricionista">Nutricionista</option>
@@ -244,7 +242,7 @@ export default function CrearEntrenadorPage() {
                     }
                     required
                   >
-                    <option value="!-----!"> !-----!</option>
+                    <option disabled selected> !-----!</option>
                     <optgroup label="Almirante Brown">
                       <option value="Concepción del Bermejo">
                         Concepción del Bermejo
