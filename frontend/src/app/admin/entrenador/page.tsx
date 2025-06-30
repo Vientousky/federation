@@ -1,7 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import {
+  useRouter,
+  usePathname,
+  useSearchParams,
+} from "next/navigation";
+
 import { TrainerInfo } from "@/app/data/Entrenador";
 import { LoadData, FetchSearch } from "@/app/data/Data";
 import ListTrainer from "./ListTrainer";
@@ -10,6 +15,7 @@ import CrearLink from "../components/CreateLink/CrearLink";
 import stylesTables from "@/app/styles/table.module.css";
 import styles from "./trainer.module.css";
 import TableSkeleton from "@/app/ui/skeleton/TableSkeleton";
+import Pagination from "@/app/components/pagination/Pagination";
 
 export default function EntrenadorPageAdmin() {
   const [isLoading, setIsLoading] = useState(true);
@@ -19,7 +25,6 @@ export default function EntrenadorPageAdmin() {
   const [allTrainer, setAllTrainer] = useState<TrainerInfo[]>([]);
 
   const trainerTotal = allTrainer.length;
-
   const cargos = allTrainer.reduce<Record<string, number>>((acc, actual) => {
     acc[actual.cargo] = (acc[actual.cargo] || 0) + 1;
     return acc;
