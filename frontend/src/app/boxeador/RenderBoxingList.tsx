@@ -10,7 +10,7 @@ import BoxerSkeleton from "../ui/skeleton/SkeletonBoxer";
 import Search from "../components/search/Search";
 import Pagination from "../components/pagination/Pagination";
 import styles from "./index.module.css";
-import stylesTable from "@/app/styles/table.module.css"
+import stylesTable from "@/app/styles/table.module.css";
 
 export default function RenderBoxingList() {
   const router = useRouter();
@@ -63,18 +63,27 @@ export default function RenderBoxingList() {
     <main className={styles.boxer_main}>
       <section className={stylesTable.trainer_list_panel}>
         <header className={stylesTable.control_panel}>
-          <h2>Buscador de Boxeador</h2>
-          <Search
-            onChange={handleQueryChange}
-            placeholder="Busca boxeador por: nombre apellido N° licencia"
-          />
+          <p>Buscador de Boxeador</p>
+
+          <article className={stylesTable.panel_actions}>
+            <Search
+              onChange={handleQueryChange}
+              placeholder="Busca boxeador por: nombre apellido N° licencia"
+            />
+
+            <button disabled className={stylesTable.btn}>
+              ordenar
+            </button>
+          </article>
         </header>
 
         <section className={styles.boxer_list}>
           {isLoading ? (
             Array.from({ length: 6 }).map((_, i) => <BoxerSkeleton key={i} />)
           ) : boxers.length > 0 ? (
-            boxers.map((boxer) => <Boxeador key={boxer.id} boxer={boxer} showLink/>)
+            boxers.map((boxer) => (
+              <Boxeador key={boxer.id} boxer={boxer} showLink />
+            ))
           ) : (
             <div className={styles.boxer_not_found}>
               <h2>Boxeador no Encontrado</h2>

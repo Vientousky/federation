@@ -1,43 +1,16 @@
 .containerPage {
-    display: flex;
-    flex-direction: column;
-    gap: 3rem;
+    max-width: 1280px;
+    width: 95%;
 
-    padding: 12rem 0  2rem 0;
-
-    .searchTrainer {
-
-        & h1 {
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-    }
+    padding-top: 10rem;
+    margin: auto;
 
     .listTrainer {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 1rem;
 
-
-        .trainer_not_found{
-            background: var(--bg-600);
-            backdrop-filter: var(--filter-sm);
-            border: 1px solid var(--bg-400);
-            border-radius: var(--radius-xl);
-            padding: 1rem;
-            text-align: center;
-
-            & h2 {
-                margin-bottom: 4px;
-                font-size: 2rem;
-            }
-
-            p {
-                color: var(--text-500);
-                font-size: 1rem;
-            }
-
-        }
+        padding: 1.5rem;
     }
+
 }
