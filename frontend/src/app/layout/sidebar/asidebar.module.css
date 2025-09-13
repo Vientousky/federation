@@ -1,6 +1,4 @@
-/*  ================================================== */
 /* ======> DISEÑO DEL ASIDEBAR DE ADMINITRACIÓN <====== */
-/*  ================================================== */
 
 .asidebar {
     top: 0;
@@ -11,19 +9,18 @@
     flex-direction: column;
     background: var(--bg-600);
     backdrop-filter: var(--filter-sm);
-    border: 1px solid var(--bg-400);
-    border-radius: 0 20px 20px 0;
+    border-right: 1px solid var(--bg-400);
 
     padding: 16px;
     transition: width 0.3s ease-in-out;
 
     /* =======<[Sidebar Imagen]>======= */
     .asidebarImg {
+        aspect-ratio: 16 / 1;
         display: flex;
         justify-content: flex-end;
         position: relative;
         border-bottom: 1px solid var(--bg-400);
-
         padding-bottom: 12px;
 
 

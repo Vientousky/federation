@@ -7,8 +7,8 @@
 /* ====>  Apartado de reponsi <==== */
 /* ================================ */
 
-.boxeador {
-    max-width: 1200px;
+.profileWrapper {
+    max-width: 1080px;
     width: 90%;
 
     margin: 0 auto;
@@ -21,18 +21,12 @@
     /* perfil principal del boxeador */
 
     .profile {
+        display: flex;
+        gap: 2rem;
 
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(3, auto);
-        gap:12px 24px;
-
-        /* imagen del mismo boxeador */
-
-        .profile__img {
-            grid-column: span 2 / span 2;
-            grid-row: span 2 / span 2;
-
+        .profileImg {
+            max-width: 50%;
+            flex: 0 0 50%;
 
             & img {
                 width: 100%;
@@ -45,12 +39,11 @@
 
             /* nombre y estado de boxeador  */
 
-            .figcaption {
+            .profileIndetification {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
 
-                margin-top: 12px;
 
                 background-color: var(--bg-600);
                 backdrop-filter: blur(5px);
@@ -59,138 +52,81 @@
                 
                 border: 1px solid var(--bg-400);
                 border-radius: 1rem;
-                padding: 6px 12px;
+
+                margin-bottom: 12px;
+                padding: 8px 12px;
 
                 & h2 {
                     font-size: 1.55rem;
                 }
 
-                & p {
-                    font-size: 1.15em;
+                & ul {
+                    list-style: none;
+                    display: flex;
+                    gap: 1rem;
+
+                    li {
+                        font-size: 1em;
+                    }
+
+                    .activo {
+                        color: var(--color-ve-500);
+                    }
+
+                    .inactivos {
+                        color: var(--color-na-500);
+                    }
+
+                    .retirados {
+                        color: var(--color-am-500);
+                    }
+
+                    .Maculino {
+                        color: var(--color-az-500);
+                    }
+
+                    .Femenino, .suspendidos {
+                        color: var(--color-ro-500);
+                    }
                 }
             }
         }
 
-        .profile__entrenador {
-            grid-column: span 2 / span 2;
-            grid-column-start: 3;
+        .profileDetails {
+            max-width: 50%;
+            flex: 0 0 50%;
 
-            .descrition {
-                font-size: 1.2rem;
-                margin-bottom: 8px;
-            }
-
-        }
-
-        .profile__info {
-            grid-column: span 2 / span 2;
-            grid-row: span 2 / span 2;
-            grid-column-start: 3;
-            grid-row-start: 2;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap:12px ;
-
-            background-color: var(--bg-600);
-            backdrop-filter: blur(5px);
-            box-shadow:0 0 10px #1c1c1d;
-
-            border: 1px solid var(--bg-400);
-            border-radius: 1rem;
-            padding: 1rem;
-        }
-
-        /* visualizacion de v-d-e-ns */
-
-        .profile__stats {
-            grid-column: span 2 / span 2;
-            grid-row-start: 3;
-
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 1rem;
 
-            .card {
-                display: flex;
-                flex-direction: column;
-                gap: 6px;
+            .detailsInfo {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
 
-                background-color: var(--bg-600);
-                backdrop-filter: blur(5px);
-                box-shadow:0 0 10px #1c1c1d;
-                
+                background: var(--bg-600);
+                backdrop-filter: var(--filter-lg);
                 border: 1px solid var(--bg-400);
-                border-radius: 1rem;
+                border-radius: var(--radius-xl) 0;
                 padding: 1rem;
 
-                text-align: center;
+                .infoItem {
 
-                & h1 {
-                    font-size: 2rem;
+                    .name {
+                        font-size: 1.10em;
+                        color: var(--color-na-500);
+                    }
+
+                    .value {
+                        font-size: 1em;
+                    }
                 }
             }
-
-            .victorias {
-                color: var(--color-green);
-            }
-
-            .derrotas {
-                color: var(--color-red);
-            }
-
-            .empates {
-                color: var(--color-blue);
-            }
-
-            .ns {
-                color: var(--color-yellow);
-            }
         }
+
     }
 
-    /* apartado de combates  */
-
-    .combates {
-        width: 100%;
-
-        background-color: var(--bg-600);
-        backdrop-filter: blur(5px);
-        box-shadow:0 0 10px #1c1c1d;
-        
-        border-collapse: separate;
-        border-spacing: 0;
-
-        .combat_boxer {
-            font-size: 2rem;
-            margin-bottom: 1.25rem;
-        }
-
-        & th, & td {
-            padding: 1rem;
-        }
-
-        & td {
-            color: var(--text-primary);
-        }
-
-        & th {
-            text-align: left;
-            font-weight: bold;
-            color: var(--text-contrast);
-            border-bottom: 1px solid var(--bg-400);
-        }
-        
-
-        & tr {
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            border-radius: 1rem;
-
-            &:hover {
-                background-color: var(--bg-500);               
-            }
-        }
-        
-    }
 }
 
 

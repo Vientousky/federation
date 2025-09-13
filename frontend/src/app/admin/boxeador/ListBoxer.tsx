@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { BsBrush, BsTrash } from "react-icons/bs";
+import { BsPen, BsTrash } from "react-icons/bs";
 import { BoxeadorInfo } from "@/app/lib/Boxeador";
 import stylesTables from "@/app/styles/table.module.css";
 import Image from "next/image";
@@ -38,7 +38,7 @@ export default function ListBoxer({ boxeador }: Props) {
         <div className={stylesTables.person}>
           <span>
             <Image
-              src={boxeador.boxer_foto || "/img/default.jpeg"}
+              src={boxeador.foto_boxeador || "/img/default.jpeg"}
               alt={boxeador.nombre}
               width={36}
               height={36}
@@ -51,10 +51,10 @@ export default function ListBoxer({ boxeador }: Props) {
         </div>
       </td>
       <td data-cell="sexo">{boxeador.sexo}</td>
-      <td data-cell="N°Licencia">{boxeador.n_licencia}</td>
+      <td data-cell="N°Licencia">{boxeador.licencia}</td>
       <td data-cell="Localidad">{boxeador.localidad}</td>
-      <td data-cell="Estatus" className={boxeador.status}>
-        {boxeador.status}
+      <td data-cell="Estatus" className={boxeador.estado}>
+        {boxeador.estado}
       </td>
 
       <td data-cell="Editar">
@@ -62,13 +62,15 @@ export default function ListBoxer({ boxeador }: Props) {
           <button
             className={stylesTables.editar}
             onClick={() => handleEdit(boxeador.id)}
+            title="Edictar"
           >
-            <BsBrush />
+            <BsPen />
           </button>
 
           <button
             className={stylesTables.eliminar}
             onClick={() => handleDelete(boxeador.id)}
+            title="Eliminar"
           >
             <BsTrash />
           </button>

@@ -1,4 +1,4 @@
-import { Montserrat , Audiowide } from 'next/font/google'
+import { Montserrat, Bebas_Neue  } from 'next/font/google'
 
 export const montserrat = Montserrat({
     subsets:['latin'],
@@ -6,8 +6,8 @@ export const montserrat = Montserrat({
     variable:'--fonts-primario'
 });
 
-export const audiowide = Audiowide ({
+export const bebas_Neue  =  Bebas_Neue ({
     subsets:['latin'],
     weight:['400'],
     variable:'--fonts-casual'
-})
+});

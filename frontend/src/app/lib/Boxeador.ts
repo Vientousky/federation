@@ -2,21 +2,21 @@ export interface BoxeadorInfo {
   id: string;
   nombre: string;
   apellido: string;
-  fecha_nacimiento: string;
+  nacimiento: string;
   sexo: string;
   dni: string;
-  n_licencia: string;
-  provincia: string;
+  licencia: string;
+  vencimiento:string;
+  provincias: string;
   localidad: string;
-  debutaje: string;
-  carrera: string;
   peso: string;
-  divicion: string;
-  status: string;
+  division: string;
+  estado: string;
   altura: string;
   alcance: string;
-  stance: string;
-  boxer_foto: string;
+  postura_combate: string;
+  foto_boxeador: string;
+  entrenador: string | null;
 
   combates_stats: {
     total: number;
@@ -28,4 +28,12 @@ export interface BoxeadorInfo {
     total_derrotas: number;
     total_empates: number;
   }
+}
+
+export interface BoxerStatistics {
+  total_boxeadores:number;
+  activos:number;
+  inactivos:number;
+  suspendidos:number;
+  retirados:number;
 }

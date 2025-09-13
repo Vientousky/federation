@@ -41,7 +41,7 @@ class EntrenadorViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     serializer_class = EntrenadorSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['nombre', 'apellido', 'n_licencia']
+    search_fields = ['nombre', 'apellido', 'licencia']
 
     @action(detail=False, methods=['get'], url_path='estadisticas')
     def all_trainers(self, request):

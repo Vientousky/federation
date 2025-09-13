@@ -1,11 +1,12 @@
 // app/admin/layout.tsx
+import Asidebar from '../layout/sidebar/Asidebar';
 import './index.css'
-import LayoutClient from "./layoutClient";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+export default function LayoutDasboard({ children }: { children: React.ReactNode }) {
   return (
-    <LayoutClient>
+    <>
+      <Asidebar/>
       {children}
-    </LayoutClient>
+    </>
   );
 }

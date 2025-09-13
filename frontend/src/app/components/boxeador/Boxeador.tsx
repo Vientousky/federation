@@ -1,59 +1,91 @@
 import { BoxeadorInfo } from "@/app/lib/Boxeador";
+
+import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./boxeador.module.css";
 
 type BoxerProps = {
   boxer: BoxeadorInfo;
+  showLink?: boolean;
 };
+export default function Boxeador({ boxer, showLink = false }: BoxerProps) {
+  const dataTrainer = [
+    { name: "Sexo", value: boxer.sexo },
+    { name: "DNI", value: boxer.dni },
+    { name: "Licencia Nº", value: boxer.licencia },
+    { name: "Vencimiento", value: boxer.vencimiento },
+  ];
 
-export default function Boxeador({ boxer }: BoxerProps) {
-  const dataBoxer = [
-    { nombre: "DNI", value: boxer.dni },
-    { nombre: "N° licencia", value: boxer.n_licencia },
-    { nombre: "combates total", value: boxer.combates_stats.total },
-    { nombre: "Nocaus", value: boxer.combates_stats.porcentaje_KO },
-    { nombre: "Victorias", value: boxer.combates_stats.total_victorias },
-    { nombre: "Derrotas", value: boxer.combates_stats.total_derrotas },
-    { nombre: "Empates", value: boxer.combates_stats.total_empates },
+  const combatBoxer = [
+    { name: "Vitoria", value: 0 },
+    { name: "Derrotas", value: 0 },
+    { name: "Empates", value: 0 },
+    { name: "Sin decision", value: 0 },
   ];
 
   return (
-    <article className={`${styles.boxerCard} card_color`}>
+    <div className={styles.boxerCard}>
       <header className={styles.header}>
-        <figure className={styles.headerAvatar}>
+        <figure className={styles.headerFoto}>
           <Image
-            className={styles.avatar}
-            src={boxer.boxer_foto || "/img/default.jpeg"}
-            alt={boxer.apellido}
-            width={128}
-            height={128}
+            src={boxer.foto_boxeador || "/img/default.jpeg"}
+            alt={boxer.nombre}
+            width={125}
+            height={125}
           />
+
+          <figcaption className={styles.figcaption}>
+            <ul>
+              {combatBoxer.map((item, index) => (
+                <li key={index} className={styles.item}>
+                  <span>{item.name}</span>
+                  <span>{item.value}</span>
+                </li>
+              ))}
+            </ul>
+          </figcaption>
         </figure>
 
-        <section className={styles.headerInfoBoxer}>
-          <div className={styles.BoxerData}>
-            <h2>
+        <section className={styles.headerData}>
+          <div className={styles.dataIdentification}>
+            <h2 className={styles.fullName}>
               {boxer.nombre} {boxer.apellido}
             </h2>
-            <p>
-              {boxer.localidad}: {boxer.provincia}
-            </p>
+            <p className={styles.charge}>{boxer.sexo}</p>
           </div>
 
-          <div className={styles.HeaderGeneralData}>
-            {dataBoxer.map((item, index) => (
-              <article key={index} className={styles.item}>
-                <span>{item.nombre}: </span>
-                <span>{item.value}</span>
+          <div className={styles.dataGeneral}>
+            {dataTrainer.map((item, index) => (
+              <article key={index} className={styles.cardTrainer}>
+                <span className={styles.itemName}>{item.name}:</span>
+                <span className={styles.itemValue}>
+                  {item.value || "No disponible"}
+                </span>
               </article>
             ))}
           </div>
         </section>
       </header>
+      <footer
+        className={clsx(
+          styles.footer,
+          showLink ? styles.footerWithLink : styles.footerNoLink
+        )}
+      >
+        <div>
+          <h2>{boxer.provincias} </h2>
+          <p>{boxer.localidad}</p>
+        </div>
 
-      <footer>
-        <h1>desarrollando</h1>
+        {showLink && (
+          <div>
+            <Link href={`/boxeador/${boxer.id}`} className={styles.linkPerfil}>
+              Ver perfil
+            </Link>
+          </div>
+        )}
       </footer>
-    </article>
+    </div>
   );
 }

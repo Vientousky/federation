@@ -2,54 +2,74 @@
 
 .welcome {
 
-    --bg-gradient:rgba(29, 30, 34, 0.6);
-
+    --bg-gradient: rgba(29, 30, 34, 0.6);
     width: 100%;
-    min-height: 100vh;
-    background: linear-gradient(var(--bg-gradient),var(--bg-gradient)), url(/img/portada.webp) no-repeat center ;
+    min-height: 100dvh;
+    background: linear-gradient(var(--bg-gradient), var(--bg-gradient)), url(/img/portada.webp) no-repeat center;
     background-size: cover;
-    mask-image: linear-gradient(#000000 80%, transparent);
+    mask-image: linear-gradient(rgb(0, 0, 0) 80%, transparent);
     display: flex;
 
-    /*======================*/
-    /*<===< SUBCONTEDOR>===<*/
-    /*======================*/
+    /*<===< SUBCONTEDOR >===<*/
 
-    .welcome__container {
-        max-width: 1000px;
-        width: 90%;
+    .welcomeContainer {
+        max-width: 1080px;
+        width: 70%;
         margin: auto;
         text-align: center;
 
-        & h1,
-        & p {
-            font-family: var(--fonts-casual);
-        }
-
-        & h1 {
-            font-size: clamp(1.8rem, 4vw, 3.6rem);
-            letter-spacing: 2.25px;
-            line-height: 1.3;
+        .containerTitulo {
+            font-family: var(--fonts-secundaria);
+            font-size: clamp(4.5em, 4vw, 2.6em);
+            letter-spacing: 5px;
+            line-height: 1.2;
             margin-bottom: 1rem;
 
-            & strong {
-                background: linear-gradient(45deg, orange, #e48406, #e90e4f);
+            strong {
+                background: linear-gradient(45deg, var(--color-na-500), var(--color-na-500), var(--color-ro-500), var(--color-ro-400));
                 background-clip: text;
                 color: transparent;
             }
         }
 
-        & p {
-            font-size: clamp(1rem, 3vw, 1.25em);
+
+
+        .containerSubtitulo {
+            font-size: clamp(1.5em, 3vw, 1.25em);
+            font-weight: 500;
         }
+    }
+
+    /*<===< scroll >===<*/
+
+    .welcomeScroll {
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 2rem;
+        animation: bounce 3s infinite;
     }
 }
 
-/*==================*/
-/*<===< REPONSI>===<*/
-/*==================*/
+@keyframes bounce {
+    0% {
+        transform: translateY(12px);
+    }
 
-@media (max-width:700px){
+    50% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(12px);
+    }
+
+}
+
+/*<===< REPONSI >===<*/
+
+@media (max-width:700px) {
     .welcome {
         background-position: center;
     }

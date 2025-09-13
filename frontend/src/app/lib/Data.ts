@@ -24,17 +24,29 @@ const API = process.env.NEXT_PUBLIC_BACKEND_URL;
 // Lugar de carga de dato general
 export async function LoadData(endpoint: string) {
   const res = await fetch(`${API}${endpoint}`, {
-    cache: "no-store",
+    cache: "no-store", // evita cache en Next.js 13+
   });
+
+  if (!res.ok) {
+    throw new Error(`Error ${res.status}: ${res.statusText}`);
+  }
+
   const data = await res.json();
   return data;
 }
 
 // Lugar de carga dinamica de dato (es decir [ID])
 export async function LoadDatadynamic<T>(endpoint: string): Promise<T> {
-  const res = await fetch(`${API}${endpoint}`);
-  if (!res.ok) throw new Error("Error en la carga de datos");
-  return res.json();
+  const res = await fetch(`${API}${endpoint}`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) {
+    throw new Error(`Error ${res.status}: ${res.statusText}`);
+  }
+
+  const data: T = await res.json();
+  return data;
 }
 
 //Apartado de Busqueda

@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
+import ModalInfo from "@/app/ui/modal/ModalInfo";
 import styles from './index.module.css'
-import { BsGearFill , BsInfoCircleFill  } from "react-icons/bs";
+import {BsInfoCircleFill  } from "react-icons/bs";
 
 const Action: React.FC = () => {
+
+  const [openModal, setOpenModal] = useState<null | "info" | "config">(null);
+
   return (
     <div className={styles.action}>
-      <button className={styles.buttom}>
+      <button className={styles.buttom} onClick={() => setOpenModal("info")}>
         <BsInfoCircleFill  />
-      </button>
-
-      <button className={styles.buttom}>
-        <BsGearFill/>
-      </button>
+      </button> 
+      <ModalInfo isOpen={openModal === "info"} onClose={() => setOpenModal(null)}/>
     </div>
   );
 };

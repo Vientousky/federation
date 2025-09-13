@@ -5,12 +5,12 @@ const Search: React.FC = () => {
 
   return (
     <>
-      <form className={styles.search_container}>
-        <TbSearch />
+      <form className={styles.searchContainer}>
+        <TbSearch className={styles.searchIcon} />
         <input
           type="search"
           placeholder="Search..."
-          className={styles.search_input}
+          className={styles.searchInput}
           aria-label="Search"
         />
       </form>

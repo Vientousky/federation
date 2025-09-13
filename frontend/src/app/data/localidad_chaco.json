@@ -1,0 +1,102 @@
+[
+  {
+    "departamento": "Almirante Brown",
+    "localidades": ["Concepción del Bermejo", "Los Frentones", "Pampa del Infierno", "Taco Pozo"]
+  },
+  {
+    "departamento": "Bermejo",
+    "localidades": ["General Vedia", "Isla del Cerrito", "La Leonesa", "Las Palmas", "Puerto Bermejo", "Puerto Eva Perón"]
+  },
+  {
+    "departamento": "Chacabuco",
+    "localidades": ["Charata"]
+  },
+  {
+    "departamento": "Comandante Fernández",
+    "localidades": ["Presidencia Roque Sáenz Peña"]
+  },
+  {
+    "departamento": "Doce de Octubre",
+    "localidades": ["Gancedo", "General Capdevila", "General Pinedo"]
+  },
+  {
+    "departamento": "Dos de Abril",
+    "localidades": ["Hermoso Campo"]
+  },
+  {
+    "departamento": "Fray Justo Santa María de Oro",
+    "localidades": ["Chorotis", "Santa Sylvina"]
+  },
+  {
+    "departamento": "General Belgrano",
+    "localidades": ["Corzuela"]
+  },
+  {
+    "departamento": "General Donovan",
+    "localidades": ["La Escondida", "La Verde", "Lapachito", "Makallé"]
+  },
+  {
+    "departamento": "General Güemes",
+    "localidades": ["El Sauzalito", "El Espinillo", "Fuerte Esperanza", "Juan José Castelli", "Miraflores", "Misión Nueva Pompeya", "Villa Río Bermejito"]
+  },
+  {
+    "departamento": "Independencia",
+    "localidades": ["Avia Terai", "Campo Largo", "Napenay"]
+  },
+  {
+    "departamento": "Libertad",
+    "localidades": ["Colonia Popular", "Laguna Blanca", "Puerto Tirol", "General Obligado", "Cardoso", "Puerto Bastiani", "Villa Jalón", "Cruce Viejo"]
+  },
+  {
+    "departamento": "Libertador General San Martín",
+    "localidades": ["Ciervo Petiso", "General Jose de San Martín", "La Eduvigis", "Laguna Limpia", "Pampa del Indio", "Pampa Almirón", "Presidencia Roca"]
+  },
+  {
+    "departamento": "Maipu",
+    "localidades": ["Tres Isletas"]
+  },
+  {
+    "departamento": "Mayor Luis Jorge Fontana",
+    "localidades": ["Coronel Du Graty", "Enrique Urién", "Villa Ángela"]
+  },
+  {
+    "departamento": "Nueve de Julio",
+    "localidades": ["Las Breñas"]
+  },
+  {
+    "departamento": "O'Higgins",
+    "localidades": ["La Clotilde", "La Tigra", "San Bernardo"]
+  },
+  {
+    "departamento": "Presidencia de la Plaza",
+    "localidades": ["Presidencia de la Plaza"]
+  },
+  {
+    "departamento": "Primero de Mayo",
+    "localidades": ["Margarita Belén", "Colonia Benítez"]
+  },
+  {
+    "departamento": "Quitilipi",
+    "localidades": ["Quitilipi", "San Martín"]
+  },
+  {
+    "departamento": "San Fernando",
+    "localidades": ["Resistencia", "Barranqueras", "Basail", "Fontana", "Puerto Vilelas"]
+  },
+  {
+    "departamento": "San Lorenzo",
+    "localidades": ["Villa Berthet", "Samuhú"]
+  },
+  {
+    "departamento": "Sargento Cabral",
+    "localidades": ["Capitán Solari", "Colonia Elisa", "Colonias Unidas", "Las Garcitas"]
+  },
+  {
+    "departamento": "Tapenagá",
+    "localidades": ["Charadai", "Cote Lai"]
+  },
+  {
+    "departamento": "Veinticinco de Mayo",
+    "localidades": ["Machagai"]
+  }
+]

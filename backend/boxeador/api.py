@@ -4,21 +4,19 @@ from rest_framework.response import Response
 from .serializers import BoxeadorSerializer
 from .models import Boxeador
 from collections import Counter
-
-
 class BoxeadorViewSet(viewsets.ModelViewSet):
     queryset = Boxeador.objects.all()
     permission_classes = [permissions.AllowAny]
     serializer_class = BoxeadorSerializer
     filter_backends = [filters.SearchFilter]
-    search_fields = ['nombre', 'apellido', 'numero_licencia']
+    search_fields = ['nombre', 'apellido', 'licencia']
 
     
 
     @action(detail=False, methods=['get'], url_path='estadisticas')
     def total_boxeadores(self,  request):
         all = Boxeador.objects.count()
-        state = Boxeador.objects.values_list('status', flat=True)
+        state = Boxeador.objects.values_list('estado', flat=True)
         count = Counter(state)
 
         return Response({

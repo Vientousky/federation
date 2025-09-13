@@ -1,4 +1,4 @@
-.entrenador {
+.trainerWrapper {
     width: 100%;
     margin: auto;
 
@@ -8,7 +8,6 @@
     border: 1px solid var(--bg-400);
     border-radius: var(--radius-xl);
 
-    transition: 0.3s ease-in-out;
 
     &:hover {
         box-shadow: 0 0 10px rgba(129, 127, 127, 0.1);
@@ -18,12 +17,15 @@
     .header {
         display: flex;
 
-        .header_foto {
-            width: 250px;
-            height: 250px;
+        .headerFoto {
+
+            max-width: 30%;
+            flex: 0 0 30%;
+
+            width: 150px;
+            height: 150px;
             object-fit: cover;
             overflow: hidden;
-
 
             & img {
                 width: 100%;
@@ -32,44 +34,57 @@
             }
         }
 
-        .header_info {
+        .headerData {
+            max-width: 70%;
+            flex: 0 0 70%;
+
             width: 100%;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
 
-            .header_info_nombre {
-                background-color: var(--color-blue);
-                border-radius: 0 var(--radius-xl) 0 0;
-                text-align: center;
+            .dataIdentification {
+                background-color: var(--color-ro-400);
+
+                margin-top: calc(.25rem * 6);
                 padding: 0.5rem 1rem;
 
-                .nombre {
-                    font-size: 1.5rem;
+                .fullName {
+                    font-size: 2em;
+                    font-family: var(--fonts-secundaria);
                     font-weight: 600;
+                    letter-spacing: 3px;
                     color: var(--text-600);
-                    margin-bottom: 0.25rem;
                 }
 
-                .cargo {
-                    font-size: 1rem;
+                .charge {
+                    font-size: 1.05em;
                     font-weight: 500;
                     color: var(--text-500);
                 }
             }
 
-            .header_info_items {
+            .dataGeneral {
                 width: 100%;
-                padding: 0 0 0.5rem 1rem ;
+                padding: 0 0 1rem 1rem;
 
                 display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
                 gap: 0.5rem;
 
-                .card_trainer {
+                .cardTrainer {
                     display: flex;
                     flex-direction: column;
                     gap: 0.25rem;
+
+                    .itemName {
+                        font-size: 1.15em;
+                    }
+
+                    .itemValue {
+                        color: var(--text-500);
+                        font-size: 0.99em;
+                    }
                 }
             }
         }
@@ -78,35 +93,34 @@
     .footer {
         display: flex;
         align-items: center;
-        background: var(--color-blue);
+
+        background: var(--color-ro-400);
         border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+
         padding: 0.5rem 1rem;
 
-        .footer_localidad {
-            flex: 1;
-
-            h2 {
-                font-size: 1.25rem;
-                font-weight: 600;
-                color: var(--text-100);
-            }
+        & h2 {
+            font-size: 2em;
+            font-family: var(--fonts-secundaria);
+            font-weight: 500;
+            letter-spacing: 4px;
         }
 
-        .footer_link {
-            flex: 0 0 auto;
-
-            & a {
-                display: flex;
-                align-items: center;
-                gap: 0.2rem;
-                color: var(--text-600);
-                transition: 0.3s ease-in-out;
-
-                &:hover {
-                    color: var(--text-500);
-                    text-decoration: underline;
-                }
-            }
+        & p {
+            color: var(--text-500);
         }
+
+        & a {
+            color: var(--text-600);
+            font-size:1.25em;
+        }
+    }
+
+    .footerWithLink {
+        justify-content: space-between;
+    }
+
+    .footerNoLink {
+        justify-content: center;
     }
 }

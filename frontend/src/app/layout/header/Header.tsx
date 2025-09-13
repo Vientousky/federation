@@ -1,6 +1,7 @@
 'use client'
 
 import {useEffect, useRef, useState} from 'react';
+import { BsX, BsList} from "react-icons/bs";
 import Nav from './Nav';
 import Action from './Action';
 import Search from './Search';
@@ -69,7 +70,7 @@ const Header: React.FC = () => {
             <Search/>
 
             <button className={styles.movilBotton} onClick={()=> setMobilMenuOpen(!mobilMenuOpen)}>
-                {mobilMenuOpen ? "✕" : "☰"}
+                {mobilMenuOpen ?<BsX/> :<BsList/> }
             </button>
 
             </section>

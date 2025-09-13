@@ -1,8 +1,6 @@
 /* ======= [APARTADO DE TABLA] ======= */
-
-/*  ===================================================== */
 /* ======> Diseño de PARA TODAS LAS TABLAS DE ADMINITRACIÓN <===== */
-/*  ===================================================== */
+
 
 .trainer_list_panel {
     background-color: var(--bg-600);
@@ -12,12 +10,14 @@
     border-radius: var(--radius-xl);
     
     /* =======<[CONCENTRANDO ESTYLOS GENERALES]>======= */
+
     .control_panel,
     .navigation_footer {
         padding: 12px 1rem;
     }
 
     /* =======<[APARTADOS DE PANEL DE CONTROL]>======= */
+
     .control_panel {
         display: flex;
         align-items: center;
@@ -31,6 +31,7 @@
         }
 
         /* =======<[PANEL DE ACCIONES]>======= */
+
         .panel_actions {
             flex: auto;
             display: flex;
@@ -72,21 +73,6 @@
                 grid-template-columns: auto;
                 gap: 10px;
             }
-
-            & input,
-            & select {
-                width: 100%;
-                padding: 6px 12px;
-
-                background-color: var(--bg-500);
-                border: 1px solid var(--bg-300);
-                border-radius: var(--radius-lg);
-
-                &:focus {
-                    outline: none;
-                    border-color: var(--color-green);
-                }
-            }
         }
 
         & tr {
@@ -94,7 +80,6 @@
 
             &:hover {
                 background-color: var(--bg-400);
-
             }
         }
 
@@ -110,6 +95,7 @@
             pointer-events: auto;
             transform: translateX(0);
         }
+
 
         .NoEncontrado {
             text-align: center;
@@ -148,18 +134,15 @@
                 }
             }
 
-            .eliminar,
-            .cancelar {
-                color: var(--color-red);
+            .eliminar {
+                color: var(--color-ro-500);
             }
 
             .editar {
-                color: var(--color-yellow);
+                color: var(--color-ve-500);
             }
 
-            .guardar {
-                color: var(--color-green);
-            }
+
         }
 
     }

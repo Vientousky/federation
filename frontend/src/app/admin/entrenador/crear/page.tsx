@@ -2,10 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
+import Sexo from "@/app/data/sexo.json";
+import Provincia from "@/app/data/provincia.json";
+import Localidad_chaco from "@/app/data/localidad_chaco.json";
+import Cargo from "@/app/data/entrenador_cargo.json";
 import ImgDrop from "../../components/imgDrop/ImgDrop";
 import Notification from "@/app/components/notification/Notification";
 import Image from "next/image";
-import styles from "./createTrainer.module.css";
+import styles from "../trainerForm.module.css";
 
 export default function CrearEntrenadorPage() {
   const router = useRouter(); // Hook para navegación
@@ -13,12 +18,14 @@ export default function CrearEntrenadorPage() {
   const [trainerData, setTrainerData] = useState({
     nombre: "",
     apellido: "",
-    cargo: "",
+    sexo: "",
     dni: "",
-    n_licencia: "",
+    licencia: "",
     vencimiento: "",
+    cargo: "",
+    provincias: "",
     localidad: "",
-    trainer_foto: "",
+    foto_entrenador: "",
   });
 
   const [notification, setNotification] = useState<{
@@ -28,7 +35,6 @@ export default function CrearEntrenadorPage() {
 
   // Función para enviar datos al backend
   async function enviarDatos(data: typeof trainerData) {
-
     try {
       const res = await fetch(
         `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/`,
@@ -81,22 +87,25 @@ export default function CrearEntrenadorPage() {
       setTrainerData({
         nombre: "",
         apellido: "",
-        cargo: "",
+        sexo: "",
         dni: "",
-        n_licencia: "",
+        licencia: "",
         vencimiento: "",
+        cargo: "",
+        provincias: "",
         localidad: "",
-        trainer_foto: "",
+        foto_entrenador: "",
       });
     }
   };
 
   return (
-    <>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.createTrainer}>
-          <figure className={styles.trainerLogo}>
+    <main>
+      <form className={styles.formWrapper} onSubmit={handleSubmit}>
+        <div className={styles.contentLicense}>
+          <figure className={styles.licenseHeader}>
             <Image
+            className={styles.logo}
               src="/img/logo.webp"
               alt="fa-cha-box"
               width={65}
@@ -104,25 +113,26 @@ export default function CrearEntrenadorPage() {
             />
 
             <figcaption className={styles.slema}>
-              <h1>Licencia de entrenador</h1>
-              <p>Federacion chaqueña boxeo</p>
+              <h1 className={styles.title}>Licencia de entrenador</h1>
+              <p className={styles.subtitle}>Federacion chaqueña boxeo</p>
             </figcaption>
           </figure>
 
-          <section className={styles.trainerDate}>
-            <article className={styles.dateImg}>
+          <section className={styles.licenseForm}>
+            <article className={styles.formImg}>
               <ImgDrop
                 width={350}
                 height={350}
                 onImageUpload={(url) =>
-                  setTrainerData((prev) => ({ ...prev, trainer_foto: url }))
+                  setTrainerData((prev) => ({ ...prev, foto_entrenador: url }))
                 }
               />
             </article>
 
-            <div className={styles.dateContent}>
-              <section className={styles.dateContentName}>
-                <div className={styles.dateItem}>
+            <article className={styles.formFields}>
+
+              <section className={styles.fieldsIdentification}>
+                <div className={styles.formItem}>
                   <label htmlFor="nombre">Nombre</label>
                   <input
                     type="text"
@@ -139,7 +149,7 @@ export default function CrearEntrenadorPage() {
                   />
                 </div>
 
-                <div className={styles.dateItem}>
+                <div className={styles.formItem}>
                   <label htmlFor="apellido">Apellido</label>
                   <input
                     type="text"
@@ -156,29 +166,31 @@ export default function CrearEntrenadorPage() {
                   />
                 </div>
 
-                <div className={styles.dateItem}>
-                  <label htmlFor="cargo">Cargo</label>
+                <div className={styles.formItem}>
+                  <label htmlFor="sexo">Sexo</label>
                   <select
-                    id="cargo"
-                    value={trainerData.cargo}
+                    id="sexo"
+                    value={trainerData.sexo}
                     onChange={(e) =>
                       setTrainerData((prev) => ({
                         ...prev,
-                        cargo: e.target.value,
+                        sexo: e.target.value,
                       }))
                     }
                     required
                   >
-                    <option disabled selected> !-----!</option>
-                    <option value="Director Técnico">Director Técnico</option>
-                    <option value="Preparador Físico">Preparador Físico</option>
-                    <option value="Nutricionista">Nutricionista</option>
+                    <option value="">Seleccione un sexo</option>
+                    {Sexo.map((s) => (
+                      <option key={s.value} value={s.value}>
+                        {s.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </section>
 
-              <section className={styles.dateContentForm}>
-                <div className={styles.dateItem}>
+              <section className={styles.fieldsGeneral}>
+                 <div className={styles.formItem}>
                   <label htmlFor="dni">DNI</label>
                   <input
                     type="text"
@@ -195,16 +207,16 @@ export default function CrearEntrenadorPage() {
                   />
                 </div>
 
-                <div className={styles.dateItem}>
-                  <label htmlFor="n_licencia">Nº licencia</label>
+                <div className={styles.formItem}>
+                  <label htmlFor="licencia">Nº licencia</label>
                   <input
                     type="text"
-                    id="n_licencia"
-                    value={trainerData.n_licencia}
+                    id="licencia"
+                    value={trainerData.licencia}
                     onChange={(e) =>
                       setTrainerData((prev) => ({
                         ...prev,
-                        n_licencia: e.target.value,
+                        licencia: e.target.value,
                       }))
                     }
                     maxLength={16}
@@ -212,7 +224,7 @@ export default function CrearEntrenadorPage() {
                   />
                 </div>
 
-                <div className={styles.dateItem}>
+                <div className={styles.formItem}>
                   <label htmlFor="vencimiento">Vencimiento</label>
                   <input
                     type="date"
@@ -228,174 +240,103 @@ export default function CrearEntrenadorPage() {
                   />
                 </div>
 
-                <div className={styles.dateItem}>
-                  <label htmlFor="localidad">Localidad</label>
+                <div className={styles.formItem}>
+                  <label htmlFor="cargo">Cargo</label>
                   <select
-                    name="localidad"
-                    id="localidad"
-                    value={trainerData.localidad}
+                    id="cargo"
+                    value={trainerData.cargo}
                     onChange={(e) =>
                       setTrainerData((prev) => ({
                         ...prev,
-                        localidad: e.target.value,
+                        cargo: e.target.value,
                       }))
                     }
                     required
                   >
-                    <option disabled selected> !-----!</option>
-                    <optgroup label="Almirante Brown">
-                      <option value="Concepción del Bermejo">
-                        Concepción del Bermejo
+                    <option value="">Seleccione un cargo</option>
+                    {Cargo.map((c) => (
+                      <option key={c.value} value={c.value}>
+                        {c.label}
                       </option>
-                      <option value="Los Frentones">Los Frentones</option>
-                      <option value="Pampa del Infierno">
-                        Pampa del Infierno
-                      </option>
-                      <option value="Taco Pozo">Taco Pozo</option>
-                    </optgroup>
-                    <optgroup label="Bermejo">
-                      <option value="General Vedia">General Vedia</option>
-                      <option value="Isla del Cerrito">Isla del Cerrito</option>
-                      <option value="La Leonesa">La Leonesa</option>
-                      <option value="Las Palmas">Las Palmas</option>
-                      <option value="Puerto Bermejo">Puerto Bermejo</option>
-                      <option value="Puerto Eva Perón">Puerto Eva Perón</option>
-                    </optgroup>
-                    <optgroup label="Chacabuco">
-                      <option value="Charata">Charata</option>
-                    </optgroup>
-                    <optgroup label="Comandante Fernández">
-                      <option value="Presidencia Roque Sáenz Peña">
-                        Presidencia Roque Sáenz Peña
-                      </option>
-                    </optgroup>
-                    <optgroup label="Doce de Octubre">
-                      <option value="Gancedo">Gancedo</option>
-                      <option value="General Capdevila">
-                        General Capdevila
-                      </option>
-                      <option value="General Pinedo">General Pinedo</option>
-                    </optgroup>
-                    <optgroup label="Dos de Abril">
-                      <option value="Hermoso Campo">Hermoso Campo</option>
-                    </optgroup>
-                    <optgroup label="Fray Justo Santa María de Oro">
-                      <option value="Chorotis">Chorotis</option>
-                      <option value="Santa Sylvina">Santa Sylvina</option>
-                    </optgroup>
-                    <optgroup label="General Belgrano">
-                      <option value="Corzuela">Corzuela</option>
-                    </optgroup>
-                    <optgroup label="General Donovan">
-                      <option value="La Escondida">La Escondida</option>
-                      <option value="La Verde">La Verde</option>
-                      <option value="Lapachito">Lapachito</option>
-                      <option value="Makallé">Makallé</option>
-                    </optgroup>
-                    <optgroup label="General Güemes">
-                      <option value="El Sauzalito">El Sauzalito</option>
-                      <option value="El Espinillo">El Espinillo</option>
-                      <option value="Fuerte Esperanza">Fuerte Esperanza</option>
-                      <option value="Juan José Castelli">
-                        Juan José Castelli
-                      </option>
-                      <option value="Miraflores">Miraflores</option>
-                      <option value="Misión Nueva Pompeya">
-                        Misión Nueva Pompeya
-                      </option>
-                      <option value="Villa Río Bermejito">
-                        Villa Río Bermejito
-                      </option>
-                    </optgroup>
-                    <optgroup label="Independencia">
-                      <option value="Avia Terai">Avia Terai</option>
-                      <option value="Campo Largo">Campo Largo</option>
-                      <option value="Napenay">Napenay</option>
-                    </optgroup>
-                    <optgroup label="Libertad">
-                      <option value="Colonia Popular">Colonia Popular</option>
-                      <option value="Laguna Blanca">Laguna Blanca</option>
-                      <option value="Puerto Tirol">Puerto Tirol</option>
-                      <option value="General Obligado">General Obligado</option>
-                      <option value="Cardoso">Cardoso</option>
-                      <option value="Puerto Bastiani">Puerto Bastiani</option>
-                      <option value="Villa Jalon">Villa Jalón</option>
-                      <option value="Cruce Viejo">Cruce Viejo</option>
-                    </optgroup>
-                    <optgroup label="Libertador General San Martín">
-                      <option value="Ciervo Petiso">Ciervo Petiso</option>
-                      <option value="General Jose de San Martín">
-                        General Jose de San Martín
-                      </option>
-                      <option value="La Eduvigis">La Eduvigis</option>
-                      <option value="Laguna Limpia">Laguna Limpia</option>
-                      <option value="Pampa del Indio">Pampa del Indio</option>
-                      <option value="Pampa Almirón">Pampa Almirón</option>
-                      <option value="Presidencia Roca">Presidencia Roca</option>
-                    </optgroup>
-                    <optgroup label="Maipu">
-                      <option value="Tres Isletas">Tres Isletas</option>
-                    </optgroup>
-                    <optgroup label="Mayor Luis Jorge Fontana">
-                      <option value="Coronel Du Graty">Coronel Du Graty</option>
-                      <option value="Enrique Urién">Enrique Urién</option>
-                      <option value="Villa Ángela">Villa Ángela</option>
-                    </optgroup>
-                    <optgroup label="Nueve de Julio">
-                      <option value="Las Breñas">Las Breñas</option>
-                    </optgroup>
-                    <optgroup label="O'Higgins">
-                      <option value="La Clotilde">La Clotilde</option>
-                      <option value="La Tigra">La Tigra</option>
-                      <option value="San Bernardo">San Bernardo</option>
-                    </optgroup>
-                    <optgroup label="Presidencia de la Plaza">
-                      <option value="Presidencia de la Plaza">
-                        Presidencia de la Plaza
-                      </option>
-                    </optgroup>
-                    <optgroup label="Primero de Mayo">
-                      <option value="Margarita Belén">Margarita Belén</option>
-                      <option value="Colonia Benítez">Colonia Benítez</option>
-                    </optgroup>
-                    <optgroup label="Quitilipi">
-                      <option value="Quitilipi">Quitilipi</option>
-                      <option value="San Martín">San Martín</option>
-                    </optgroup>
-                    <optgroup label="San Fernando">
-                      <option value="Resistencia">Resistencia</option>
-                      <option value="Barranqueras">Barranqueras</option>
-                      <option value="Basail">Basail</option>
-                      <option value="Fontana">Fontana</option>
-                      <option value="Puerto Vilelas">Puerto Vilelas</option>
-                    </optgroup>
-                    <optgroup label="San Lorenzo">
-                      <option value="Villa Berthet">Villa Berthet</option>
-                      <option value="Samuhú">Samuhú</option>
-                    </optgroup>
-                    <optgroup label="Sargento Cabral">
-                      <option value="Capitán Solari">Capitán Solari</option>
-                      <option value="Colonia Elisa">Colonia Elisa</option>
-                      <option value="Colonias Unidas">Colonias Unidas</option>
-                      <option value="Las Garcitas">Las Garcitas</option>
-                    </optgroup>
-                    <optgroup label="Tapenagá">
-                      <option value="Charadai">Charadai</option>
-                      <option value="Cote Lai">Cote Lai</option>
-                    </optgroup>
-                    <optgroup label="Veinticinco de Mayo">
-                      <option value="Machagai">Machagai</option>
-                    </optgroup>
+                    ))}
                   </select>
                 </div>
               </section>
-            </div>
+
+            </article>
           </section>
 
-          <footer className={styles.trainerFooter}>
-            <button type="submit">Guardar</button>
+          <section className={styles.licenseLocalities}>
+            <article className={styles.formItem}>
+              <label htmlFor="provincia">Provincia</label>
+              <select
+                id="provincia"
+                value={trainerData.provincias}
+                onChange={(e) =>
+                  setTrainerData((prev) => ({
+                    ...prev,
+                    provincias: e.target.value,
+                    localidad: "", // reseteo localidad al cambiar provincia
+                  }))
+                }
+                required
+              >
+                <option value="">Seleccione una provincia</option>
+                {Provincia.map((prov) => (
+                  <option key={prov.code} value={prov.code}>
+                    {prov.name}
+                  </option>
+                ))}
+              </select>
+            </article>
 
-            <button type="button" onClick={handleSaveAndAddAnother}>
+            <article className={styles.formItem}>
+              <label htmlFor="localidad">Localidades</label>
+              {trainerData.provincias === "Chaco" ? (
+                <select
+                  id="localidad"
+                  value={trainerData.localidad}
+                  onChange={(e) =>
+                    setTrainerData((prev) => ({
+                      ...prev,
+                      localidad: e.target.value,
+                    }))
+                  }
+                  required
+                >
+                  <option value="">Seleccione una localidad</option>
+                  {Localidad_chaco.map((dep) => (
+                    <optgroup key={dep.departamento} label={dep.departamento}>
+                      {dep.localidades.map((loc: string) => (
+                        <option key={loc} value={loc}>
+                          {loc}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+              ) : (
+                <input
+                  type="text"
+                  id="localidad"
+                  value={trainerData.localidad}
+                  onChange={(e) => {
+                    setTrainerData((prev) => ({
+                      ...prev,
+                      localidad: e.target.value,
+                    }));
+                  }}
+                  placeholder="Ingrese una localidad"
+                  required
+                />
+              )}
+            </article>
+          </section>
+
+          <footer className={styles.licenseFooter}>
+            <button type="submit" className={styles.guardar}>Guardar</button>
+
+            <button type="button" className={styles.agregar} onClick={handleSaveAndAddAnother}>
               Guardar y agrega otro
             </button>
           </footer>
@@ -409,6 +350,6 @@ export default function CrearEntrenadorPage() {
           onClose={() => setNotification(null)}
         />
       )}
-    </>
+    </main>
   );
 }

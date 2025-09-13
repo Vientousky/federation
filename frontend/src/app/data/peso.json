@@ -1,0 +1,12 @@
+[
+  { "code": "Peso Mosca", "name": "Peso Mosca" },
+  { "code": "Peso Gallo", "name": "Peso Gallo" },
+  { "code": "Peso Pluma", "name": "Peso Pluma" },
+  { "code": "Peso Ligero", "name": "Peso Ligero" },
+  { "code": "Peso Welter", "name": "Peso Welter" },
+  { "code": "Peso Medio", "name": "Peso Medio" },
+  { "code": "Peso Supermedio", "name": "Peso Supermedio" },
+  { "code": "Peso Semipesado", "name": "Peso Semipesado" },
+  { "code": "Peso Crucero", "name": "Peso Crucero" },
+  { "code": "Peso Pesado", "name": "Peso Pesado" }
+]

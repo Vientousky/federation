@@ -1,13 +1,37 @@
 .skeleton {
-    background: linear-gradient(90deg, var(--bg-500) 25%, var(--bg-400) 50%, var(--bg-500) 75%);
-    background-size: 200% 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--bg-500);
     border-radius: var(--radius-xl);
-    animation: loading 2.5s infinite;
 }
 
+.skeleton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--bg-400),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        left: 150%;
+    }
+}
+
+/* Variantes */
 .avatar {
     width: 36px;
     height: 36px;
+    border-radius: 50%;
 }
 
 .avatar_trainer {
@@ -18,8 +42,23 @@
 
 .text {
     width: 100%;
-    height: 30px;
+    height: 20px;
+    border-radius: 6px;
 }
+
+.textTop {
+    width: 60%;
+    height: 20px;
+    margin-bottom: 12px;
+    border-radius: 6px;
+}
+
+.textBottom {
+    width: 100%;
+    height: 20px;
+    border-radius: 6px;
+}
+
 
 @keyframes loading {
     0% {

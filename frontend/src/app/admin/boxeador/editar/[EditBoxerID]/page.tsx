@@ -1,6 +1,5 @@
 import { BoxeadorInfo } from "@/app/lib/Boxeador";
 import FormBoxer from "./FormBoxer";
-import styles from "../../crearAndEdit.module.css"
 
 async function loadBoxeador(id: string): Promise<BoxeadorInfo> {
   const res = await fetch(
@@ -20,10 +19,6 @@ export default async function EditBoxer({
     
     return(
         <main>
-            <div className={styles.bienvenidad}>
-                <h1>Editando a {boxer.nombre} {boxer.apellido} </h1>
-            </div>
-
             <FormBoxer boxer={boxer} />
         </main>
     )

@@ -1,83 +1,78 @@
-.boxerPanel {
+.boxersPanel {
     display: flex;
     flex-direction: column;
     gap: 2rem;
 
-    /* ======= [SECCIÓN 1] ======= */
+    /* ======<[SECCIÓN 1]>======= */
+    /* ======<[ Diseño de cargos de boxeadores ]>====== */
 
-    /* ================================================ */
-    /* ======> Diseño de cargos de boxeadores <====== */
-    /* ================================================ */
+    .boxersOverview {
+        width: 100%;
 
-    .chargesPanel {
         display: flex;
-        flex-wrap: wrap;
         gap: 1rem;
 
-        .chargesItem {
-            flex: 1;
-            min-width: 200px;
+        .chartContainer {
+            text-align: center;
+            margin-top: -2rem;
 
-            background-color: var(--bg-600);
-            backdrop-filter: var(--backdrop-filter);
-
-            border-left: 4px solid var(--bg-300);
-            border-radius: var(--radius-xl);
-
-            padding: 12px;
-
-            transition: 0.3s ease-in-out;
-
-            & h2 {
-                color: var(--text-500);
-                font-size: 1.25rem;
-                font-weight: 500;
-                margin-bottom: 10px;
+            & h1 {
+                color: var(--color-na-500);
+                font-size: 3em;
+                font-family: var(--fonts-secundaria);
+                margin-top: -2rem;
             }
 
             & p {
-                font-size: 2rem;
-                font-family: var(--fonts-casual);
-                letter-spacing: 2px;
-            }
-
-            &:hover {
-                transform: translateY(-5px);
-                box-shadow: 0px 0px 10px var(--bg-300);
+                color: var(--text-500);
+                font-size: 1em;
             }
         }
 
-        .activo {
-            border-left: 4px solid var(--color-green);
 
-            &:hover {
-                box-shadow: 0px 0px 10px var(--color-green);
+        .statsList {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+
+            .statsItem {
+                flex: 1;
+                min-width:400px;
+
+                background: var(--bg-600);
+                backdrop-filter: var(--filter-lg);
+                border-radius: var(--radius-xl);
+                padding: 1rem;
+
+                & h1 {
+                    font-size: 3em;
+                    font-family: var(--fonts-secundaria);
+                }
+
+                & p {
+                    font-size: 1em;
+                    color: var(--text-500);
+                }
+            }
+
+            .activos {
+                box-shadow: inset 0px 0px 20px var(--color-ve-500);
+            }
+
+            .inactivos {
+                box-shadow: inset 0px 0px 20px var(--color-am-500);
+            }
+
+            .suspendidos {
+                box-shadow: inset 0px 0px 20px var(--color-ro-500);
+            }
+
+            .retirados {
+                box-shadow: inset 0px 0px 20px var(--color-na-500);
             }
         }
 
-        .inactivo {
-            border-left: 4px solid var(--color-yellow);
-
-            &:hover {
-                box-shadow: 0px 0px 10px var(--color-yellow);
-            }
-        }
-
-        .suspendido {
-            border-left: 4px solid var(--color-red);
-
-            &:hover {
-                box-shadow: 0px 0px 10px var(--color-red);
-            }
-        }
-
-        .retirado {
-            border-left: 4px solid var(--color-blue);
-
-            &:hover {
-                box-shadow: 0px 0px 10px var(--color-blue);
-            }
-        }
     }
 
     /* ======= [SECCIÓN 2] ======= */

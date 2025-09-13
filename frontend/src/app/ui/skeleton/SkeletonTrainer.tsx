@@ -3,30 +3,30 @@ import styles from "./index.module.css";
 
 export default function SkeletonTrainer() {
   return (
-    <article className={stylesTrainer.entrenador}>
+    <article className={stylesTrainer.trainerWrapper}>
       <header className={stylesTrainer.header}>
-        <section className={stylesTrainer.header_foto}>
-          <figure className={stylesTrainer.foto}>
-            <div
-              className={`${styles.skeleton} ${styles.avatar_trainer}`}
-            ></div>
-          </figure>
+        <section className={stylesTrainer.headerFoto}>
+          <div className={`${styles.skeleton} ${styles.avatar_trainer}`}></div>
         </section>
 
-        <section className={stylesTrainer.header_info}>
-          <div className={stylesTrainer.header_info_nombre}>
-            <article className={`${stylesTrainer.nombre} ${styles.skeleton} ${styles.text}`}></article>
+        <section className={stylesTrainer.headerData}>
+          <div className={stylesTrainer.dataIdentification}>
+            <article
+              className={`${stylesTrainer.fullName} ${styles.skeleton} ${styles.textTop}`}
+            ></article>
 
-            <article className={`${stylesTrainer.cargo} ${styles.skeleton} ${styles.text}`}></article>
+            <article
+              className={`${stylesTrainer.charge} ${styles.skeleton} ${styles.textBottom}`}
+            ></article>
           </div>
-          <div className={stylesTrainer.header_info_items}>
-            {Array.from({ length: 6 }).map((_, index) => (
-              <article key={index} className={stylesTrainer.card_trainer}>
+          <div className={stylesTrainer.dataGeneral}>
+            {Array.from({ length: 4 }).map((_, index) => (
+              <article key={index} className={stylesTrainer.cardTrainer}>
                 <span
-                  className={`${styles.skeleton} ${styles.text} ${stylesTrainer.item_nombre}`}
+                  className={`${styles.skeleton} ${styles.textTop} ${stylesTrainer.itemName}`}
                 ></span>
                 <span
-                  className={`${styles.skeleton} ${styles.text} ${stylesTrainer.item_value}`}
+                  className={`${styles.skeleton} ${styles.text} ${stylesTrainer.itemValue}`}
                 ></span>
               </article>
             ))}

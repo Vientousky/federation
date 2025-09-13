@@ -1,0 +1,225 @@
+.formWrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.boxerProfileContainer {
+    max-width: 1100px;
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    background: var(--bg-600);
+    backdrop-filter: var(--filter-sm);
+    border: 1px solid var(--bg-400);
+    border-radius: var(--radius-xl);
+
+    margin: auto;
+
+    .containerHead {
+        border-bottom: 1px solid var(--bg-400);
+        padding: 1rem 1rem 12px 1rem;
+
+        h1 {
+            color: var(--color-ro-500);
+            font-size: 1.50em;
+            font-weight: 500;
+            font-family: var(--fonts-secundaria);
+            letter-spacing: 3px;
+            margin-bottom: 2px;
+        }
+
+        p {
+            font-size: 1em;
+            color: var(--text-500);
+        }
+    }
+
+    .containerForm {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 1.25rem;
+
+        padding: 0 1rem;
+
+        .formImg,
+        .boxerTrainer,
+        .fieldsIdentification,
+        .boxerDate,
+        .boxerLocalities {
+            background: var(--bg-600);
+            backdrop-filter: var(--backdrop-filter);
+            border-radius: var(--radius-xl);
+
+            padding: 1rem;
+
+            transition: border-color 0.3s ease;
+
+            &:hover {
+                border-color: var(--bg-300);
+            }
+        }
+
+        .formImg,
+        .boxerTrainer {
+            border: 2px dashed var(--bg-400);
+            cursor: pointer;
+        }
+
+        .boxerTrainer,
+        .boxerTrainerSelect {
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+        }
+
+        .fieldsIdentification,
+        .boxerDate,
+        .boxerLocalities {
+            width: 100%;
+
+            border: 2px solid var(--bg-400);
+
+            .formItem {
+                display: flex;
+                flex-direction: column;
+                gap: var(--space-sm);
+
+                & label {
+                    font-size: 14px;
+                }
+
+                & input,
+                & select {
+                    width: 100%;
+                    background: var(--bg-600);
+                    backdrop-filter: var(--backdrop-filter);
+
+                    border: 1px solid var(--bg-400);
+                    border-radius: var(--radius-lg);
+
+                    font-family: var(--fonts-primario);
+
+                    padding: 8px 10px;
+                }
+            }
+        }
+
+        .formImg {
+            width: 100%;
+            grid-column: span 2 / span 2;
+            grid-row: span 2 / span 2;
+
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s ease-in-out;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: 1;
+            }
+        }
+
+        .boxerTrainer {
+            width: 100%;
+            min-height: 250px;
+
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+
+            & h1 {
+                font-size: 4rem;
+                color: var(--color-ve-500);
+                pointer-events: none;
+                z-index: 2;
+            }
+
+            & p {
+                margin-top: -1.04rem;
+            }
+        }
+
+        .fieldsIdentification {
+            width: 100%;
+
+            grid-column: span 2 / span 2;
+            grid-row-start: 3;
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 10px;
+
+            .formItem {
+                flex: 1;
+                min-width: 125px;
+            }
+        }
+
+        .boxerDate {
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+            grid-row-start: 2;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px 1rem;
+        }
+
+        .boxerLocalities {
+            grid-column: span 2 / span 2;
+            grid-column-start: 3;
+            grid-row-start: 3;
+
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+        }
+    }
+
+    .containerFooter {
+        display: inline-flex;
+        justify-content: flex-end;
+        gap: 1rem;
+
+        border-top: 1px solid var(--bg-400);
+        padding: 1rem 12px 1rem 1rem;
+
+        button {
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            gap: 6px;
+
+            background: transparent;
+            border: 1px solid var(--bg-300);
+            border-radius: var(--radius-xl);
+
+            font-size: 0.9em;
+            padding: 6px 8px;
+
+            transition: 0.3s ease-in-out;
+
+            &:hover {
+                border-color: var(--bg-400);
+            }
+        }
+    }
+}

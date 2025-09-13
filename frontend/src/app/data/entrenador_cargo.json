@@ -1,0 +1,14 @@
+[
+  { "value": "director tecnico", "label": "Director Técnico" },
+  { "value": "entrenador principal", "label": "Entrenador Principal" },
+  { "value": "preparador fisico", "label": "Preparador Físico" },
+  { "value": "segundo entrenador", "label": "Segundo Entrenador" },
+  { "value": "cutman", "label": "Cutman" },
+  { "value": "nutricionista", "label": "Nutricionista" },
+  { "value": "psicologo", "label": "Psicólogo Deportivo" },
+  { "value": "manager", "label": "Mánager Deportivo" },
+  { "value": "asistente_tecnico", "label": "Asistente Técnico" },
+  { "value": "kinesiologo", "label": "Kinesiólogo / Fisioterapeuta" },
+  { "value": "sparring", "label": "Preparador de Sparring" },
+  { "value": "analista", "label": "Analista de Rendimiento" }
+]

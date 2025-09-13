@@ -1,0 +1,6 @@
+[
+  { "code": "Activo", "name": "Activo" },
+  { "code": "Inactivo", "name": "Inactivo" },
+  { "code": "Suspendido", "name": "Suspendido" },
+  { "code": "Retirado", "name": "Retirado" }
+]

@@ -1,0 +1,28 @@
+.modalOverlay {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: var(--filter-lg);
+    z-index: 1000;
+
+
+    .modalContent {
+        max-width: 900px;
+        width: 90%;
+
+        background: var(--bg-600);
+        backdrop-filter: var(--filter-lg);
+        border: 1px solid var(--bg-400);
+        border-radius: var(--radius-xl);
+
+        margin: auto;
+        padding: 1rem;
+
+        h2 {
+            font-family: var(--fonts-secundaria);
+            font-size: 3em;
+            letter-spacing: 3px;
+        }
+    }
+}

@@ -1,20 +1,10 @@
-.contenedor {
+body {
     min-height: 100dvh;
     display: grid;
     grid-template-columns: auto 1fr;
     
-    .page {
+    main {
         padding: 2rem;
-    }
-}
-
-.login {
-    display: grid;
-    grid-template-columns: 1fr;
-
-    .page {
-        display: flex;
-        padding: 0px;
     }
 }
 

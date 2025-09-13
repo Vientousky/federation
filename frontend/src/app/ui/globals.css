@@ -1,12 +1,4 @@
-@view-transition {
-  navigation: auto;
-}
-
 /* ======= [CSS GLOBAL DE LA WEB] ======= */
-
-/*  ========================================== */
-/* ======> ROOT Y REPETICIONES SEGUIDAS <====== */
-/*  ========================================== */
 
 :root {
 
@@ -18,19 +10,28 @@
   --bg-300: #dad4d4;
 
   /* ======= [COLOR DE LOS TEXTO] ======= */
-  --text-600: #333333;
-  --text-500: #555555;
-  --text-400: #7a7a7a;
+  --text-600: #111111;
+  --text-500: #424040;
 
   /* ======= [COLORES GLOBALES] ======= */
-  --color-green: rgb(64, 176, 64);
-  --color-red: rgb(242 50 67);
-  --color-yellow: rgb(255, 184, 10);
-  --color-blue: rgb(77 158 255);
+  --color-ve-500: rgb(30, 130, 30);
+  --color-ve-400: rgb(20, 110, 20);
+
+  --color-ro-500: rgb(210, 40, 55);
+  --color-ro-400: rgb(170, 30, 45);
+
+  --color-am-500: rgb(240, 180, 20);
+  --color-am-400: rgb(200, 150, 15);
+
+  --color-na-500: rgb(255, 120, 20);
+  --color-na-400: rgb(200, 100, 15);
+
+  --color-az-500: rgb(50, 130, 230);
+  --color-az-400: rgb(35, 100, 180);
 
   /* ======= [TIPOGRAFIA] ======= */
-  --fonts-primario: "Montserrat", sans-serif;
-  --fonts-casual: "Audiowide", sans-serif;
+  --fonts-primario:"Montserrat", sans-serif;
+  --fonts-secundaria: "Bebas Neue", sans-serif;
 
   /* ======= [DIFUMINADO DE FONDO] ======= */
   --filter-sm: blur(8px);
@@ -43,11 +44,6 @@
   --space-md: 1rem;
   --space-lg: 2rem;
 
-  /* ======= [SOMBRIADOS] ======= */
-
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-
   /* ======= [BORDES DE LAS CARD] ======= */
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
@@ -56,31 +52,36 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-gradient: linear-gradient(180deg, #0d0d0d 0%, #1a1a1a 100%);
+    --bg-gradient: linear-gradient(250deg, #0d0d0d 0%, #1a1a1a 100%);
 
     --bg-600: rgba(30, 33, 36, 0.7);
     --bg-500: #2a2d30;
     --bg-400: #3a3d40;
     --bg-300: #888;
 
-    --text-600: #ededed;
-    --text-500: #d8d2d2;
-    --text-400: #c5bdbd;
+    --text-600: #ffffff;
+    --text-500: #d1d1d1;
 
-    --color-green: rgb(0, 160, 80);
-    --color-red: rgb(180, 10, 25);
-    --color-yellow: rgb(255, 184, 10);
-    --color-blue: #3d68c1;
+    /* ======= [COLORES GLOBALES] ======= */
+    --color-ve-500: rgb(50, 180, 80);
+    --color-ve-400: rgb(11, 88, 34);
+
+    --color-ro-500: rgb(220, 60, 70);
+    --color-ro-400: rgb(160, 40, 50);
+
+    --color-am-500: rgb(245, 190, 40);
+    --color-am-400: rgb(190, 140, 30);
+
+    --color-na-500: rgb(210, 110, 30);
+    --color-na-400: rgb(160, 80, 25);
+
+    --color-az-500: rgb(30, 95, 180);
+    --color-az-400: rgb(50, 100, 180);
   }
 
 }
 
-/* ======= [SEGUNDO APARTADO] ======= */
-
-/*  ======================================================== */
 /* ======> DISEÑO DE RESETEO PARA QUE SE VEA BIEN WEB <====== */
-/*  ======================================================== */
-
 
 * {
   box-sizing: border-box;
@@ -94,30 +95,15 @@ body {
   max-width: 100vw;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: var(--text-600);
   background: var(--bg-gradient);
-
-  min-height: 100vh;
-  font-family: var(--fonts-primario);
-
-  --sb-track-color: #232E33;
-  --sb-thumb-color: #6BAF8D;
-  --sb-size: 8px;
-
-  &::-webkit-scrollbar {
-    width: var(--sb-size);
-  }
-
-  &::-webkit-scrollbar-track {
-    background: var(--sb-track-color);
-    border-radius: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: var(--color-blue);
-    border-radius: 8px;
-  }
+  min-height: 100dvh;
+  font-family:var(--fonts-primario);
 }
 
 
@@ -151,11 +137,7 @@ a {
   }
 }
 
-/* ======= [TERCER APARTADO] ======= */
-
-/*  ================================================== */
 /* ======> CLASES GLOBALES PARA EL USO CONTANTE <====== */
-/*  ================================================== */
 
 .wrapper {
   max-width: 1000px;

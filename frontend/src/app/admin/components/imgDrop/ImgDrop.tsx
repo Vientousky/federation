@@ -85,7 +85,7 @@ export default function ImgDrop({
       {imagePreview && (
         <Image
           src={imagePreview}
-          alt="Previsualización del boxeador"
+          alt="Previsualización "
           width={width}
           height={height}
         />

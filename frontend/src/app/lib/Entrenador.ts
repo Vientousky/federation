@@ -4,12 +4,12 @@ export interface TrainerInfo {
   apellido: string;
   sexo: string;
   dni: string;
-  n_licencia: string;
+  licencia: string;
   vencimiento: string;
   cargo: string;
-  provincia: string;
+  provincias: string;
   localidad: string;
-  trainer_foto: string;
+  foto_entrenador: string;
 }
 
 export interface TrainerStatistics {

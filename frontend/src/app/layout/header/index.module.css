@@ -7,12 +7,13 @@
     z-index: 1000;
 
     top: 2%;
-
     left: 50%;
     translate: -50%;
 
     display: flex;
     flex-direction: column;
+
+    padding: 1rem;
 
     animation: enhance-header linear both;
     animation-timeline: scroll(root);
@@ -27,21 +28,16 @@
         align-items: center;
     }
 
-    /* ================================== */
+
     /*<===<APARTE SUPERIOR DEL HEADER>===<*/
-    /* ================================== */
 
     .headerTop {
         max-height: 200px;
-        overflow: hidden;
-        opacity: 1;
-        transform: translateY(0);
         transition: all 0.3s ease-in-out;
         padding-bottom: 12px;
 
         .logo img {
             display: block;
-            overflow: hidden;
             border-radius: var(--radius-xl);
             object-fit: contain;
         }
@@ -57,50 +53,46 @@
                 transition: 0.3s ease-in-out;
 
                 & svg {
-                    width: 22px;
-                    height: 22px;
+                    width: 24px;
+                    height: 24px;
                 }
             }
         }
     }
 
-    /*====================================*/
     /*<===<APARTE INFERIOS DEL HEADER>===<*/
-    /*====================================*/
-
     .headerBottom {
 
         .nav {
             display: inline-flex;
             gap: 1rem;
 
-
-
             .navLinks {
                 transition: 0.3s ease-in-out;
+                font-weight: 500;
+                font-size: 1.05rem;
 
                 &:hover {
-                    color: var(--color-red);
+                    color: var(--color-orange);
                 }
             }
 
             .active {
-                color: var(--color-green);
-                text-shadow: 0 0 10px var(--color-green);
+                color: var(--color-yellow);
             }
         }
 
-        .search_container {
+        .searchContainer {
             position: relative;
 
-            & svg {
+            .searchIcon {
                 position: absolute;
                 top: 25%;
                 left: 5%;
                 pointer-events: none;
             }
 
-            .search_input {
+            .searchInput {
                 width: 225px;
                 padding: 8px 8px 8px 32px;
                 border-radius: var(--radius-xl);
@@ -112,38 +104,34 @@
 
         }
 
-
         .movilBotton {
-            width: 40px;
-            height: 40px;
-
             display: none;
 
-            background-color: var(--bg-600);
-            backdrop-filter: var(--filter-sm);
-
+            background: none;
             border: none;
-            border-radius: var(--radius-xl);
 
-            font-size: 1rem;
+            svg {
+                width: 40px;
+                height: 40px;
+                transition: 0.3s ease-in-out;
 
-            padding: 6px;
+                &:hover {
+                    color: var(--color-orange);
+                }
+            }
         }
 
     }
 
 }
 
-/*================================*/
 /*<===<ANIMACIONES DEL HEADER>===<*/
-/*================================*/
 
 @keyframes enhance-header {
     to {
         background-color: var(--bg-600);
         backdrop-filter: var(--filter-sm);
         border-radius: var(--radius-2xl);
-        padding: 14px;
     }
 }
 
@@ -155,21 +143,12 @@
     padding: 0;
 }
 
-.headerExpanded .headerTop {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ================================ */
 /*<===<DISEÑO DE REPONSIVILIDAD>===<*/
-/* ================================ */
 
 @media (max-width:764px) {
     .header {
-        width: 95%;
-        padding: 0 1rem;
-
-
+        width: 90%;
+        padding: 8px 12px;
 
         .headerBottom {
             position: relative;
@@ -182,7 +161,7 @@
 
             .search_container {
 
-                & svg {
+                .searchIcon {
                     left: 5%;
                 }
             }
@@ -196,12 +175,11 @@
                 left: 0.2%;
                 top: 100%;
 
-                background-color: var(--bg-600);
-                backdrop-filter: var(--filter-md);
+                background-color: var(--bg-500);
                 border-radius: var(--radius-lg);
 
                 padding: 1rem;
-                transform: translateX(-32rem);
+                transform: translateX(-40rem);
                 transition: transform 0.3s ease-in-out;
             }
 
