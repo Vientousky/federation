@@ -1,46 +1,69 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { FetchSearch } from "../data/Data";
-import { TrainerInfo } from "../data/Entrenador";
-import Entrenador from "../components/Entrenador";
+import { useSearchParams, usePathname, useRouter } from "next/navigation";
+
+import { FetchSearch,FetchInvoicesPages } from "../lib/Data";
+import { TrainerInfo } from "../lib/Entrenador";
+import Entrenador from "../components/entrenador/Entrenador";
 import SkeletonTrainer from "../ui/skeleton/SkeletonTrainer";
 import Search from "../components/search/Search";
 import styles from "./index.module.css";
+import Pagination from "../components/pagination/Pagination";
 
 export default function PageTrainer() {
-  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname()
   const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("query") || "");
+
+  const query = searchParams.get("query") || "";
+  const page = Number(searchParams.get("page")) || 1;
+  
+  const [isLoading, setIsLoading] = useState(true);
   const [trainers, setTrainers] = useState<TrainerInfo[]>([]);
+  const [totalPages, setTotalPages] = useState(1);
+
+  const handleQueryChange = (value:string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if(value){
+      params.set("query", value);
+    }else {
+      params.delete("query");
+    }
+
+    params.set("page", "1")
+    router.push(`${pathname}?${params.toString()}`);
+  }
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       const fetchData = async () => {
         try {
           setIsLoading(true);
-          const data = await FetchSearch("/entrenador/", query, 1);
-          setTrainers(data);
+          const data = await FetchSearch("/entrenador/", query, page);
+          setTrainers(data.results);
+
+          const pages = await FetchInvoicesPages(query, "/entrenador");
+          setTotalPages(pages);
         } catch (err) {
-          console.error("Error fetching trainers", err);
+          console.error("Error al buscar entrenadores", err);
         } finally {
           setIsLoading(false);
         }
       };
-
       fetchData();
-    }, 400);
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [query, setQuery]);
+  }, [query, page]);
 
   return (
-    <main className={styles.containerPage}>
+    <main className={`${styles.containerPage} wrapper`}>
       <section className={styles.searchTrainer}>
-        <h1>BUSCADO DE ENTRENADORES</h1>
+        <h1>BUSCADOR DE ENTRENADORES</h1>
         <Search
-          onChange={setQuery}
+          onChange={handleQueryChange}
           placeholder="Busca entrenador por: nombre apellido N° licencia"
         />
       </section>
@@ -64,7 +87,9 @@ export default function PageTrainer() {
         )}
       </section>
 
-      <section></section>
+      <section>
+        <Pagination totalPages={totalPages}/>
+      </section>
     </main>
   );
 }

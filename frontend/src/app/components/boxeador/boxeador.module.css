@@ -1,0 +1,70 @@
+.boxerCard {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .header {
+        display: flex;
+
+        .headerInfoBoxer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .headerAvatar {
+                width: 128px;
+                height: 128px;
+                object-fit: cover;
+                overflow: hidden;
+
+                .avatar {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: var(--radius-xl) 0 0 0;
+                }
+            }
+
+            .BoxerData {
+                background-color: var(--color-red);
+                border-radius: 0 var(--radius-xl) 0 0;
+                padding: 0.5rem 1rem;
+
+                & h2 {
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    color: var(--text-600);
+                    margin-bottom: 0.25rem;
+                }
+
+                & p {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: var(--text-500);                    
+                }
+            }
+
+            .HeaderGeneralData {
+                width: 100%;
+                padding: 0 0 0.5rem 1rem ;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 0.5rem;
+
+                .item {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.25rem;
+                }
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        align-items: center;
+        background: var(--color-blue);
+        border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+        padding: 0.5rem 1rem;
+    }
+}

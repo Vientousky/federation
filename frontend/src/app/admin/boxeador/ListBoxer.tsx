@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { BsBrush, BsTrash } from "react-icons/bs";
-import { BoxeadorInfo } from "@/app/data/Boxeador";
+import { BoxeadorInfo } from "@/app/lib/Boxeador";
 import stylesTables from "@/app/styles/table.module.css";
 import Image from "next/image";
 
@@ -38,7 +38,7 @@ export default function ListBoxer({ boxeador }: Props) {
         <div className={stylesTables.person}>
           <span>
             <Image
-              src={boxeador.foto || "/img/default.jpeg"}
+              src={boxeador.boxer_foto || "/img/default.jpeg"}
               alt={boxeador.nombre}
               width={36}
               height={36}
@@ -51,9 +51,8 @@ export default function ListBoxer({ boxeador }: Props) {
         </div>
       </td>
       <td data-cell="sexo">{boxeador.sexo}</td>
-      <td data-cell="N°Licencia">{boxeador.numero_licencia}</td>
+      <td data-cell="N°Licencia">{boxeador.n_licencia}</td>
       <td data-cell="Localidad">{boxeador.localidad}</td>
-      <td data-cell="Combates">{boxeador.combate}</td>
       <td data-cell="Estatus" className={boxeador.status}>
         {boxeador.status}
       </td>

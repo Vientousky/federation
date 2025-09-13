@@ -36,6 +36,18 @@
   --filter-sm: blur(8px);
   --filter-lg: blur(12px);
 
+  /* ======= [espaciados] ======= */
+
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+
+  /* ======= [SOMBRIADOS] ======= */
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+
   /* ======= [BORDES DE LAS CARD] ======= */
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
@@ -144,6 +156,21 @@ a {
 /*  ================================================== */
 /* ======> CLASES GLOBALES PARA EL USO CONTANTE <====== */
 /*  ================================================== */
+
+.wrapper {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card_color {
+  background: var(--bg-600);
+  backdrop-filter: var(--filter-sm);
+  box-shadow: var(--shadow-sm);
+
+  border: 2px solid var(--bg-500);
+  border-radius: var(--radius-xl);
+}
 
 .Activo {
   color: var(--color-green);

@@ -1,8 +1,6 @@
-
-
-    /*  ================================================== */
-    /* ======> DISEÑO DEL ASIDEBAR DE ADMINITRACIÓN <====== */
-    /*  ================================================== */
+/*  ================================================== */
+/* ======> DISEÑO DEL ASIDEBAR DE ADMINITRACIÓN <====== */
+/*  ================================================== */
 
 .asidebar {
     top: 0;
@@ -12,17 +10,22 @@
     display: flex;
     flex-direction: column;
     background: var(--bg-600);
-    backdrop-filter: var(--backdrop-filter);
+    backdrop-filter: var(--filter-sm);
     border: 1px solid var(--bg-400);
     border-radius: 0 20px 20px 0;
 
     padding: 16px;
     transition: width 0.3s ease-in-out;
 
+    /* =======<[Sidebar Imagen]>======= */
     .asidebarImg {
         display: flex;
         justify-content: flex-end;
         position: relative;
+        border-bottom: 1px solid var(--bg-400);
+
+        padding-bottom: 12px;
+
 
         & img {
             width: 100%;
@@ -30,31 +33,27 @@
             display: block;
             object-fit: cover;
             border-radius: 0 12px 0 0;
-            margin-bottom: 1.25rem;
         }
 
+        /* =======<[Sidebar Colasado]>======= */
         .asidebarCollapse {
             width: auto;
             position: absolute;
             top: 10px;
             right: -36px;
-
-            padding: 0;
-
-            transition: 0.3s ease-in-out;
-
+            padding:0;
 
             & button {
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
-                background: var(--bg-400);
+                 background-color: var(--bg-500);
+
                 cursor: pointer;
                 border: none;
                 border-radius: 8px;
                 padding: 8px;
-
                 transition: 0.3s ease-in-out;
 
                 & svg {
@@ -65,12 +64,13 @@
                 }
 
                 &:hover {
-                    background: var(--bg-500);
+                    background: var(--bg-400);
                 }
             }
         }
     }
 
+    /* =======<[Sidebar navegacion]>======= */
     .asidebarNav {
         width: 100%;
 
@@ -78,17 +78,17 @@
         flex-direction: column;
         flex-grow: 1;
 
+        padding-top: 12px;
+
         .navList {
             width: 100%;
-
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 6px;
 
             list-style: none;
 
             .navItem {
-                background: var(--bg-400);
                 border-radius: 12px;
                 padding: 10px 16px;
                 transition: 0.3s ease-in-out;
@@ -139,10 +139,14 @@
 
         .navListSecondary {
             margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--bg-400);
         }
 
     }
 }
+
+/* =======<[Sidebar colasapdo]>======= */
 
 .asidebarCollapse {
     width: 80px;
@@ -220,7 +224,7 @@
         position: fixed;
         inset: 0;
         background: rgba(0, 0, 0, 0.4);
-        backdrop-filter: var(--backdrop-filter);
+        backdrop-filter: var(--filter-lg);
         z-index: 1000;
     }
 

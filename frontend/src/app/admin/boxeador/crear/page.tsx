@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import ImgDrop from "../../components/ImgDrop";
-import Notification from "@/app/components/Notification";
+import ImgDrop from "../../components/imgDrop/ImgDrop";
+import Notification from "@/app/components/notification/Notification";
 import styles from "../crearAndEdit.module.css";
 
 export default function CreateBoxer() {
@@ -16,8 +16,7 @@ export default function CreateBoxer() {
     dni: "",
     sexo: "",
     fecha_nacimiento: "",
-    numero_licencia: "",
-    nacionalidad: "",
+    n_licencia: "",
     provincia: "",
     localidad: "",
     debutaje: "",
@@ -27,7 +26,7 @@ export default function CreateBoxer() {
     altura: "",
     alcance: "",
     stance: "",
-    foto: "",
+    boxer_foto: "",
   });
 
   const [notification, setNotification] = useState<{
@@ -89,8 +88,7 @@ export default function CreateBoxer() {
         dni: "",
         sexo: "",
         fecha_nacimiento: "",
-        numero_licencia: "",
-        nacionalidad: "",
+        n_licencia: "",
         provincia: "",
         localidad: "",
         debutaje: "",
@@ -100,7 +98,7 @@ export default function CreateBoxer() {
         altura: "",
         alcance: "",
         stance: "",
-        foto: "",
+        boxer_foto: "",
       });
     }
   };
@@ -234,27 +232,11 @@ export default function CreateBoxer() {
                 type="text"
                 maxLength={10}
                 required
-                value={formData.numero_licencia}
+                value={formData.n_licencia}
                 onChange={(e) =>
                   setFormData((prev) => ({
                     ...prev,
                     numero_licencia: e.target.value,
-                  }))
-                }
-              />
-            </article>
-
-            <article className={styles.Date_item}>
-              <label>Nacionalidad</label>
-              <input
-                type="text"
-                maxLength={100}
-                required
-                value={formData.nacionalidad}
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    nacionalidad: e.target.value,
                   }))
                 }
               />

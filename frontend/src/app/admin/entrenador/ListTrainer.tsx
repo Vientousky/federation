@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { TrainerInfo } from "@/app/data/Entrenador";
-import ImgDrop from "../components/ImgDrop";
+import { TrainerInfo } from "@/app/lib/Entrenador";
+import ImgDrop from "../components/imgDrop/ImgDrop";
 import stylesTables from "@/app/styles/table.module.css";
 import { BsBrush, BsTrash, BsCheck, BsX } from "react-icons/bs";
 import Image from "next/image";
@@ -15,7 +15,7 @@ type TrainerProps = {
 export default function ListTrainer({ trainer }: TrainerProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
-  const [editedTrainer, setEditedTrainer] = useState<TrainerInfo>({
+  const [editedTrainer, setEditedTrainer] = useState({
     id: trainer.id, 
     trainer_foto: trainer.trainer_foto,
     nombre: trainer.nombre,
@@ -25,7 +25,7 @@ export default function ListTrainer({ trainer }: TrainerProps) {
     n_licencia: trainer.n_licencia,
     vencimiento: trainer.vencimiento,
     localidad: trainer.localidad,
-  });
+  } );
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Quiere eliminar a este Estrenador")) {

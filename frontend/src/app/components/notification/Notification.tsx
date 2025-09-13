@@ -7,7 +7,7 @@ import {
   BsExclamationOctagon,
   BsInfoCircle,
 } from "react-icons/bs";
-import styles from "../styles/notification.module.css";
+import styles from "./notification.module.css";
 
 type NotificationProps = {
   message: string;

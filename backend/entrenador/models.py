@@ -1,20 +1,48 @@
+"""
+📦 MODELOS: Boxeador
+
+🧩 Modelo principal:
+---------------------
+
+📌 Campos Principales
+---------------------
+Nombre:str,
+apellido:str,
+cargo:str,
+dni:str,
+n_licencia:str,
+vencimiento:data,
+localidad:str,
+trainer_foto:str,
+
+ATT: Vientousky💕
+"""
 from django.db import models
 
-# Create your models here.
+#Creación de modelos de trainers
 
 class Entrenador(models.Model):
     nombre = models.CharField(max_length=100)
     apellido = models.CharField(max_length=100)
     CARGO_CHOICES = [
-        ('Director Técnico', 'Director Técnico'),
-        ('Preparador Físico', 'Preparador Físico'),
-        ('Nutricionista', 'Nutricionista'),
+        ("director tecnico", "Director Técnico"),
+        ("entrenador principal", "Entrenador Principal"),
+        ("preparador fisico", "Preparador Físico"),
+        ("segundo entrenador", "Segundo Entrenador"),
+        ("cutman", "Cutman"),
+        ("nutricionista", "Nutricionista"),
+        ("psicologo", "Psicólogo Deportivo"),
+        ("manager", "Mánager Deportivo"),
+        ("asistente_tecnico", "Asistente Técnico"),
+        ("kinesiologo", "Kinesiólogo / Fisioterapeuta"),
+        ("sparring", "Preparador de Sparring"),
+        ("analista", "Analista de Rendimiento"),
     ]
     cargo = models.CharField(max_length=50, choices=CARGO_CHOICES)
     dni = models.CharField(max_length=10, unique=True)
     n_licencia = models.CharField(max_length=10, unique=True)
     vencimiento = models.DateField()
-    LOCALIDAD_CHOICES = [
+    LOCALIDADES_CHOICES = [
     ("Almirante Brown", [
         ("Concepción del Bermejo", "Concepción del Bermejo"),
         ("Los Frentones", "Los Frentones"),
@@ -142,6 +170,6 @@ class Entrenador(models.Model):
         ("Machagai", "Machagai"),
     ]),
 ]
-    localidad = models.CharField(max_length=150, choices=LOCALIDAD_CHOICES)
+    localidad = models.CharField(max_length=150, choices=LOCALIDADES_CHOICES)
     trainer_foto = models.URLField(blank=True, null=True)
 

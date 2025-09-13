@@ -1,131 +1,171 @@
 /* ======= [APARTADO DE TABLA] ======= */
 
 /*  ===================================================== */
-/* ======> Diseño de PARA TODAS LAS TABLAS DE ADMIN <===== */
+/* ======> Diseño de PARA TODAS LAS TABLAS DE ADMINITRACIÓN <===== */
 /*  ===================================================== */
 
-.table {
-    width: 100%;
-    border-collapse: collapse;
+.trainer_list_panel {
     background-color: var(--bg-600);
     backdrop-filter: var(--backdrop-filter);
 
-    border-top: 1px solid var(--bg-400);
-    border-radius: 8px;
-
-    overflow: hidden;
-
-    & th,
-    & td {
-        padding: 1rem;
+    border: 1px solid var(--bg-400);
+    border-radius: var(--radius-xl);
+    
+    /* =======<[CONCENTRANDO ESTYLOS GENERALES]>======= */
+    .control_panel,
+    .navigation_footer {
+        padding: 12px 1rem;
     }
 
-    .NoEncontrado{ 
+    /* =======<[APARTADOS DE PANEL DE CONTROL]>======= */
+    .control_panel {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid var(--bg-400);
+
+
+
+        & p {
+            flex: 2;
+            color: var(--text-500);
+        }
+
+        /* =======<[PANEL DE ACCIONES]>======= */
+        .panel_actions {
+            flex: auto;
+            display: flex;
+            gap: 1.25rem;
+
+            .btn {
+                background: var(--bg-500);
+                border: 1px solid var(--bg-400);
+                border-radius: var(--radius-xl);
+
+                padding: 0px 1rem;
+            }
+        }
+    }
+
+    /* =======<[FOOTER PAGINATION]>======= */
+    .navigation_footer {
+        border-top: 1px solid var(--bg-400);
         text-align: center;
     }
 
-    & td {
-        .dateName {
-            display: grid;
-            grid-template-columns: auto;
-            gap: 10px;
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+
+        & th,
+        & td {
+            padding: 1rem;
         }
 
-        & input,
-        select {
-            width: 100%;
-            padding: 6px 12px;
-            background: var(--bg-600);
-            border: 1px solid var(--bg-300);
-            border-radius: 8px;
-        }
-    }
-
-    & th {
-        text-align: left;
-        background-color: var(--bg-500);
-    }
-
-    & tr {
-        transition: background-color 0.2s ease-in-out;
-
-        &:nth-of-type(2n) {
-            background-color: var(--bg-500);
+        & th {
+            text-align: left;
         }
 
-        &:hover {
-            background-color: var(--bg-400);
-
-        }
-    }
-
-
-    .action,
-    .person {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-    }
-
-    .person img {
-        display: block;
-        border-radius: 9999px;
-        object-fit: cover;
-    }
-
-    & tr .action {
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(5px);
-        transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
-    }
-
-    & tr:hover .action {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-
-    .action {
-        transition: 0.3s ease-in-out;
-
-        & button {
-            cursor: pointer;
-            border: none;
-            background: none;
-
-            transition: transform 0.3s ease-in-out;
-
-            & svg {
-                width: 36px;
-                height: 36px;
+        & td {
+            .dateName {
+                display: grid;
+                grid-template-columns: auto;
+                gap: 10px;
             }
+
+            & input,
+            & select {
+                width: 100%;
+                padding: 6px 12px;
+
+                background-color: var(--bg-500);
+                border: 1px solid var(--bg-300);
+                border-radius: var(--radius-lg);
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--color-green);
+                }
+            }
+        }
+
+        & tr {
+            transition: background-color 0.2s ease-in-out;
 
             &:hover {
-                transform: scale(1.05);
+                background-color: var(--bg-400);
+
             }
         }
 
-        .eliminar,
-        .cancelar {
-            color: var(--color-red);
+        & tr .action {
+            opacity: 0;
+            pointer-events: none;
+            transform: translateX(10px);
+            transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out;
         }
 
-        .editar {
-            color: var(--color-yellow);
+        & tr:hover .action {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateX(0);
         }
 
-        .guardar {
-            color: var(--color-green);
+        .NoEncontrado {
+            text-align: center;
         }
+
+        .action,
+        .person {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .person img {
+            display: block;
+            border-radius: 9999px;
+            object-fit: cover;
+        }
+
+        .action {
+            transition: 0.3s ease-in-out;
+
+            & button {
+                cursor: pointer;
+                border: none;
+                background: none;
+
+                transition: transform 0.3s ease-in-out;
+
+                & svg {
+                    width: 36px;
+                    height: 36px;
+                }
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+            }
+
+            .eliminar,
+            .cancelar {
+                color: var(--color-red);
+            }
+
+            .editar {
+                color: var(--color-yellow);
+            }
+
+            .guardar {
+                color: var(--color-green);
+            }
+        }
+
     }
 }
 
-/* ======= [REPONSIVILIDAD EN MOVIL] ======= */
-
-/*  ===============================================  */
-/* ======> DISEÑO DE LA TABLA EN TAMAÑO 768PX <===== */
-/*  ===============================================  */
+/* ======= [REPONSIVILIDAD EN MOVIL 768px] ======= */
 
 @media (max-width:768px) {
     .table {

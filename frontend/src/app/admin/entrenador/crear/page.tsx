@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import ImgDrop from "../../components/ImgDrop";
-import Notification from "@/app/components/Notification";
+import ImgDrop from "../../components/imgDrop/ImgDrop";
+import Notification from "@/app/components/notification/Notification";
 import Image from "next/image";
 import styles from "./createTrainer.module.css";
 

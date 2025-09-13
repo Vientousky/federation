@@ -5,16 +5,13 @@ from combates.serializers import CombatesSerializers
 from django.db.models import Q
 
 class BoxeadorSerializer(serializers.ModelSerializer):
-    combates = serializers.SerializerMethodField()
-
-    total_victorias = serializers.IntegerField(read_only=True)
-    total_derrotas = serializers.IntegerField(read_only=True)
-    total_empates = serializers.IntegerField(read_only=True)
-    total_sin_decision = serializers.IntegerField(read_only=True)
-
+    combates_stats = serializers.SerializerMethodField()
     class Meta:
         model = Boxeador
         fields = '__all__' 
+
+    def get_combates_stats(self, obj):
+        return obj.combates_stats
 
     def get_combates(self, instance):
         combates = Combates.objects.filter(

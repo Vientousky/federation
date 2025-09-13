@@ -1,29 +1,54 @@
-"use client";
+"use client"
 
 import { useState, useEffect } from "react";
-import { useSearchParams } from "next/navigation";
-import { BoxeadorInfo } from "@/app/data/Boxeador";
-import {FetchSearch } from "@/app/data/Data";
+import {useRouter, usePathname, useSearchParams } from "next/navigation";
+
+import { BoxeadorInfo } from "@/app/lib/Boxeador";
+import { FetchSearch, FetchInvoicesPages } from "@/app/lib/Data";
 import ListBoxer from "./ListBoxer";
 import Search from "@/app/components/search/Search";
+import Pagination from "@/app/components/pagination/Pagination";
 import CrearLink from "../components/CreateLink/CrearLink";
-import styles from "./boxeador.module.css";
-import stylesTables from "@/app/styles/table.module.css";
 import TableSkeleton from "@/app/ui/skeleton/TableSkeleton";
+import stylesTables from "@/app/styles/table.module.css";
+import styles from "./boxeador.module.css";
 
 export default function BoxeadorPageAdmin() {
+  const router = useRouter();
+  const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const query = searchParams.get("query") || "";
+  const page = Number(searchParams.get("page")) || 1;
+
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState(searchParams.get("query") || "");
   const [boxers, setBoxers] = useState<BoxeadorInfo[]>([]);
+  const [totalPages, setTotalPages] = useState(1)
+
+  const handleQueryChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      params.set("query", value);
+    } else {
+      params.delete("query");
+    }
+
+    params.set("page", "1"); // Reiniciar a página 1 al cambiar búsqueda
+    router.push(`${pathname}?${params.toString()}`);
+  };
+
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       const fetchData = async () => {
         try {
           setIsLoading(true);
-          const data = await FetchSearch("/boxeador", query, 1);
-          setBoxers(data);
+          const data = await FetchSearch("/boxeador", query, page);
+          setBoxers(data.results);
+
+          const pages = await FetchInvoicesPages(query, "/boxeador")
+          setTotalPages(pages)
         } catch (err) {
           console.error("Error fetching boxers", err);
         } finally {
@@ -31,10 +56,10 @@ export default function BoxeadorPageAdmin() {
         }
       };
       fetchData();
-    }, 400);
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
-  }, [query, setQuery]);
+  }, [query, page]);
 
   return (
     <main className={styles.boxerPanel}>
@@ -65,19 +90,30 @@ export default function BoxeadorPageAdmin() {
         </article>
       </section>
 
-      <section className={styles.managePanel}>
-        <Search
-          onChange={setQuery}
-          placeholder="Busca a boxeador por: nombre apellido o N°Licencia"
-        />
-        <CrearLink
-          href="/boxeador/crear"
-          name="Crear Boxeador"
-          label="Creación de Boxeador"
-        />
-      </section>
+      <section className={styles.managePanel}></section>
 
-      <section className={styles.boxerListPanel}>
+      <section className={stylesTables.trainer_list_panel}>
+        <div className={stylesTables.control_panel}>
+          <p>Boxeadores Recientes</p>
+
+          <article className={stylesTables.panel_actions}>
+            <Search
+              onChange={handleQueryChange}
+              placeholder="Busca a boxeador por: nombre apellido o N°Licencia"
+            />
+
+            <button disabled className={stylesTables.btn}>
+              ordenar
+            </button>
+
+            <CrearLink
+              href="/boxeador/crear"
+              name="Crear Boxeador"
+              label="Creación de Boxeador"
+            />
+          </article>
+        </div>
+
         <table className={stylesTables.table}>
           <thead className={stylesTables.T_encabezado}>
             <tr>
@@ -92,33 +128,41 @@ export default function BoxeadorPageAdmin() {
             </tr>
           </thead>
           <tbody className={stylesTables.T_cuerpo}>
-            {isLoading ? (
-              Array.from({ length: 8 }).map((_, i) => <TableSkeleton key={i} />)
-            ) : boxers.length > 0 ? (
-              boxers.map((trainer) => (
-                <ListBoxer key={trainer.id} boxeador={trainer} />
-              ))
-            ) : !isLoading && (
-              <>
-                <tr>
-                  <td colSpan={8}></td>
-                </tr>
+            {isLoading
+              ? Array.from({ length: 8 }).map((_, i) => (
+                  <TableSkeleton key={i} />
+                ))
+              : boxers.length > 0
+              ? boxers.map((trainer) => (
+                  <ListBoxer key={trainer.id} boxeador={trainer} />
+                ))
+              : !isLoading && (
+                  <>
+                    <tr>
+                      <td colSpan={8}></td>
+                    </tr>
 
-                <tr className={stylesTables.NoEncontrado}>
-                  <td colSpan={8}>Entrenador que buscaba no se a encontrado</td>
-                </tr>
+                    <tr className={stylesTables.NoEncontrado}>
+                      <td colSpan={8}>
+                        Entrenador que buscaba no se a encontrado
+                      </td>
+                    </tr>
 
-                <tr className={stylesTables.NoEncontrado}>
-                  <td colSpan={8}>Por favor introdusca otro</td>
-                </tr>
+                    <tr className={stylesTables.NoEncontrado}>
+                      <td colSpan={8}>Por favor introdusca otro</td>
+                    </tr>
 
-                <tr>
-                  <td colSpan={8}></td>
-                </tr>
-              </>
-            )}
+                    <tr>
+                      <td colSpan={8}></td>
+                    </tr>
+                  </>
+                )}
           </tbody>
         </table>
+
+        <div className={stylesTables.navigation_footer}>
+          <Pagination totalPages={totalPages}/>
+        </div>
       </section>
     </main>
   );

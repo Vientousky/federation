@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import Image from "next/image";
-import styles from "@/app/styles/imgDrop.module.css";
+import styles from "./imgDrop.module.css";
 
 interface Props {
   onImageUpload: (url: string) => void;

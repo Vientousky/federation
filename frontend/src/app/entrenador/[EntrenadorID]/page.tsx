@@ -1,13 +1,11 @@
-import { TrainerInfo } from "@/app/data/Entrenador";
-import styles from "./trainer.module.css";
+import { TrainerInfo } from "@/app/lib/Entrenador";
+import { LoadDatadynamic } from "@/app/lib/Data";
+
 import Image from "next/image";
+import styles from "./trainer.module.css";
 
 async function loadTrainer(id: string): Promise<TrainerInfo> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/entrenador/${id}/`
-  );
-  const data = await res.json();
-  return data;
+  return LoadDatadynamic(`/entrenador/${id}`)
 }
 
 export default async function TrainerDetail({
@@ -19,7 +17,7 @@ export default async function TrainerDetail({
   const trainer: TrainerInfo = await loadTrainer(EntrenadorID);
 
   return (
-    <main className={styles.content_trainer}>
+    <main className={styles.content_trainer} >
       <div className={styles.trainer}>
         <figure className={styles.trainer_logo}>
           <Image
@@ -27,7 +25,7 @@ export default async function TrainerDetail({
             alt="Federacion chaqueña boxeo"
             width={66}
             height={46}
-            style={{viewTransitionName:trainer.apellido,}}
+            style={{ viewTransitionName: trainer.apellido }}
           />
           <figcaption className={styles.logo_eslogan}>
             <h1>Licencia provincial de Entrenador</h1>
@@ -47,8 +45,10 @@ export default async function TrainerDetail({
 
           <article className={styles.data_content}>
             <section className={styles.content_name}>
-                <h2>{trainer.nombre} {trainer.apellido}</h2>
-                <p>{trainer.cargo}</p>
+              <h2>
+                {trainer.nombre} {trainer.apellido}
+              </h2>
+              <p>{trainer.cargo}</p>
             </section>
 
             <section className={styles.content_personal_data}>

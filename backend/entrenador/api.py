@@ -1,8 +1,40 @@
+"""
+---------------------------------------------------
+EntrenadorAPI
+
+API pública para gestionar entrenadores.
+
+🔍Funcionalidades:
+
+-CRUB COMPLETO
+-Busqueda por filtro('nombre', 'apellido', 'n_licencia')
+-Permisos abiertos
+-gestion de total de entrenadores y su cargo
+---------------------------------------------------
+"""
+
+
 from rest_framework import viewsets, permissions, status, filters
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from .models import Entrenador
 from .serializers import EntrenadorSerializer
 from collections import Counter
+
+TODOS_LOS_CARGOS = [
+    "director_tecnico",
+    "entrenador_principal",
+    "preparador_fisico",
+    "segundo_entrenador",
+    "cutman",
+    "nutricionista",
+    "psicologo",
+    "manager",
+    "asistente_tecnico",
+    "kinesiologo",
+    "sparring",
+    "analista",
+]
 
 class EntrenadorViewSet(viewsets.ModelViewSet):
     queryset = Entrenador.objects.all()
@@ -11,21 +43,23 @@ class EntrenadorViewSet(viewsets.ModelViewSet):
     filter_backends = [filters.SearchFilter]
     search_fields = ['nombre', 'apellido', 'n_licencia']
 
-    def get(self, request):
+    @action(detail=False, methods=['get'], url_path='estadisticas')
+    def all_trainers(self, request):
         total = Entrenador.objects.count()
-        cargos = Counter(Entrenador.objects.values_list('cargo', flat=True))
+        cargos_raw = Entrenador.objects.values_list('cargo', flat=True)
+        count = Counter(
+            cargo.lower().replace(" ", "_") for cargo in cargos_raw
+        )
 
-        cargos_legibles = {
-            'Director Tecnico': cargos.get('DT', 0),
-            'Preparador Fisico': cargos.get('PF', 0),
-            'Nutricionista': cargos.get('NU', 0),
+        cargo = {
+            cargo: count.get(cargo, 0)
+            for cargo in TODOS_LOS_CARGOS
         }
 
         return Response({
-            'total': total,
-            'cargo': cargos
+            'total_entrenador': total,
+            'cargos': cargo
         })
-
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)

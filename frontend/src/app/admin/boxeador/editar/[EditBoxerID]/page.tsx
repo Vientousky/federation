@@ -1,4 +1,4 @@
-import { BoxeadorInfo } from "@/app/data/Boxeador";
+import { BoxeadorInfo } from "@/app/lib/Boxeador";
 import FormBoxer from "./FormBoxer";
 import styles from "../../crearAndEdit.module.css"
 

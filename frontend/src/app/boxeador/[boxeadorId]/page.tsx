@@ -1,19 +1,13 @@
-import { BoxeadorInfo } from "../../data/Boxeador";
-import CombatList from "./CombatList";
-import Entrenador from "@/app/components/Entrenador";
+import { BoxeadorInfo } from "../../lib/Boxeador";
+import { LoadDatadynamic } from "@/app/lib/Data";
 import Image from "next/image";
 import styles from "./boxeadorDetails.module.css";
 
 async function loadBoxeador(id: string): Promise<BoxeadorInfo> {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_BACKEND_URL}/boxeador/${id}/`
-  );
-  const data = await res.json();
-  return data;
+  return LoadDatadynamic(`/boxeador/${id}`)
 }
 
-export default async function BoxeadorDetail({
-  params,
+export default async function BoxeadorDetail({  params,
 }: {
   params: Promise<{ boxeadorId: string }>;
 }) {
@@ -24,45 +18,40 @@ export default async function BoxeadorDetail({
     { nombre: "Sexo", value: boxeador.sexo },
     { nombre: "Peso", value: boxeador.peso },
     { nombre: "DNI", value: boxeador.dni },
-    { nombre: "Licencia Nº", value: boxeador.numero_licencia },
-    { nombre: "Nacionalidad", value: boxeador.nacionalidad },
+    { nombre: "Licencia Nº", value: boxeador.n_licencia },
     { nombre: "Provincia", value: boxeador.provincia },
     { nombre: "Localidad", value: boxeador.localidad },
     { nombre: "Debutaje", value: boxeador.debutaje },
     { nombre: "Carrera", value: boxeador.carrera },
     { nombre: "División", value: boxeador.divicion },
-    { nombre: "Combates", value: boxeador.combate },
-    { nombre: "Rounds", value: boxeador.rounds },
-    { nombre: "KOs", value: boxeador.KOs },
     { nombre: "Alcance", value: boxeador.alcance },
     { nombre: "Stance", value: boxeador.stance },
-    { nombre: "Sin desición", value: boxeador.total_sin_decision },
   ];
 
   const estadisticas = [
     {
       titulo: "Victorias",
-      total: boxeador.total_victorias,
+      total: boxeador.combates_stats.total_victorias,
       kos: "00 KOs",
       clase: styles.victorias,
     },
     {
       titulo: "Derrota",
-      total: boxeador.total_derrotas,
+      total: boxeador.combates_stats.total_derrotas,
       kos: "00 KOs",
       clase: styles.derrotas,
     },
 
     {
       titulo: "Empate",
-      total: boxeador.total_empates,
+      total: boxeador.combates_stats.total_empates,
       kos: null,
       clase: styles.empates,
     },
 
     {
       titulo: "Sin_dec",
-      total: boxeador.total_sin_decision,
+      total: boxeador.combates_stats.total_sin_decision,
       kos: null,
       clase: styles.ns,
     },
@@ -73,7 +62,7 @@ export default async function BoxeadorDetail({
       <section className={styles.profile}>
         <figure className={styles.profile__img}>
           <Image
-            src={boxeador.foto || "/img/default.jpeg"}
+            src={boxeador.boxer_foto || "/img/default.jpeg"}
             alt={boxeador.nombre}
             width={480}
             height={300}
@@ -90,7 +79,6 @@ export default async function BoxeadorDetail({
         <div className={styles.profile__entrenador}>
           <h2 className={styles.descrition}>Entrenador</h2>
 
-          <Entrenador />
         </div>
 
         <div className={styles.profile__info}>
@@ -132,9 +120,7 @@ export default async function BoxeadorDetail({
             </tr>
           </thead>
           <tbody>
-            {boxeador.combates.map((combate, index) => (
-              <CombatList key={index} combate={combate} />
-            ))}
+
           </tbody>
         </table>
       </section>

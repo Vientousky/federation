@@ -10,8 +10,8 @@ type CrearLinkProps = {
 
 export default function CrearLink({ href, name, label }: CrearLinkProps) {
   return (
-    <Link href={href} aria-label={label} className={styles.link}>
-      <span>{name}</span>
+    <Link href={href} aria-label={label} className={styles.link} >
+      {name}
       <BsPlusLg />
     </Link>
   );

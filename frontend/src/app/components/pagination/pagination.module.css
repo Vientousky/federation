@@ -1,0 +1,83 @@
+/* ======= [PAGINATION STYLES] ======= */
+
+/*  ================================= */
+/* ======> CENTRALIZANDO STYLES <===== */
+/*  ================================= */
+
+.pagination, .paginationPosition, .paginationArrowButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.paginationNumberButton, .paginationArrowButton{
+    padding:8px 12px;
+
+} 
+
+/*  ===================================== */
+/* ======> PAGINATION NUMBER BUTTON <===== */
+/*  ===================================== */
+
+.paginationNumberButton {
+    transition: 0.3s ease-in-out;
+    &:hover {
+        opacity: 0.5;
+    }
+} 
+
+.roundedStart {
+  border-top-left-radius: var(--radius-lg);
+  border-bottom-left-radius: var(--radius-lg);
+}
+
+.roundedEnd {
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+}
+
+.currentPage  {
+    background: var(--color-blue);
+    cursor: not-allowed;
+}
+
+.clickablePage  {
+    background: var(--bg-500);
+    cursor: pointer;
+}
+
+.ellipsisPage {
+    color: var(--bg-400);
+    pointer-events: none;
+} 
+
+/*  ==================================== */
+/* ======> PAGINATION ARROW BUTTON <===== */
+/*  ==================================== */
+
+.paginationArrowButton {
+    border-radius: var(--radius-lg);
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        background: var(--bg-400);
+    }
+}
+
+.disabledArrow{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.activeArrow {
+    cursor: pointer;
+}
+
+.arrowLeft {
+  justify-content: flex-start;
+}
+
+.arrowRight {
+  justify-content: flex-end;
+}
