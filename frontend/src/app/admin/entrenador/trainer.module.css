@@ -17,36 +17,63 @@
     /* ======> Diseño de cargos de entrenadores <====== */
     /* ================================================ */
 
-    .chargesPanel {
+    .trainersOverview {
         width: 100%;
         display: flex;
-        flex-wrap: wrap;
         gap: 10px;
 
-        & h2 {
-            margin-bottom: 6px;
-        }
+        .chartContainers {
+            text-align: center;
+            margin-top: -2rem;
 
-        & p {
-            font-size: 1.6rem;
-            font-family: var(--fonts-casual);
-            letter-spacing: 2px;
-        }
-
-        .chargeItem {
-            padding: 12px;
-            flex: 1;
-            min-width: 240px;
-
-            transition: 0.3s ease-in-out;
-
-            &:hover {
-                border-color: var(--bg-300);
-                box-shadow: 0 0 8px var(--bg-300);
+            & h1 {
+                color: var(--color-na-500);
+                font-size: 3em;
+                font-family: var(--fonts-secundaria);
+                margin-top: -2rem;
             }
+
+            & p {
+                color: var(--text-500);
+                font-size: 1em;
+            }
+
         }
 
+        .statsList {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
 
+            .statsItem {
+                flex: 1;
+                min-width:250px;
+
+                background: var(--bg-600);
+                backdrop-filter: var(--filter-lg);
+                border:1px solid var(--bg-400) ;
+                border-radius: var(--radius-xl);
+                padding: 1rem;
+
+                transition: 0.3s ease-in-out;
+
+                & h1 {
+                    font-size: 3em;
+                    font-family: var(--fonts-secundaria);
+                }
+
+                & p {
+                    font-size: 1em;
+                    color: var(--text-500);
+                }
+
+                &:hover {
+                    border-color: var(--bg-300);
+                }
+            } 
+
+        }
 
     }
 

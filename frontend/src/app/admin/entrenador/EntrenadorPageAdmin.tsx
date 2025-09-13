@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { TrainerInfo, TrainerStatistics } from "@/app/lib/Entrenador";
 import { LoadData, FetchSearch, FetchInvoicesPages } from "@/app/lib/Data";
+import { PieChart, Pie, Cell, Tooltip } from "recharts";
+
 import ListTrainer from "./ListTrainer";
 import Search from "@/app/components/search/Search";
 import Pagination from "@/app/components/pagination/Pagination";
@@ -51,11 +53,17 @@ export default function EntrenadorPageAdmin() {
     fetchAllTrainer();
   }, []);
 
-  const cargos = [
+  const data = [
     { cargo: "Director Tecnico", value: allTrainer?.cargos.director_tecnico },
-    { cargo: "Entrenador Principal", value: allTrainer?.cargos.entrenador_principal },
+    {
+      cargo: "Entrenador Principal",
+      value: allTrainer?.cargos.entrenador_principal,
+    },
     { cargo: "Preparador Físico", value: allTrainer?.cargos.preparador_fisico },
-    { cargo: "Segundo Entrenador", value: allTrainer?.cargos.segundo_entrenador },
+    {
+      cargo: "Segundo Entrenador",
+      value: allTrainer?.cargos.segundo_entrenador,
+    },
     { cargo: "Cutman", value: allTrainer?.cargos.cutman },
     { cargo: "Nutricionista", value: allTrainer?.cargos.nutricionista },
     { cargo: "Psicologo", value: allTrainer?.cargos.psicologo },
@@ -64,6 +72,21 @@ export default function EntrenadorPageAdmin() {
     { cargo: "Kinesiologo", value: allTrainer?.cargos.kinesiologo },
     { cargo: "Sparring", value: allTrainer?.cargos.sparring },
     { cargo: "Analista", value: allTrainer?.cargos.analista },
+  ];
+
+  const COLORS = [
+    "rgb(50, 180, 80)",
+    "rgb(66, 135, 245)",
+    "rgb(245, 190, 40)",
+    "rgb(220, 60, 70)",
+    "rgb(210, 110, 30)",
+    "rgb(140, 80, 200)",
+    "rgb(100, 200, 200)",
+    "rgb(90, 90, 90)",
+    "rgb(255, 120, 180)",
+    "rgb(0, 150, 130)",
+    "rgb(200, 200, 70)",
+    "rgb(180, 60, 150)",
   ];
 
   useEffect(() => {
@@ -90,21 +113,41 @@ export default function EntrenadorPageAdmin() {
 
   return (
     <main className={styles.trainerPanel}>
-      <div>
-        <h2 className={styles.title}>Resumen de los entrenador</h2>
-        <p className={styles.depcrition}>
-          Total: {allTrainer?.total_entrenador}
-        </p>
-      </div>
+      <section className={styles.trainersOverview}>
+        <div className={styles.chartContainers}>
+          <PieChart width={250} height={250}>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={60}
+              outerRadius={80}
+              fill={"ffff"}
+              paddingAngle={2}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${index}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
 
-      {/* Panel de métricas */}
-      <section className={styles.chargesPanel}>
-        {cargos.map((item, index) => (
-          <article key={index} className={`${styles.chargeItem} card_color`}>
-            <h3>{item.cargo}</h3>
-            <p>{item.value} </p>
-          </article>
-        ))}
+          <h1>{allTrainer?.total_entrenador}</h1>
+          <p>total de boxeadores</p>
+        </div>
+
+        <div className={styles.statsList}>
+          {data.map((item, index) => (
+            <article key={index} className={`${styles.statsItem}`}>
+              <h1>{item.value}</h1>
+              <p>{item.cargo} </p>
+            </article>
+          ))}
+        </div>
       </section>
 
       {/* Lista de entrenadores */}

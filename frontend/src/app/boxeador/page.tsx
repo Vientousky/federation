@@ -1,12 +1,12 @@
 "use client";
 
 import { Suspense } from "react";
-import TableSkeleton from "@/app/ui/skeleton/SkeletonTable";
+import Loader from "../admin/components/loader/Loader";
 import RenderBoxingList from "./RenderBoxingList";
 
 export default function PageBoxer() {
   return (
-    <Suspense fallback={<TableSkeleton />}>
+    <Suspense fallback={<Loader />}>
       <RenderBoxingList/>
     </Suspense>
   );
